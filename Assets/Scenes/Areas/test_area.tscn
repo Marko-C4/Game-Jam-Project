@@ -1,3 +1,5 @@
 [gd_scene load_steps=0 format=3 uid="uid://d0jbe1kaxc2sh"]
 
 [node name="TestArea" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
