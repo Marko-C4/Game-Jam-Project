@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://tyddymiw7gft"]
+
+[ext_resource type="TileSet" uid="uid://blaa0bi4f8o7u" path="res://Assets/Scenes/Level/tilemap.tres" id="1_0wqei"]
+
+[node name="Level" type="Node"]
+
+[node name="Tilemap" type="Node2D" parent="."]
+
+[node name="Terrain" type="TileMapLayer" parent="Tilemap"]
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 5, 0, 0, 0, 0, 0, 0, 0)
+tile_set = ExtResource("1_0wqei")
+
+[node name="Terrain2" type="TileMapLayer" parent="Tilemap"]
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 5, 0, 0, 0, 0, 0, 0, 0)
+tile_set = ExtResource("1_0wqei")

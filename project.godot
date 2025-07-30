@@ -14,6 +14,13 @@ config/name="GMTK Test Project"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Utils="*res://Assets/Globals/utils.gd"
+HexUtils="*res://Assets/Globals/hex_utils.gd"
+Global="*res://Assets/Globals/global.gd"
+SignalBus="*res://Assets/Globals/signal_bus.gd"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"

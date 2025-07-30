@@ -1,0 +1,54 @@
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://blaa0bi4f8o7u"]
+
+[ext_resource type="Texture2D" uid="uid://dpskvi07ov6b7" path="res://Assets/Sprites/SF-planetside-hexmap/icons/arrow-01.png" id="1_noxah"]
+[ext_resource type="Texture2D" uid="uid://b5278o8k33iom" path="res://Assets/Sprites/SF-planetside-hexmap/00-terrain-base/base-green.png" id="1_x5w5y"]
+[ext_resource type="Texture2D" uid="uid://b64k7dguohcn2" path="res://Assets/Sprites/SF-planetside-hexmap/00-terrain-base/base-grey.png" id="2_noxah"]
+[ext_resource type="Texture2D" uid="uid://da5x8sjonamp0" path="res://Assets/Sprites/SF-planetside-hexmap/00-terrain-base/base-red.png" id="3_8f58r"]
+[ext_resource type="Texture2D" uid="uid://cacr5xoje3mud" path="res://Assets/Sprites/SF-planetside-hexmap/00-terrain-base/base-white.png" id="4_lvway"]
+[ext_resource type="Texture2D" uid="uid://m4evo27m4skc" path="res://Assets/Sprites/SF-planetside-hexmap/00-terrain-base/base-yellow.png" id="5_jombl"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8f58r"]
+texture = ExtResource("1_noxah")
+margins = Vector2i(17, 0)
+texture_region_size = Vector2i(173, 200)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0n3lf"]
+texture = ExtResource("1_x5w5y")
+margins = Vector2i(14, 0)
+texture_region_size = Vector2i(173, 200)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3t3aq"]
+texture = ExtResource("2_noxah")
+margins = Vector2i(14, 0)
+texture_region_size = Vector2i(173, 200)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aymnw"]
+texture = ExtResource("3_8f58r")
+margins = Vector2i(14, 0)
+texture_region_size = Vector2i(173, 200)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5yf4d"]
+texture = ExtResource("4_lvway")
+margins = Vector2i(14, 0)
+texture_region_size = Vector2i(173, 200)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_euv40"]
+texture = ExtResource("5_jombl")
+margins = Vector2i(14, 0)
+texture_region_size = Vector2i(173, 200)
+0:0/0 = 0
+
+[resource]
+tile_shape = 3
+tile_size = Vector2i(173, 200)
+sources/5 = SubResource("TileSetAtlasSource_0n3lf")
+sources/6 = SubResource("TileSetAtlasSource_3t3aq")
+sources/7 = SubResource("TileSetAtlasSource_aymnw")
+sources/8 = SubResource("TileSetAtlasSource_5yf4d")
+sources/9 = SubResource("TileSetAtlasSource_euv40")
+sources/11 = SubResource("TileSetAtlasSource_8f58r")
