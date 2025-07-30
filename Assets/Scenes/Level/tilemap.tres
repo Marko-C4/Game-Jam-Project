@@ -45,6 +45,7 @@ texture_region_size = Vector2i(173, 200)
 
 [resource]
 tile_shape = 3
+tile_layout = 2
 tile_size = Vector2i(173, 200)
 sources/5 = SubResource("TileSetAtlasSource_0n3lf")
 sources/6 = SubResource("TileSetAtlasSource_3t3aq")
