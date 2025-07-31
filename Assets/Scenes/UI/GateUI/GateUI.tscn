@@ -1,9 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cg1u5dd6dgxwt"]
+[gd_scene load_steps=5 format=3 uid="uid://cg1u5dd6dgxwt"]
 
-[ext_resource type="Texture2D" uid="uid://dwb0o0t3qe4pc" path="res://Assets/Sprites/SF-planetside-hexmap/icons/alert.png" id="1_hky53"]
+[ext_resource type="Texture2D" uid="uid://b8w1bw1p2qf81" path="res://Assets/Sprites/kenney-hex/hexagonTerrain_sheet.png" id="1_4sh44"]
+[ext_resource type="Texture2D" uid="uid://cj6lfe53srndw" path="res://Assets/Sprites/gates.png" id="2_746kh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sh44"]
+atlas = ExtResource("1_4sh44")
+region = Rect2(122, 568, 120, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvfwe"]
+atlas = ExtResource("2_746kh")
+region = Rect2(0, 0, 120, 140)
 
 [node name="GateUi" type="Control"]
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 3
 anchors_preset = 11
 anchor_left = 1.0
@@ -34,7 +43,7 @@ layout_mode = 2
 text = "Soul Funnels"
 
 [node name="HexButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HexButton"]
@@ -44,13 +53,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HexButton/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HexButton/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(40, 40)
+[node name="Label" type="Label" parent="VBoxContainer/HexButton/MarginContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_hky53")
+text = "Test"
+
+[node name="Outline" type="TextureRect" parent="VBoxContainer/HexButton/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 140)
+layout_mode = 2
+texture = SubResource("AtlasTexture_4sh44")
 expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/HexButton/MarginContainer/HBoxContainer/Outline"]
+custom_minimum_size = Vector2(120, 140)
+texture = SubResource("AtlasTexture_pvfwe")
+expand_mode = 1
+stretch_mode = 2
