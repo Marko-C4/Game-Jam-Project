@@ -10,7 +10,7 @@ direction = 2
 gate = 1
 metadata/_custom_type_script = "uid://dwtmx7tfacldi"
 
-[sub_resource type="Resource" id="Resource_pd3ox"]
+[sub_resource type="Resource" id="Resource_mygcb"]
 script = ExtResource("3_rbcqk")
 coordinate = Vector2i(0, 0)
 direction = 0
@@ -19,8 +19,7 @@ metadata/_custom_type_script = "uid://dwtmx7tfacldi"
 
 [resource]
 script = ExtResource("1_1r0kg")
-start_tile = SubResource("Resource_pd3ox")
-fixed_tiles = Array[ExtResource("3_rbcqk")]([SubResource("Resource_nefnt")])
+fixed_tiles = Array[ExtResource("3_rbcqk")]([SubResource("Resource_nefnt"), SubResource("Resource_mygcb")])
 placeable = Dictionary[int, int]({
 1: 2
 })

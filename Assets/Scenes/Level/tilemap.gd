@@ -8,7 +8,6 @@ var gates: Dictionary[Vector2i, HexTile] = {}
 # Return whether drop was succesful
 func drop_gate(gate: HexTile, global_pos: Vector2) -> bool:
 	var coordinate := global_to_map(global_pos)
-	print(coordinate)
 	if not try_get_gate(coordinate) and is_travesible(coordinate):
 		add_gate(gate, coordinate)
 		return true

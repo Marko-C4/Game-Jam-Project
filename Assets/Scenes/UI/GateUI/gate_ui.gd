@@ -25,4 +25,3 @@ func return_gate(type: Global.GATE_TYPE) -> void:
 
 func _on_hex_button_pressed(type: Global.GATE_TYPE):
 	gate_clicked.emit(type)
-	print(Global.GATE_TO_NAME[type])

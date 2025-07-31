@@ -8,11 +8,11 @@ const MAX_DEPTH := 100
 @onready var hex_map: HexMap = $HexMap
 @onready var gates: Node2D = $HexMap/Gates
 
-# Probably Temporary
-@onready var ball: Ball = $Ball
 @onready var gate_ui: GateUI = %GateUI
 
-var start_tile: HexTile
+const BALL = preload("res://Assets/Scenes/Level/Ball/ball.tscn")
+
+var start_tiles: Array[HexTile] = []
 var holding: Dictionary[Global.GATE_TYPE, int]
 
 func _ready() -> void:
@@ -23,18 +23,23 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("reset_stage"):
 		_reload_level()
-		print(self.get_global_mouse_position())
 		
 	if event.is_action_pressed('ui_accept'):
-		test_path()
+		start_simulation()
+		for ball: Ball in get_tree().get_nodes_in_group('ball'):
+			ball.advance_to_next_tile(true)
+		
+	if event.is_action_pressed("step_simulation"):
+		simulate_step()
 	
 
 func _reload_level() -> void:
+	start_tiles = []
 	for gate: HexTile in get_tree().get_nodes_in_group('hex_gate'):
 		hex_map.remove_gate(gate)
 		gate.queue_free()
-	ball.reset()
-	ball.global_position = start_tile.global_position
+	for ball in get_tree().get_nodes_in_group('ball'):
+		ball.queue_free()
 	SignalBus.simulation.end.emit()
 	_load_level()
 	
@@ -46,16 +51,13 @@ func _load_overlay() -> void:
 func _load_level() -> void:
 	assert(level_data)
 	
-	start_tile = level_data.start_tile.create_instance(gates)
-	start_tile.fixed_in_place = true
-	start_tile.dnd.enabled = false # Disable dragging
-	hex_map.add_gate(start_tile, level_data.start_tile.coordinate)
-	
 	for fixed_tile_data in level_data.fixed_tiles:
 		var fixed_tile := fixed_tile_data.create_instance(gates)
 		fixed_tile.fixed_in_place = true
 		fixed_tile.dnd.enabled = false # Disable dragging
 		hex_map.add_gate(fixed_tile, fixed_tile_data.coordinate)
+		if (fixed_tile.gate_type == Global.GATE_TYPE.START_GATE):
+			start_tiles.append(fixed_tile)
 	
 	holding = level_data.placeable.duplicate()
 	gate_ui.update_ui(holding)
@@ -65,7 +67,27 @@ func _register_hex_tile(hex: HexTile) -> void:
 	hex.dnd.drag_dropped.connect(_on_dnd_drag_dropped.bind(hex))
 	hex.dnd.drag_canceled.connect(_on_dnd_drag_canceled.bind(hex))
 
-func test_path() -> void:
+func start_simulation() -> void:
+	for ball in get_tree().get_nodes_in_group('ball'):
+		ball.queue_free()
+	for start_tile in start_tiles:
+		var path = test_path(start_tile)
+		var is_loop = path[path.size() - 1] == start_tile.coordinate
+		
+		var ball = BALL.instantiate()
+		self.add_child(ball)
+		ball.global_position = start_tile.global_position
+		ball._start_coord = start_tile.coordinate
+		ball.set_path(path)
+
+func simulate_step() -> void:
+	if get_tree().get_node_count_in_group('ball') == 0:
+		start_simulation()
+	
+	for ball: Ball in get_tree().get_nodes_in_group('ball'):
+		ball.advance_to_next_tile(false)
+
+func test_path(start_tile: HexTile) -> Array[Vector2i]:
 	SignalBus.simulation.start.emit()
 	var done = false
 	var depth = 0
@@ -74,7 +96,7 @@ func test_path() -> void:
 	var path: Array[Vector2i] = []
 	while not done and depth < MAX_DEPTH:
 		if not hex_map.is_travesible(current_hex):
-			print("Illegal path")
+			print_debug("Illegal path")
 			done = true
 			continue
 		
@@ -85,7 +107,7 @@ func test_path() -> void:
 			var gate := hex.get_gate()
 			if is_instance_of(gate, StartTile) and hex.direction == current_dir and depth > 0:
 				done = true
-				print("Looping path!!")
+				print_debug("Looping path!!")
 				continue
 			
 			var coord_dirs = gate.get_outputs(current_dir)
@@ -94,9 +116,8 @@ func test_path() -> void:
 			current_hex = HexUtils.cube_to_axial(HexUtils.get_cell_in_dir(start_hex, current_dir))
 		path.append(current_hex)
 		depth += 1
-	print(path)
-	var is_loop = path[path.size() - 1] == start_tile.coordinate
-	ball.set_path(path, is_loop)
+	print_debug(path)
+	return path
 
 func _put_gate_to_holding(hex: HexTile) -> void:
 	gate_ui.return_gate(hex.gate_type)
