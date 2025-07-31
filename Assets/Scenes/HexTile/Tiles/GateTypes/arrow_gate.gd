@@ -1,5 +1,5 @@
 class_name ArrowGate
-extends HexTile
+extends GateHex
 
 func get_outputs(input_dir: Utils.Direction) -> Array[Utils.Direction]:
 	return [direction]

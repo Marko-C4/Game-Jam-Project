@@ -1,20 +1,17 @@
 class_name HexTile
 extends Node2D
 
-@export var direction: Utils.Direction : set = _set_direction
+@export var gate_type: Global.GATE_TYPE
+@export var direction: Utils.Direction
 
-var rotations := {
-	Utils.Direction.TOP_RIGHT: 0,
-	Utils.Direction.MID_RIGHT: deg_to_rad(60),
-	Utils.Direction.BOT_RIGHT: deg_to_rad(120),
-	Utils.Direction.BOT_LEFT: deg_to_rad(180),
-	Utils.Direction.MID_LEFT: deg_to_rad(240),
-	Utils.Direction.TOP_LEFT: deg_to_rad(300),
-}
+@onready var gates: Gates = $Gates
 
-func get_outputs(input_dir: Utils.Direction) -> Array[Utils.Direction]:
-	return [input_dir]
+func _ready() -> void:
+	gates.set_gate(gate_type, direction)
+	
+func initialize(gate_type: Global.GATE_TYPE, direction: Utils.Direction):
+	self.gate_type = gate_type
+	self.direction = direction
 
-func _set_direction(value: Utils.Direction) -> void:
-	direction = value
-	global_rotation = rotations[value]
+func get_gate() -> GateHex:
+	return gates.gate

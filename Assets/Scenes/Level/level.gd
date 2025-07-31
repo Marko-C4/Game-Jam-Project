@@ -9,7 +9,7 @@ const MAX_DEPTH := 100
 @onready var gates: Node2D = $HexMap/Gates
 @onready var ball: Ball = $Ball
 
-var start_tile: StartTile
+var start_tile: HexTile
 
 func _ready() -> void:
 	start_tile = level_data.start_tile.create_instance(gates)
@@ -27,9 +27,14 @@ func test_path() -> void:
 	var done = false
 	var depth = 0
 	var current_dir := start_tile.direction
-	var current_hex := Vector2i(0, 0)
+	var current_hex := Vector2i(0, 0) # TODO: allow start to be anywhere
 	var path: Array[Vector2i] = []
 	while not done and depth < MAX_DEPTH:
+		if not hex_map.is_travesible(current_hex):
+			print("Illegal path")
+			done = true
+			continue
+		
 		var gate = hex_map.try_get_gate(current_hex)
 		if not gate:
 			current_hex = HexUtils.cube_to_axial(HexUtils.get_cell_in_dir(current_hex, current_dir))
@@ -44,4 +49,5 @@ func test_path() -> void:
 		path.append(current_hex)
 		depth += 1
 	print(path)
-	ball.set_path(path)
+	var is_loop = path[path.size() - 1] == Vector2i(0, 0)
+	ball.set_path(path, is_loop)

@@ -3,12 +3,13 @@
 [ext_resource type="Script" uid="uid://dxcucmh2i3lxg" path="res://Assets/Scenes/HexTile/hex_tile.gd" id="1_t3cyp"]
 [ext_resource type="Script" uid="uid://bqmpu5lcp0ntm" path="res://Assets/Scenes/HexTile/gates.gd" id="2_gu4rk"]
 [ext_resource type="Texture2D" uid="uid://dwb0o0t3qe4pc" path="res://Assets/Sprites/SF-planetside-hexmap/icons/alert.png" id="2_lxsoc"]
-[ext_resource type="Script" uid="uid://gv0mlauhxrvf" path="res://Assets/Scenes/HexTile/Tiles/GateTypes/arrow_gate.gd" id="3_3i5fn"]
+[ext_resource type="Script" uid="uid://gv0mlauhxrvf" path="res://Assets/Scenes/HexTile/Tiles/ArrowGate/arrow_gate.gd" id="3_3i5fn"]
 [ext_resource type="Texture2D" uid="uid://dl64jn2mjsk5i" path="res://Assets/Sprites/arrow_span.webp" id="3_cy6nd"]
-[ext_resource type="Script" uid="uid://bxt83q8l5ic8c" path="res://Assets/Scenes/HexTile/Tiles/GateTypes/start_tile.gd" id="3_du2gd"]
+[ext_resource type="Script" uid="uid://bxt83q8l5ic8c" path="res://Assets/Scenes/HexTile/Tiles/StartTile/start_tile.gd" id="3_du2gd"]
 [ext_resource type="Texture2D" uid="uid://d2q1p344b181u" path="res://Assets/Sprites/arrow.png" id="6_5pyhu"]
 
 [node name="HexTile" type="Node2D"]
+position = Vector2(415, 234)
 script = ExtResource("1_t3cyp")
 
 [node name="HexSprite" type="Sprite2D" parent="."]
