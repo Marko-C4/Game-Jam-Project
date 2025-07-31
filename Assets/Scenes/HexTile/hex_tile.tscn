@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ch71qprshi5bp"]
+[gd_scene load_steps=9 format=3 uid="uid://ch71qprshi5bp"]
 
 [ext_resource type="Script" uid="uid://dxcucmh2i3lxg" path="res://Assets/Scenes/HexTile/hex_tile.gd" id="1_t3cyp"]
 [ext_resource type="Script" uid="uid://bqmpu5lcp0ntm" path="res://Assets/Scenes/HexTile/gates.gd" id="2_gu4rk"]
@@ -7,12 +7,18 @@
 [ext_resource type="Texture2D" uid="uid://dl64jn2mjsk5i" path="res://Assets/Sprites/arrow_span.webp" id="3_cy6nd"]
 [ext_resource type="Script" uid="uid://bxt83q8l5ic8c" path="res://Assets/Scenes/HexTile/Tiles/GateTypes/start_tile.gd" id="3_du2gd"]
 [ext_resource type="Texture2D" uid="uid://d2q1p344b181u" path="res://Assets/Sprites/arrow.png" id="6_5pyhu"]
+[ext_resource type="Script" uid="uid://t66t2iaypufb" path="res://Assets/Components/drag_and_drop.gd" id="8_hranr"]
 
-[node name="HexTile" type="Node2D"]
+[node name="HexTile" type="Area2D" groups=["hex_gate"]]
 script = ExtResource("1_t3cyp")
+gate_type = 1
+direction = 1
 
 [node name="HexSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_lxsoc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(1, -96, 83, -48, 83, 48, 0, 95, -82, 47, -82, -48)
 
 [node name="Gates" type="Node2D" parent="."]
 script = ExtResource("2_gu4rk")
@@ -34,3 +40,7 @@ script = ExtResource("3_3i5fn")
 rotation = -1.0472
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("6_5pyhu")
+
+[node name="DnD" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("8_hranr")
+target = NodePath("..")

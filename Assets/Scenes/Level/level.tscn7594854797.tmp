@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://tyddymiw7gft"]
+[gd_scene load_steps=6 format=4 uid="uid://tyddymiw7gft"]
 
 [ext_resource type="TileSet" uid="uid://blaa0bi4f8o7u" path="res://Assets/Scenes/Level/tilemap.tres" id="1_0wqei"]
 [ext_resource type="Script" uid="uid://duiv100qy324d" path="res://Assets/Scenes/Level/level.gd" id="1_lrk52"]
 [ext_resource type="Resource" uid="uid://cqtocfr8jqo2o" path="res://Assets/Scenes/Level/LevelData/level_1.tres" id="2_t4qd3"]
 [ext_resource type="Script" uid="uid://p42xsu17k48n" path="res://Assets/Scenes/Level/tilemap.gd" id="3_oue8b"]
-[ext_resource type="Script" uid="uid://byl550u315pku" path="res://Assets/Components/tile_highlighter.gd" id="5_75ljv"]
 [ext_resource type="Script" uid="uid://caau44wo4bnih" path="res://Assets/Scenes/Level/ball.gd" id="5_o4y12"]
 
 [node name="Level" type="Node"]
@@ -16,22 +15,10 @@ position = Vector2(271.515, 171.89)
 script = ExtResource("3_oue8b")
 
 [node name="Terrain" type="TileMapLayer" parent="HexMap"]
-tile_map_data = PackedByteArray("AAD//wAABgAAAAAAAAAAAP//BgAAAAAAAAABAP//BgAAAAAAAAABAAAABgAAAAAAAAAAAAEABgAAAAAAAAD//wEABgAAAAAAAAAAAAAABgAAAAAAAAABAAEABgAAAAAAAAA=")
-tile_set = ExtResource("1_0wqei")
-
-[node name="Highlight" type="TileMapLayer" parent="HexMap"]
-modulate = Color(1, 1, 1, 0.196078)
-tile_map_data = PackedByteArray("AAAAAAAACQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD//wAABgAAAAAAAAAAAAAABgAAAAAAAAAAAP//BgAAAAAAAAABAAAABgAAAAAAAAABAP//BgAAAAAAAAD//wEABgAAAAAAAAAAAAEABgAAAAAAAAABAAEABgAAAAAAAAA=")
 tile_set = ExtResource("1_0wqei")
 
 [node name="Gates" type="Node2D" parent="HexMap"]
-
-[node name="TileHighlighter" type="Node" parent="HexMap" node_paths=PackedStringArray("hex_map", "highlight_layer")]
-script = ExtResource("5_75ljv")
-hex_map = NodePath("..")
-highlight_layer = NodePath("../Highlight")
-atlas_id = 9
-metadata/_custom_type_script = "uid://byl550u315pku"
 
 [node name="Ball" type="Node2D" parent="."]
 position = Vector2(358, 271)
