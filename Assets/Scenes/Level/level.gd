@@ -66,12 +66,13 @@ func test_path() -> void:
 		if not hex:
 			current_hex = HexUtils.cube_to_axial(HexUtils.get_cell_in_dir(current_hex, current_dir))
 		else:
-			var gate = hex.get_gate()
-			if is_instance_of(gate, StartTile) and depth > 0:
+			var gate := hex.get_gate()
+			if is_instance_of(gate, StartTile) and hex.direction == current_dir and depth > 0:
 				done = true
+				print("Looping path!!")
 				continue
 			
-			var coord_dirs = gate.get_outputs(start_tile.direction)
+			var coord_dirs = gate.get_outputs(current_dir)
 			current_dir = coord_dirs[0].dir
 			var start_hex = coord_dirs[0].coord
 			current_hex = HexUtils.cube_to_axial(HexUtils.get_cell_in_dir(start_hex, current_dir))
