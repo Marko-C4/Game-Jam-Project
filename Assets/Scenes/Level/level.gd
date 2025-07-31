@@ -44,9 +44,10 @@ func test_path() -> void:
 				done = true
 				continue
 			
-			var dirs = gate.get_outputs(start_tile.direction)
-			current_dir = dirs[0]
-			current_hex = HexUtils.cube_to_axial(HexUtils.get_cell_in_dir(current_hex, dirs[0]))
+			var coord_dirs = gate.get_outputs(start_tile.direction)
+			current_dir = coord_dirs[0].dir
+			var start_hex = coord_dirs[0].coord
+			current_hex = HexUtils.cube_to_axial(HexUtils.get_cell_in_dir(start_hex, current_dir))
 		path.append(current_hex)
 		depth += 1
 	print(path)

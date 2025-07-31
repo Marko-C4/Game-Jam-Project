@@ -6,6 +6,7 @@ extends Node2D
 var gates: Dictionary[Vector2i, HexTile] = {}
 
 func add_gate(gate: HexTile, coordinate: Vector2i) -> void:
+	gate.get_gate().coordinate = coordinate
 	gates[coordinate] = gate
 	gate.position = terrain.map_to_local(coordinate)
 

@@ -20,5 +20,5 @@ func set_gate(type: Global.GATE_TYPE, direction: Utils.Direction) -> void:
 	gate.direction = direction
 	gate.visible = true
 
-func get_outputs(input_dir: Utils.Direction) -> Array[Utils.Direction]:
+func get_outputs(input_dir: Utils.Direction) -> Array[CoordDir]:
 	return gate.get_outputs(input_dir)
