@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://tyddymiw7gft"]
+[gd_scene load_steps=11 format=4 uid="uid://tyddymiw7gft"]
 
 [ext_resource type="Script" uid="uid://duiv100qy324d" path="res://Assets/Scenes/Level/level.gd" id="1_lrk52"]
 [ext_resource type="Resource" uid="uid://cqtocfr8jqo2o" path="res://Assets/Scenes/Level/LevelData/level_1.tres" id="2_t4qd3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://byl550u315pku" path="res://Assets/Components/tile_highlighter.gd" id="5_75ljv"]
 [ext_resource type="Script" uid="uid://caau44wo4bnih" path="res://Assets/Scenes/Level/ball.gd" id="5_o4y12"]
 [ext_resource type="PackedScene" uid="uid://cg1u5dd6dgxwt" path="res://Assets/Scenes/UI/GateUI/GateUI.tscn" id="7_v0d7o"]
+[ext_resource type="PackedScene" uid="uid://c7iyp161hnyaj" path="res://Assets/Scenes/LevelOverlay/LevelOverlay.tscn" id="8_evxrp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v0d7o"]
 texture = ExtResource("4_v0d7o")
@@ -186,4 +187,9 @@ custom_minimum_size = Vector2(0, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_left = 0.0
+grow_horizontal = 2
+
+[node name="LevelOverlay" parent="CanvasGroup" instance=ExtResource("8_evxrp")]
+anchors_preset = 10
+anchor_right = 1.0
 grow_horizontal = 2

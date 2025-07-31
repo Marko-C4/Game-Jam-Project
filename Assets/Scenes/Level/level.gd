@@ -17,6 +17,7 @@ var holding: Dictionary[Global.GATE_TYPE, int]
 
 func _ready() -> void:
 	_load_level()
+	_load_overlay()
 	gate_ui.gate_clicked.connect(_on_gate_ui_hex_button_pressed)
 
 func _input(event: InputEvent) -> void:
@@ -36,6 +37,11 @@ func _reload_level() -> void:
 	ball.global_position = start_tile.global_position
 	SignalBus.simulation.end.emit()
 	_load_level()
+	
+func _load_overlay() -> void:
+	var overlay_scene = preload("res://Assets/Scenes/LevelOverlay/LevelOverlay.tscn")
+	#var overlay_instance = overlay_scene.instantiate()
+	#add_child(overlay_instance)
 
 func _load_level() -> void:
 	assert(level_data)

@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://du0eln7aakjwi" path="res://Assets/Scenes/LevelOverlay/level_overlay.gd" id="1_vn41e"]
 
-[node name="LevelOverlay" type="CanvasLayer"]
+[node name="LevelOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_vn41e")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

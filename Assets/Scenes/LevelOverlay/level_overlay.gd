@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 const BUTTON_WIDTH = 150
 const BUTTON_HEIGHT = 50
@@ -33,33 +33,29 @@ func _ready():
 	reset_button.custom_minimum_size = Vector2(BUTTON_WIDTH, BUTTON_HEIGHT)
 	reset_button.text = "Reset (Q)"
 
-	for button in buttons:
-		button.size_flags_horizontal = Control.SIZE_FILL
-
-	# Connect signals
 	back_button.pressed.connect(_on_back_pressed)
 	start_stop_button.pressed.connect(_on_start_stop_pressed)
 	step_forward_button.pressed.connect(_on_step_forward_pressed)
 	step_backward_button.pressed.connect(_on_step_backward_pressed)
 	reset_button.pressed.connect(_on_reset_pressed)
-
-func _on_back_pressed():
-	get_tree().change_scene_to_file("res://Assets/Scenes/LevelSelect/LevelSelect.tscn")
-
+	
 func _update_start_stop_text():
 	if is_running:
 		start_stop_button.text = "Stop (X)"
 	else:
 		start_stop_button.text = "Start (S)"
 
+func _on_back_pressed():
+	get_tree().change_scene_to_file("res://Assets/Scenes/LevelSelect/LevelSelect.tscn")
+
 func _on_start_stop_pressed():
 	is_running = !is_running
 	_update_start_stop_text()
-	
 	if is_running:
 		print("Started")
 	else:
 		print("Stopped")
+
 
 func _on_step_forward_pressed():
 	print("Step Forward pressed")
@@ -69,5 +65,21 @@ func _on_step_backward_pressed():
 
 func _on_reset_pressed():
 	var current_scene = get_tree().current_scene
-	if current_scene:
-		get_tree().change_scene_to_file(current_scene.scene_file_path)
+	#if current_scene:
+		#get_tree().change_scene_to_file(current_scene.scene_file_path)
+
+
+func addStartPressListener(callback: Callable):
+	start_stop_button.pressed.connect(callback)
+
+func addBackPressListener(callback: Callable):
+	back_button.pressed.connect(callback)
+
+func addStepForwardPressListener(callback: Callable):
+	step_forward_button.pressed.connect(callback)
+
+func addStepBackwardPressListener(callback: Callable):
+	step_backward_button.pressed.connect(callback)
+
+func addResetPressListener(callback: Callable):
+	reset_button.pressed.connect(callback)
