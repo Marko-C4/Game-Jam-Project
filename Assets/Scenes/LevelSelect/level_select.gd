@@ -29,10 +29,8 @@ func _ready():
 	back_button.modulate = Color(0.2, 0.8, 0.2)  
 	back_button.pressed.connect(_on_back_pressed)
 
-	var button_height = 100
 	for i in range(level_buttons.size()):
 		var button = level_buttons[i]
-		button.custom_minimum_size = Vector2(0, button_height)
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		button.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		button.text = "Level %d" % (i + 1)
