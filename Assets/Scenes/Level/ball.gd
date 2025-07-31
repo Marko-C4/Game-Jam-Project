@@ -9,7 +9,8 @@ var _path_index: int
 var _path: Array[Vector2i]
 
 func reset() -> void:
-	tween.kill()
+	if tween:
+		tween.kill()
 
 func set_path(new_path: Array[Vector2i], loop: bool) -> void:
 	_path_index = 0

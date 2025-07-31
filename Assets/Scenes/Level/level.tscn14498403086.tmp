@@ -123,7 +123,7 @@ tile_layout = 2
 tile_size = Vector2i(119, 139)
 sources/1 = SubResource("TileSetAtlasSource_v0d7o")
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node"]
 script = ExtResource("1_lrk52")
 level_data = ExtResource("2_t4qd3")
 
@@ -167,23 +167,9 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.561203, 0.46164, 0.821323, 1)
 
-[node name="CanvasGroup" type="CanvasLayer" parent="."]
-layer = -1
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(942, 310)
 
-[node name="RightSidebar" type="Control" parent="CanvasGroup"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 3
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="GateUI" parent="CanvasGroup/RightSidebar" instance=ExtResource("7_v0d7o")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_left = 0.0
-grow_horizontal = 2
+[node name="GateUI" parent="UI" instance=ExtResource("7_v0d7o")]
