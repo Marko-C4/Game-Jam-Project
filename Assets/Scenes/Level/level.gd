@@ -35,10 +35,11 @@ func test_path() -> void:
 			done = true
 			continue
 		
-		var gate = hex_map.try_get_gate(current_hex)
-		if not gate:
+		var hex = hex_map.try_get_gate(current_hex)
+		if not hex:
 			current_hex = HexUtils.cube_to_axial(HexUtils.get_cell_in_dir(current_hex, current_dir))
 		else:
+			var gate = hex.get_gate()
 			if is_instance_of(gate, StartTile) and depth > 0:
 				done = true
 				continue
