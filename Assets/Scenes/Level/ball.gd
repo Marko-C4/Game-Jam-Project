@@ -8,12 +8,12 @@ var tween: Tween
 var _path_index: int
 var _path: Array[Vector2i]
 
-func set_path(new_path: Array[Vector2i]) -> void:
+func set_path(new_path: Array[Vector2i], loop: bool) -> void:
 	_path_index = 0
 	_path = new_path
-	advance_to_next_tile()
+	advance_to_next_tile(loop)
 
-func advance_to_next_tile():
+func advance_to_next_tile(loop: bool):
 	if _path.is_empty():
 		return
 
@@ -27,5 +27,7 @@ func advance_to_next_tile():
 	
 	tween.tween_callback(func():
 		_path_index = (_path_index + 1) % _path.size()
-		advance_to_next_tile()
+		if _path_index == 0 and not loop:
+			return
+		advance_to_next_tile(loop)
 	)

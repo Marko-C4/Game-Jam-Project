@@ -1,41 +1,39 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=9 format=3 uid="uid://cqtocfr8jqo2o"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=7 format=3 uid="uid://cqtocfr8jqo2o"]
 
 [ext_resource type="Script" uid="uid://bodjpew20q5m4" path="res://Assets/Scenes/Level/LevelData/level_data.gd" id="1_1r0kg"]
-[ext_resource type="PackedScene" uid="uid://c246kkf6tblic" path="res://Assets/Scenes/HexTile/Tiles/StartTile/start_tile.tscn" id="2_2lkbs"]
-[ext_resource type="PackedScene" uid="uid://b10xca4me10qx" path="res://Assets/Scenes/HexTile/Tiles/ArrowGate/arrow_gate.tscn" id="2_rbcqk"]
 [ext_resource type="Script" uid="uid://dwtmx7tfacldi" path="res://Assets/Scenes/HexTile/HexData/hex_data.gd" id="3_rbcqk"]
 
 [sub_resource type="Resource" id="Resource_nefnt"]
 script = ExtResource("3_rbcqk")
 coordinate = Vector2i(1, -1)
 direction = 2
-scene = ExtResource("2_rbcqk")
+gate = 1
 metadata/_custom_type_script = "uid://dwtmx7tfacldi"
 
 [sub_resource type="Resource" id="Resource_rbcqk"]
 script = ExtResource("3_rbcqk")
 coordinate = Vector2i(1, 1)
 direction = 4
-scene = ExtResource("2_rbcqk")
+gate = 1
 metadata/_custom_type_script = "uid://dwtmx7tfacldi"
 
-[sub_resource type="Resource" id="Resource_ni4eo"]
+[sub_resource type="Resource" id="Resource_mygcb"]
 script = ExtResource("3_rbcqk")
 coordinate = Vector2i(-1, 1)
 direction = 0
-scene = ExtResource("2_rbcqk")
+gate = 1
 metadata/_custom_type_script = "uid://dwtmx7tfacldi"
 
 [sub_resource type="Resource" id="Resource_pd3ox"]
 script = ExtResource("3_rbcqk")
 coordinate = Vector2i(0, 0)
 direction = 0
-scene = ExtResource("2_2lkbs")
+gate = 0
 metadata/_custom_type_script = "uid://dwtmx7tfacldi"
 
 [resource]
 script = ExtResource("1_1r0kg")
 start_tile = SubResource("Resource_pd3ox")
-fixed_tiles = Array[ExtResource("3_rbcqk")]([SubResource("Resource_nefnt"), SubResource("Resource_rbcqk"), SubResource("Resource_ni4eo")])
+fixed_tiles = Array[ExtResource("3_rbcqk")]([SubResource("Resource_nefnt"), SubResource("Resource_rbcqk"), SubResource("Resource_mygcb")])
 placeable = Array[ExtResource("3_rbcqk")]([])
 metadata/_custom_type_script = "uid://bodjpew20q5m4"
