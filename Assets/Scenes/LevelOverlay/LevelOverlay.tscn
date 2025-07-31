@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7iyp161hnyaj"]
+
+[ext_resource type="Script" uid="uid://du0eln7aakjwi" path="res://Assets/Scenes/LevelOverlay/level_overlay.gd" id="1_vn41e"]
+
+[node name="LevelOverlay" type="CanvasLayer"]
+script = ExtResource("1_vn41e")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="StartStopButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="StepBackwardButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="StepForwardButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ResetButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BackToLevelSelectButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2

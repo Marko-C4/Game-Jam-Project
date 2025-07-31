@@ -22,6 +22,11 @@ HexUtils="*res://Assets/Globals/hex_utils.gd"
 Global="*res://Assets/Globals/global.gd"
 SignalBus="*res://Assets/Globals/signal_bus.gd"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
