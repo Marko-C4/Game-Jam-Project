@@ -9,28 +9,33 @@ const MAX_DEPTH := 100
 @onready var gates: Node2D = $HexMap/Gates
 
 @onready var gate_ui: GateUI = %GateUI
+@onready var level_overlay: LevelOverlay = %LevelOverlay
 
 const BALL = preload("res://Assets/Scenes/Level/Ball/ball.tscn")
 
 var start_tiles: Array[HexTile] = []
 var holding: Dictionary[Global.GATE_TYPE, int]
+var simulation_mode = false
 
 func _ready() -> void:
 	_load_level()
 	_load_overlay()
 	gate_ui.gate_clicked.connect(_on_gate_ui_hex_button_pressed)
+	
+	level_overlay.start_stop_button_pressed.connect(_on_start_stop_button_pressed)
+	level_overlay.reset_button_pressed.connect(_reload_level)
+	level_overlay.step_forward_button_pressed.connect(simulate_step.bind(false))
+	level_overlay.step_backward_button_pressed.connect(simulate_step.bind(true))
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("reset_stage"):
 		_reload_level()
 		
 	if event.is_action_pressed('ui_accept'):
-		start_simulation()
-		for ball: Ball in get_tree().get_nodes_in_group('ball'):
-			ball.advance_to_next_tile(true)
+		start_full_simulation()
 		
 	if event.is_action_pressed("step_simulation"):
-		simulate_step()
+		simulate_step(false)
 	
 
 func _reload_level() -> void:
@@ -40,7 +45,7 @@ func _reload_level() -> void:
 		gate.queue_free()
 	for ball in get_tree().get_nodes_in_group('ball'):
 		ball.queue_free()
-	SignalBus.simulation.end.emit()
+	end_simulation()
 	_load_level()
 	
 func _load_overlay() -> void:
@@ -67,9 +72,19 @@ func _register_hex_tile(hex: HexTile) -> void:
 	hex.dnd.drag_dropped.connect(_on_dnd_drag_dropped.bind(hex))
 	hex.dnd.drag_canceled.connect(_on_dnd_drag_canceled.bind(hex))
 
-func start_simulation() -> void:
+func end_simulation() -> void:
+	simulation_mode = false
+	SignalBus.simulation.end.emit()
 	for ball in get_tree().get_nodes_in_group('ball'):
 		ball.queue_free()
+
+func start_full_simulation() -> void:
+	start_simulation()
+	for ball: Ball in get_tree().get_nodes_in_group('ball'):
+		ball.advance_to_next_tile(true)
+
+func start_simulation() -> void:
+	end_simulation()
 	for start_tile in start_tiles:
 		var path = test_path(start_tile)
 		var is_loop = path[path.size() - 1] == start_tile.coordinate
@@ -80,20 +95,21 @@ func start_simulation() -> void:
 		ball._start_coord = start_tile.coordinate
 		ball.set_path(path)
 
-func simulate_step() -> void:
+func simulate_step(backwards: bool) -> void:
 	if get_tree().get_node_count_in_group('ball') == 0:
 		start_simulation()
 	
 	for ball: Ball in get_tree().get_nodes_in_group('ball'):
-		ball.advance_to_next_tile(false)
+		ball.advance_to_next_tile(false, backwards)
 
 func test_path(start_tile: HexTile) -> Array[Vector2i]:
+	simulation_mode = true
 	SignalBus.simulation.start.emit()
 	var done = false
 	var depth = 0
 	var current_dir := start_tile.direction
 	var current_hex := start_tile.coordinate
-	var path: Array[Vector2i] = []
+	var path: Array[Vector2i] = [current_hex]
 	while not done and depth < MAX_DEPTH:
 		if not hex_map.is_travesible(current_hex):
 			print_debug("Illegal path")
@@ -144,3 +160,9 @@ func _on_gate_ui_hex_button_pressed(type: Global.GATE_TYPE) -> void:
 	_register_hex_tile(hex_cell)
 	hex_cell.global_position = self.get_global_mouse_position()
 	hex_cell.dnd._start_dragging()
+
+func _on_start_stop_button_pressed() -> void:
+	if simulation_mode:
+		end_simulation()
+	else:
+		start_full_simulation()
