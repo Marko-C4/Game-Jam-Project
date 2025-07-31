@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://tyddymiw7gft"]
+[gd_scene load_steps=9 format=4 uid="uid://tyddymiw7gft"]
 
 [ext_resource type="Script" uid="uid://duiv100qy324d" path="res://Assets/Scenes/Level/level.gd" id="1_lrk52"]
 [ext_resource type="Resource" uid="uid://cqtocfr8jqo2o" path="res://Assets/Scenes/Level/LevelData/level_1.tres" id="2_t4qd3"]
 [ext_resource type="Script" uid="uid://p42xsu17k48n" path="res://Assets/Scenes/Level/tilemap.gd" id="3_oue8b"]
 [ext_resource type="Texture2D" uid="uid://b8w1bw1p2qf81" path="res://Assets/Sprites/kenney-hex/hexagonTerrain_sheet.png" id="4_v0d7o"]
 [ext_resource type="Script" uid="uid://byl550u315pku" path="res://Assets/Components/tile_highlighter.gd" id="5_75ljv"]
-[ext_resource type="Script" uid="uid://caau44wo4bnih" path="res://Assets/Scenes/Level/ball.gd" id="5_o4y12"]
 [ext_resource type="PackedScene" uid="uid://cg1u5dd6dgxwt" path="res://Assets/Scenes/UI/GateUI/GateUI.tscn" id="7_v0d7o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v0d7o"]
@@ -147,25 +146,6 @@ highlight_layer = NodePath("../Highlight")
 tile = Vector2i(4, 2)
 atlas_id = 1
 metadata/_custom_type_script = "uid://byl550u315pku"
-
-[node name="Ball" type="Node2D" parent="."]
-position = Vector2(250, 283)
-script = ExtResource("5_o4y12")
-
-[node name="ColorRect" type="ColorRect" parent="Ball"]
-custom_minimum_size = Vector2(40, 40)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.561203, 0.46164, 0.821323, 1)
 
 [node name="CanvasGroup" type="CanvasLayer" parent="."]
 layer = -1

@@ -21,24 +21,32 @@ grow_vertical = 2
 
 [node name="BackButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Level1Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Level2Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Level3Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Level4Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Level5Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Level6Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Level7Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3

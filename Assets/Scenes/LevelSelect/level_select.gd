@@ -14,25 +14,13 @@ extends Control
 ]
 
 func _ready():
-	vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	vbox.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	vbox.custom_minimum_size = Vector2(100, 0)
-	
-	size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	size_flags_vertical = Control.SIZE_EXPAND_FILL
-
-
 	back_button.text = "← Back to Main Menu"
-	back_button.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	back_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	#back_button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	back_button.modulate = Color(0.2, 0.8, 0.2)  
 	back_button.pressed.connect(_on_back_pressed)
 
 	for i in range(level_buttons.size()):
 		var button = level_buttons[i]
-		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		button.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		button.text = "Level %d" % (i + 1)
 		button.pressed.connect(_on_level_pressed.bind(i + 1))
 		
