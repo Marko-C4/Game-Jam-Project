@@ -1,40 +1,175 @@
-[gd_scene load_steps=6 format=4 uid="uid://tyddymiw7gft"]
+[gd_scene load_steps=10 format=4 uid="uid://tyddymiw7gft"]
 
-[ext_resource type="TileSet" uid="uid://blaa0bi4f8o7u" path="res://Assets/Scenes/Level/tilemap.tres" id="1_0wqei"]
 [ext_resource type="Script" uid="uid://duiv100qy324d" path="res://Assets/Scenes/Level/level.gd" id="1_lrk52"]
 [ext_resource type="Resource" uid="uid://cqtocfr8jqo2o" path="res://Assets/Scenes/Level/LevelData/level_1.tres" id="2_t4qd3"]
 [ext_resource type="Script" uid="uid://p42xsu17k48n" path="res://Assets/Scenes/Level/tilemap.gd" id="3_oue8b"]
+[ext_resource type="Texture2D" uid="uid://b8w1bw1p2qf81" path="res://Assets/Sprites/kenney-hex/hexagonTerrain_sheet.png" id="4_v0d7o"]
+[ext_resource type="Script" uid="uid://byl550u315pku" path="res://Assets/Components/tile_highlighter.gd" id="5_75ljv"]
 [ext_resource type="Script" uid="uid://caau44wo4bnih" path="res://Assets/Scenes/Level/ball.gd" id="5_o4y12"]
+[ext_resource type="PackedScene" uid="uid://cg1u5dd6dgxwt" path="res://Assets/Scenes/UI/GateUI/GateUI.tscn" id="7_v0d7o"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v0d7o"]
+texture = ExtResource("4_v0d7o")
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(120, 140)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_r50b5"]
+tile_shape = 3
+tile_layout = 2
+tile_size = Vector2i(119, 139)
+sources/1 = SubResource("TileSetAtlasSource_v0d7o")
 
 [node name="Level" type="Node"]
 script = ExtResource("1_lrk52")
 level_data = ExtResource("2_t4qd3")
 
 [node name="HexMap" type="Node2D" parent="."]
-position = Vector2(271.515, 171.89)
+position = Vector2(192, 215)
 script = ExtResource("3_oue8b")
 
 [node name="Terrain" type="TileMapLayer" parent="HexMap"]
-tile_map_data = PackedByteArray("AAD//wAABgAAAAAAAAAAAAAABgAAAAAAAAAAAP//BgAAAAAAAAABAAAABgAAAAAAAAABAP//BgAAAAAAAAD//wEABgAAAAAAAAAAAAEABgAAAAAAAAABAAEABgAAAAAAAAA=")
-tile_set = ExtResource("1_0wqei")
+tile_map_data = PackedByteArray("AAD//wAAAQACAAMAAAAAAP//AQACAAMAAAABAP//AQACAAMAAAABAAAAAQACAAMAAAAAAAEAAQACAAMAAAD//wEAAQACAAMAAAAAAAAAAQACAAMAAAABAAEAAQACAAMAAAA=")
+tile_set = SubResource("TileSet_r50b5")
+
+[node name="Highlight" type="TileMapLayer" parent="HexMap"]
+tile_set = SubResource("TileSet_r50b5")
 
 [node name="Gates" type="Node2D" parent="HexMap"]
 
+[node name="TileHighlighter" type="Node" parent="HexMap" node_paths=PackedStringArray("hex_map", "highlight_layer")]
+script = ExtResource("5_75ljv")
+hex_map = NodePath("..")
+highlight_layer = NodePath("../Highlight")
+tile = Vector2i(4, 2)
+atlas_id = 1
+metadata/_custom_type_script = "uid://byl550u315pku"
+
 [node name="Ball" type="Node2D" parent="."]
-position = Vector2(358, 271)
+position = Vector2(250, 283)
 script = ExtResource("5_o4y12")
 
 [node name="ColorRect" type="ColorRect" parent="Ball"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(40, 40)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.561203, 0.46164, 0.821323, 1)
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(942, 310)
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="GateUI" parent="CanvasGroup" instance=ExtResource("7_v0d7o")]

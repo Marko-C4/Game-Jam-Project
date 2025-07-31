@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=4 uid="uid://tyddymiw7gft"]
+
+[ext_resource type="TileSet" uid="uid://blaa0bi4f8o7u" path="res://Assets/Scenes/Level/tilemap.tres" id="1_0wqei"]
+[ext_resource type="Script" uid="uid://duiv100qy324d" path="res://Assets/Scenes/Level/level.gd" id="1_lrk52"]
+[ext_resource type="Resource" uid="uid://cqtocfr8jqo2o" path="res://Assets/Scenes/Level/LevelData/level_1.tres" id="2_t4qd3"]
+[ext_resource type="Script" uid="uid://p42xsu17k48n" path="res://Assets/Scenes/Level/tilemap.gd" id="3_oue8b"]
+[ext_resource type="Script" uid="uid://caau44wo4bnih" path="res://Assets/Scenes/Level/ball.gd" id="5_o4y12"]
+
+[node name="Level" type="Node"]
+script = ExtResource("1_lrk52")
+level_data = ExtResource("2_t4qd3")
+
+[node name="HexMap" type="Node2D" parent="."]
+position = Vector2(271.515, 171.89)
+script = ExtResource("3_oue8b")
+
+[node name="Terrain" type="TileMapLayer" parent="HexMap"]
+tile_map_data = PackedByteArray("AAD//wAABgAAAAAAAAAAAAAABgAAAAAAAAAAAP//BgAAAAAAAAABAAAABgAAAAAAAAABAP//BgAAAAAAAAD//wEABgAAAAAAAAAAAAEABgAAAAAAAAABAAEABgAAAAAAAAA=")
+tile_set = ExtResource("1_0wqei")
+
+[node name="Gates" type="Node2D" parent="HexMap"]
+
+[node name="Ball" type="Node2D" parent="."]
+position = Vector2(358, 271)
+script = ExtResource("5_o4y12")
+
+[node name="ColorRect" type="ColorRect" parent="Ball"]
+custom_minimum_size = Vector2(80, 80)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.561203, 0.46164, 0.821323, 1)
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(942, 310)
