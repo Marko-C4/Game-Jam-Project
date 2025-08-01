@@ -112,7 +112,7 @@ func is_looping(path: Array[Vector2i]) -> bool:
 					looping = false
 					break
 			if looping:
-				print("Points: " + str(len(path) - i - TILE_MATCHES_FOR_LOOP))
+				level_overlay.update_score(len(path) - i - TILE_MATCHES_FOR_LOOP)
 				return true
 	return false
 	
