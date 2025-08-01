@@ -7,12 +7,16 @@ extends Node2D
 @onready var arrow_gate: GateHex = $ArrowGate
 @onready var split_gate: SplitGate = $SplitGate
 @onready var teleport_gate: TeleportGate = $TeleportGate
+@onready var flag_gate: FlagGate = $FlagGate
+@onready var bouncy_gate: BouncyGate = $BouncyGate
 
 @onready var GATE_TYPE_MAP := {
 	Global.GATE_TYPE.START_GATE: start_gate,
 	Global.GATE_TYPE.ARROW_GATE: arrow_gate,
 	Global.GATE_TYPE.SPLIT_GATE: split_gate,
 	Global.GATE_TYPE.TELEPORT_GATE: teleport_gate,
+	Global.GATE_TYPE.FLAG_GATE: flag_gate,
+	Global.GATE_TYPE.BOUNCY_GATE: bouncy_gate,
 }
 
 var gate: GateHex

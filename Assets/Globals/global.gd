@@ -6,12 +6,16 @@ enum GATE_TYPE {
 	ARROW_GATE,
 	SPLIT_GATE,
 	TELEPORT_GATE,
+	FLAG_GATE,
+	BOUNCY_GATE,
 }
 
 var GATE_TO_NAME = {
 	GATE_TYPE.START_GATE: 'Start Gate',
 	GATE_TYPE.ARROW_GATE: 'Arrow Gate',
 	GATE_TYPE.TELEPORT_GATE: 'Portal Gate',
+	GATE_TYPE.FLAG_GATE: 'Flag',
+	GATE_TYPE.BOUNCY_GATE: 'Bouncy Gate',
 }
 
 var LEVELS: Dictionary[String, PackedScene] = {

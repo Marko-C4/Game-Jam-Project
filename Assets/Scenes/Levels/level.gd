@@ -10,18 +10,22 @@ const TILE_MATCHES_FOR_LOOP := 3
 @onready var gate_ui: GateUI = %GateUI
 @onready var level_overlay: LevelOverlay = %LevelOverlay
 @onready var balls: Node = $HexMap/Balls
+const TEST_STAGE_2 = preload("res://Assets/Scenes/Stage/test_stage_2.tscn")
+const TELEPORTER_1 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_1.tscn")
+const TELEPORTER_2 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_2.tscn")
+const TELEPORTER_3 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_3.tscn")
+const TELEPORTER_4 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_4.tscn")
+#const TELEPORTER_5 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_5.tscn")
 
-const SPLITTER_TUTORIAL = preload("res://Assets/Scenes/Stage/splitter_tutorial.tscn")
 
 const BALL = preload("res://Assets/Scenes/Ball/ball.tscn")
 
-var start_tiles: Array[HexTile] = []
 var holding: Dictionary[Global.GATE_TYPE, int]
 var current_stage: Stage = null
 var simulation_mode = false
 
 func _ready() -> void:
-	_load_level(SPLITTER_TUTORIAL)
+	_load_level(TELEPORTER_4)
 	gate_ui.gate_clicked.connect(_on_gate_ui_hex_button_pressed)
 	
 	level_overlay.start_stop_button_pressed.connect(_on_start_stop_button_pressed)
@@ -41,7 +45,6 @@ func _input(event: InputEvent) -> void:
 	
 
 func _reload_level() -> void:
-	start_tiles = []
 	for gate: HexTile in get_tree().get_nodes_in_group('hex_gate'):
 		gate.queue_free()
 	for ball in get_tree().get_nodes_in_group('ball'):
@@ -50,12 +53,13 @@ func _reload_level() -> void:
 	end_simulation()
 
 	for fixed_tile_data in current_stage.fixed_tiles:
+		if not fixed_tile_data:
+			continue
+		
 		var fixed_tile := fixed_tile_data.create_instance(gates)
 		fixed_tile.fixed_in_place = true
 		fixed_tile.dnd.enabled = false # Disable dragging
 		hex_map.add_gate(fixed_tile, fixed_tile_data.coordinate)
-		if (fixed_tile.gate_type == Global.GATE_TYPE.START_GATE):
-			start_tiles.append(fixed_tile)
 	
 	holding = current_stage.placeable.duplicate()
 	gate_ui.update_ui(holding)
@@ -101,7 +105,9 @@ func _initialize_simulation() -> void:
 		simulation_mode = true
 		SignalBus.simulation.start.emit()
 	if get_tree().get_node_count_in_group('ball') == 0:
-		for start_tile in start_tiles:
+		for start_tile: StartTile in get_tree().get_nodes_in_group("start_gate"):
+			if not start_tile.visible:
+				continue # Not visible == not active 
 			var ball = BALL.instantiate()
 			balls.add_child(ball)
 			ball.global_position = start_tile.global_position
