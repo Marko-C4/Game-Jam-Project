@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ch71qprshi5bp"]
+[gd_scene load_steps=13 format=3 uid="uid://ch71qprshi5bp"]
 
 [ext_resource type="Script" uid="uid://dxcucmh2i3lxg" path="res://Assets/Scenes/HexTile/hex_tile.gd" id="1_t3cyp"]
 [ext_resource type="Script" uid="uid://bqmpu5lcp0ntm" path="res://Assets/Scenes/HexTile/gates.gd" id="2_gu4rk"]
@@ -6,11 +6,12 @@
 [ext_resource type="Script" uid="uid://gv0mlauhxrvf" path="res://Assets/Scenes/HexTile/Tiles/GateTypes/arrow_gate.gd" id="3_3i5fn"]
 [ext_resource type="Script" uid="uid://bxt83q8l5ic8c" path="res://Assets/Scenes/HexTile/Tiles/GateTypes/start_tile.gd" id="3_du2gd"]
 [ext_resource type="Texture2D" uid="uid://cj6lfe53srndw" path="res://Assets/Sprites/gates.png" id="5_3pctu"]
+[ext_resource type="Script" uid="uid://dvwgmvtrgxu1v" path="res://Assets/Scenes/HexTile/split_gate.gd" id="7_hranr"]
 [ext_resource type="Script" uid="uid://t66t2iaypufb" path="res://Assets/Components/drag_and_drop.gd" id="8_hranr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sqtrx"]
 atlas = ExtResource("2_hranr")
-region = Rect2(120, 566, 122, 142)
+region = Rect2(122, 568, 120, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7842f"]
 atlas = ExtResource("5_3pctu")
@@ -19,6 +20,10 @@ region = Rect2(120, 0, 120, 140)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pyhu"]
 atlas = ExtResource("5_3pctu")
 region = Rect2(0, 0, 120, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pctu"]
+atlas = ExtResource("5_3pctu")
+region = Rect2(360, 0, 120, 140)
 
 [node name="HexTile" type="Area2D" groups=["hex_gate"]]
 script = ExtResource("1_t3cyp")
@@ -42,10 +47,17 @@ script = ExtResource("3_du2gd")
 texture = SubResource("AtlasTexture_7842f")
 
 [node name="ArrowGate" type="Node2D" parent="Gates"]
+visible = false
 script = ExtResource("3_3i5fn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Gates/ArrowGate"]
 texture = SubResource("AtlasTexture_5pyhu")
+
+[node name="SplitGate" type="Node2D" parent="Gates"]
+script = ExtResource("7_hranr")
+
+[node name="Sprite2D" type="Sprite2D" parent="Gates/SplitGate"]
+texture = SubResource("AtlasTexture_3pctu")
 
 [node name="DnD" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("8_hranr")

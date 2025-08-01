@@ -7,7 +7,7 @@ extends Node2D
 
 @onready var gates: Gates = $Gates
 
-var fixed_in_place = true
+var fixed_in_place = false
 var coordinate: Vector2i
 var default_z_index: int
 

@@ -1,7 +1,7 @@
 class_name HexMap
 extends Node2D
 
-@onready var terrain: TileMapLayer = $Terrain
+var terrain: TileMapLayer
 
 var gates: Dictionary[Vector2i, HexTile] = {}
 

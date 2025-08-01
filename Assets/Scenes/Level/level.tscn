@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=4 uid="uid://tyddymiw7gft"]
+[gd_scene load_steps=9 format=3 uid="uid://tyddymiw7gft"]
 
 [ext_resource type="Script" uid="uid://duiv100qy324d" path="res://Assets/Scenes/Level/level.gd" id="1_lrk52"]
-[ext_resource type="Resource" uid="uid://cqtocfr8jqo2o" path="res://Assets/Scenes/Level/LevelData/level_1.tres" id="2_t4qd3"]
 [ext_resource type="Script" uid="uid://p42xsu17k48n" path="res://Assets/Scenes/Level/tilemap.gd" id="3_oue8b"]
 [ext_resource type="Texture2D" uid="uid://b8w1bw1p2qf81" path="res://Assets/Sprites/kenney-hex/hexagonTerrain_sheet.png" id="4_v0d7o"]
 [ext_resource type="Script" uid="uid://byl550u315pku" path="res://Assets/Components/tile_highlighter.gd" id="5_75ljv"]
@@ -120,20 +119,15 @@ texture_region_size = Vector2i(120, 140)
 [sub_resource type="TileSet" id="TileSet_r50b5"]
 tile_shape = 3
 tile_layout = 2
-tile_size = Vector2i(119, 139)
+tile_size = Vector2i(120, 140)
 sources/1 = SubResource("TileSetAtlasSource_v0d7o")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_lrk52")
-level_data = ExtResource("2_t4qd3")
 
 [node name="HexMap" type="Node2D" parent="."]
-position = Vector2(192, 215)
+position = Vector2(373, 284)
 script = ExtResource("3_oue8b")
-
-[node name="Terrain" type="TileMapLayer" parent="HexMap"]
-tile_map_data = PackedByteArray("AAD//wAAAQACAAMAAAAAAP//AQACAAMAAAABAP//AQACAAMAAAABAAAAAQACAAMAAAAAAAEAAQACAAMAAAD//wEAAQACAAMAAAAAAAAAAQACAAMAAAABAAEAAQACAAMAAAA=")
-tile_set = SubResource("TileSet_r50b5")
 
 [node name="Highlight" type="TileMapLayer" parent="HexMap"]
 tile_set = SubResource("TileSet_r50b5")

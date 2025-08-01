@@ -5,10 +5,12 @@ extends Node2D
 
 @onready var start_gate: GateHex = $StartGate
 @onready var arrow_gate: GateHex = $ArrowGate
+@onready var split_gate: SplitGate = $SplitGate
 
 @onready var GATE_TYPE_MAP := {
 	Global.GATE_TYPE.START_GATE: start_gate,
 	Global.GATE_TYPE.ARROW_GATE: arrow_gate,
+	Global.GATE_TYPE.SPLIT_GATE: split_gate,
 }
 
 var gate: GateHex
