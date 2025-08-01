@@ -6,11 +6,13 @@ extends Node2D
 @onready var start_gate: GateHex = $StartGate
 @onready var arrow_gate: GateHex = $ArrowGate
 @onready var split_gate: SplitGate = $SplitGate
+@onready var teleport_gate: TeleportGate = $TeleportGate
 
 @onready var GATE_TYPE_MAP := {
 	Global.GATE_TYPE.START_GATE: start_gate,
 	Global.GATE_TYPE.ARROW_GATE: arrow_gate,
 	Global.GATE_TYPE.SPLIT_GATE: split_gate,
+	Global.GATE_TYPE.TELEPORT_GATE: teleport_gate,
 }
 
 var gate: GateHex
@@ -23,9 +25,13 @@ func set_gate(type: Global.GATE_TYPE) -> void:
 	gate = GATE_TYPE_MAP[type]
 	gate.hex_tile = hex_tile
 	gate.visible = true
+	gate.on_place()
 
-func get_outputs(input_dir: Utils.Direction) -> Array[CoordDir]:
-	return gate.get_outputs(input_dir)
+func get_outputs(ball: Ball) -> Array[CoordDir]:
+	return gate.get_outputs(ball)
 
 func update_direction() -> void:
 	global_rotation = Utils.rotations[hex_tile.direction]
+	
+func _on_tree_exited() -> void:
+	gate.on_remove()

@@ -8,6 +8,7 @@ var tween: Tween
 var _start_coord: Vector2i
 var _start_dir: Vector2i
 
+var _head_dir: Vector2i
 var _path_index: int
 var _path: Array[Vector2i]
 var is_loop = false
@@ -69,15 +70,16 @@ func step(infinite = false):
 	
 	var prev_hex = _path[_path_index - 2] if _path_index > 1 else Vector2i(0, 0)
 	var current_hex = _path[_path_index - 1]
-	if _path_index < _path.size():
+	if _path_index < _path.size(): # Traverse cached path
 		move_to(_path[_path_index], infinite)
 		_path_index += 1
 		return
-	elif not hex_map.is_travesible(current_hex):
+	elif not hex_map.is_travesible(current_hex): # Can't move
 		print_debug("Illegal path")
 		return
-	elif _path_index == 1:
+	elif _path_index == 1: # Special start of path stuff
 		_path.append(current_hex + _start_dir)
+		_head_dir = _start_dir
 		move_to(_path[_path_index], infinite)
 		_path_index += 1
 		return
@@ -86,7 +88,7 @@ func step(infinite = false):
 		var direction = Vector2i(current_hex.x - prev_hex.x, current_hex.y - prev_hex.y)
 		if not hex:
 			# Normal hex so go forwards
-			_path.append(current_hex + direction)
+			_path.append(current_hex + _head_dir)
 			move_to(_path[_path_index], infinite)
 			_path_index += 1
 			return
@@ -105,14 +107,20 @@ func step(infinite = false):
 				_path_index = 2
 				return
 			
-			var coord_dirs = gate.get_outputs(HexUtils.NEIGHBOR_DIRS.find(HexUtils.axial_to_cube(direction)))
+			#var coord_dirs = gate.get_outputs(HexUtils.NEIGHBOR_DIRS.find(HexUtils.axial_to_cube(direction)))
+			var coord_dirs = gate.get_outputs(self)
 			for index in coord_dirs.size():
 				var coord_dir = coord_dirs[index]
 				var ball_instance = self if index == coord_dirs.size() - 1 else _clone_self()
+
+				if coord_dir.dir == -1: # The trust me bro branch
+					ball_instance.move_to(ball_instance._path[_path_index], infinite)
+					ball_instance._path_index += 1
+					return
 				
-				var next_hex = HexUtils.cube_to_axial(HexUtils.get_cell_in_dir(coord_dir.coord, coord_dir.dir))
-				
-				ball_instance._path.append(next_hex)
+				var next_tile = HexUtils.cube_to_axial(HexUtils.get_cell_in_dir(coord_dir.coord, coord_dir.dir))
+				ball_instance._head_dir = HexUtils.cube_to_axial(HexUtils.NEIGHBOR_DIRS[coord_dir.dir])
+				ball_instance._path.append(next_tile)
 				ball_instance.move_to(ball_instance._path[_path_index], infinite)
 
 				ball_instance._path_index += 1
@@ -123,5 +131,6 @@ func _clone_self() -> Ball:
 	clone._start_dir = _start_dir
 	clone._path = _path.duplicate()
 	clone._path_index = _path_index
+	clone._head_dir = _head_dir
 	self.get_parent().add_child(clone)
 	return clone

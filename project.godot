@@ -36,6 +36,7 @@ version_control/autoload_on_startup=true
 
 hex_gate=""
 ball=""
+teleport_gate=""
 
 [input]
 

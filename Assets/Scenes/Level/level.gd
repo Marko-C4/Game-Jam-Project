@@ -17,7 +17,7 @@ var current_stage: Stage = null
 var simulation_mode = false
 
 func _ready() -> void:
-	_load_level("TEST2")
+	_load_level("TEST3")
 	gate_ui.gate_clicked.connect(_on_gate_ui_hex_button_pressed)
 	
 	level_overlay.start_stop_button_pressed.connect(_on_start_stop_button_pressed)
