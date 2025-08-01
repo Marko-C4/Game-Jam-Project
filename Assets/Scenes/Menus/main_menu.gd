@@ -25,11 +25,11 @@ func _ready():
 
 func _on_start_game():
 	print("_on_start_game")
-	get_tree().change_scene_to_file("res://Assets/Scenes/LevelSelect/LevelSelect.tscn")
+	get_tree().change_scene_to_file("res://Assets/Scenes/Menus/LevelSelect.tscn")
 
 func _on_options():
 	print("_on_options")
-	print("Options button pressed")
+	get_tree().change_scene_to_file("res://Assets/Scenes/Menus/Options.tscn")
 
 func _on_quit():
 	print("_on_quit")

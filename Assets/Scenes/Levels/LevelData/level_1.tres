@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="LevelData" load_steps=5 format=3 uid="uid://cqtocfr8jqo2o"]
 
-[ext_resource type="Script" uid="uid://bodjpew20q5m4" path="res://Assets/Scenes/Level/LevelData/level_data.gd" id="1_1r0kg"]
+[ext_resource type="Script" uid="uid://bodjpew20q5m4" path="res://Assets/Scenes/Levels/LevelData/level_data.gd" id="1_1r0kg"]
 [ext_resource type="Script" uid="uid://dwtmx7tfacldi" path="res://Assets/Scenes/HexTile/HexData/hex_data.gd" id="3_rbcqk"]
 
 [sub_resource type="Resource" id="Resource_nefnt"]

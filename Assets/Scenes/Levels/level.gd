@@ -2,6 +2,7 @@ class_name Level
 extends Node2D
 
 const MAX_DEPTH := 640
+const TILE_MATCHES_FOR_LOOP := 3
 
 @onready var hex_map: HexMap = $HexMap
 @onready var gates: Node2D = $HexMap/Gates
@@ -10,7 +11,7 @@ const MAX_DEPTH := 640
 @onready var level_overlay: LevelOverlay = %LevelOverlay
 @onready var balls: Node = $HexMap/Balls
 
-const BALL = preload("res://Assets/Scenes/Ball/ball.tscn")
+const BALL = preload("res://Assets/Scenes/Levels/Ball/ball.tscn")
 
 var start_tiles: Array[HexTile] = []
 var holding: Dictionary[Global.GATE_TYPE, int]
@@ -18,7 +19,7 @@ var current_stage: Stage = null
 var simulation_mode = false
 
 func _ready() -> void:
-	_load_level("TEST4")
+	_load_level("TEST1")
 	gate_ui.gate_clicked.connect(_on_gate_ui_hex_button_pressed)
 	
 	level_overlay.start_stop_button_pressed.connect(_on_start_stop_button_pressed)
@@ -115,6 +116,19 @@ func step_forward() -> void:
 		if ball.tween:
 			ball.tween.kill()
 		ball.step()
+
+func is_looping(path: Array[Vector2i]) -> bool:
+	if len(path) > 2:
+		for i in range(len(path) - TILE_MATCHES_FOR_LOOP - 1):
+			var looping := true
+			for j in range(TILE_MATCHES_FOR_LOOP):
+				if path[i + j] != path.slice(-TILE_MATCHES_FOR_LOOP, len(path))[j]:
+					looping = false
+					break
+			if looping:
+				level_overlay.update_score(len(path) - i - TILE_MATCHES_FOR_LOOP)
+				return true
+	return false
 
 func _put_gate_to_holding(hex: HexTile) -> void:
 	gate_ui.return_gate(hex.gate_type)

@@ -15,6 +15,7 @@ const ARROW_BUTTON_WIDTH = 45
 @onready var step_forward_button = $MarginContainer/HBoxContainer/StepForwardButton
 @onready var step_backward_button = $MarginContainer/HBoxContainer/StepBackwardButton
 @onready var reset_button = $MarginContainer/HBoxContainer/ResetButton
+@onready var score = $Score
 
 func _ready():
 	var buttons = [
@@ -54,7 +55,7 @@ func _ready():
 	)
 
 func _on_back_pressed():
-	get_tree().change_scene_to_file("res://Assets/Scenes/LevelSelect/LevelSelect.tscn")
+	get_tree().change_scene_to_file("res://Assets/Scenes/Menus/LevelSelect.tscn")
 
 func _on_start_stop_pressed():
 	start_stop_button_pressed.emit()
@@ -67,3 +68,6 @@ func _on_step_backward_pressed():
 
 func _on_reset_pressed():
 	reset_button_pressed.emit()
+
+func update_score(points: int):
+	score.text = "Score: " + str(points)

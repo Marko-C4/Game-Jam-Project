@@ -38,10 +38,10 @@ func _ready():
 
 func _on_back_pressed():
 	print("Going back to main menu")
-	get_tree().change_scene_to_file("res://Assets/Scenes/MainMenu/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://Assets/Scenes/Menus/MainMenu.tscn")
 
 func _on_level_pressed(level_number: int) -> void:
 	print("Loading Level %d..." % level_number)
-	if level_number == 1:
-		var scene_path = "res://Assets/Scenes/Level/level.tscn"
-		get_tree().change_scene_to_file(scene_path)
+	var scene_path = "res://Assets/Scenes/Levels/level_%d.tscn" % level_number
+	get_tree().change_scene_to_file(scene_path)
+	
