@@ -12,7 +12,7 @@ const TILE_MATCHES_FOR_LOOP := 3
 @onready var gate_ui: GateUI = %GateUI
 @onready var level_overlay: LevelOverlay = %LevelOverlay
 
-const BALL = preload("res://Assets/Scenes/Level/Ball/ball.tscn")
+const BALL = preload("res://Assets/Scenes/Levels/Ball/ball.tscn")
 
 var start_tiles: Array[HexTile] = []
 var holding: Dictionary[Global.GATE_TYPE, int]
@@ -50,7 +50,7 @@ func _reload_level() -> void:
 	_load_level()
 	
 func _load_overlay() -> void:
-	var overlay_scene = preload("res://Assets/Scenes/LevelOverlay/LevelOverlay.tscn")
+	var overlay_scene = preload("res://Assets/Scenes/UI/LevelOverlay/LevelOverlay.tscn")
 	#var overlay_instance = overlay_scene.instantiate()
 	#add_child(overlay_instance)
 
