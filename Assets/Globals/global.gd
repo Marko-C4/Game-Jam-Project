@@ -11,6 +11,7 @@ enum GATE_TYPE {
 var GATE_TO_NAME = {
 	GATE_TYPE.START_GATE: 'Start Gate',
 	GATE_TYPE.ARROW_GATE: 'Arrow Gate',
+	GATE_TYPE.SPLIT_GATE: 'Split Gate',
 	GATE_TYPE.TELEPORT_GATE: 'Portal Gate',
 }
 

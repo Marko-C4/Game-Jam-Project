@@ -11,7 +11,7 @@ const TILE_MATCHES_FOR_LOOP := 3
 @onready var level_overlay: LevelOverlay = %LevelOverlay
 @onready var balls: Node = $HexMap/Balls
 
-const SPLITTER_TUTORIAL = preload("res://Assets/Scenes/Stage/splitter_tutorial_stage.tscn")
+const SPLITTER_TUTORIAL = preload("res://Assets/Scenes/Stage/multi_splitter_stage.tscn")
 
 const BALL = preload("res://Assets/Scenes/Ball/ball.tscn")
 
@@ -19,6 +19,7 @@ var start_tiles: Array[HexTile] = []
 var holding: Dictionary[Global.GATE_TYPE, int]
 var current_stage: Stage = null
 var simulation_mode = false
+
 
 func _ready() -> void:
 	_load_level(SPLITTER_TUTORIAL)
