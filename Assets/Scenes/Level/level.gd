@@ -2,6 +2,7 @@ class_name Level
 extends Node2D
 
 const MAX_DEPTH := 100
+const TILE_MATCHES_FOR_LOOP := 3
 
 @export var level_data: LevelData
 
@@ -102,6 +103,20 @@ func simulate_step(backwards: bool) -> void:
 	for ball: Ball in get_tree().get_nodes_in_group('ball'):
 		ball.advance_to_next_tile(false, backwards)
 
+func is_looping(path: Array[Vector2i]) -> bool:
+	if len(path) > 2:
+		for i in range(len(path) - TILE_MATCHES_FOR_LOOP - 1):
+			var looping := true
+			for j in range(TILE_MATCHES_FOR_LOOP):
+				if path[i + j] != path.slice(-TILE_MATCHES_FOR_LOOP, len(path))[j]:
+					looping = false
+					break
+			if looping:
+				print("Points: " + str(len(path) - i - TILE_MATCHES_FOR_LOOP))
+				return true
+	return false
+	
+
 func test_path(start_tile: HexTile) -> Array[Vector2i]:
 	simulation_mode = true
 	SignalBus.simulation.start.emit()
@@ -121,9 +136,8 @@ func test_path(start_tile: HexTile) -> Array[Vector2i]:
 			current_hex = HexUtils.cube_to_axial(HexUtils.get_cell_in_dir(current_hex, current_dir))
 		else:
 			var gate := hex.get_gate()
-			if is_instance_of(gate, StartTile) and hex.direction == current_dir and depth > 0:
+			if is_looping(path):
 				done = true
-				print_debug("Looping path!!")
 				continue
 			
 			var coord_dirs = gate.get_outputs(current_dir)
@@ -132,7 +146,8 @@ func test_path(start_tile: HexTile) -> Array[Vector2i]:
 			current_hex = HexUtils.cube_to_axial(HexUtils.get_cell_in_dir(start_hex, current_dir))
 		path.append(current_hex)
 		depth += 1
-	print_debug(path)
+	
+	print(path)
 	return path
 
 func _put_gate_to_holding(hex: HexTile) -> void:
