@@ -11,7 +11,9 @@ const TILE_MATCHES_FOR_LOOP := 3
 @onready var level_overlay: LevelOverlay = %LevelOverlay
 @onready var balls: Node = $HexMap/Balls
 
-const BALL = preload("res://Assets/Scenes/Levels/Ball/ball.tscn")
+const SPLITTER_TUTORIAL = preload("res://Assets/Scenes/Stage/splitter_tutorial.tscn")
+
+const BALL = preload("res://Assets/Scenes/Ball/ball.tscn")
 
 var start_tiles: Array[HexTile] = []
 var holding: Dictionary[Global.GATE_TYPE, int]
@@ -19,7 +21,7 @@ var current_stage: Stage = null
 var simulation_mode = false
 
 func _ready() -> void:
-	_load_level("TEST1")
+	_load_level(SPLITTER_TUTORIAL)
 	gate_ui.gate_clicked.connect(_on_gate_ui_hex_button_pressed)
 	
 	level_overlay.start_stop_button_pressed.connect(_on_start_stop_button_pressed)
@@ -58,17 +60,20 @@ func _reload_level() -> void:
 	holding = current_stage.placeable.duplicate()
 	gate_ui.update_ui(holding)
 
-func _load_level(level_id: String) -> void:
+func _load_level_from_id(level_id: String) -> void:
 	if current_stage:
 		current_stage.queue_free()
+	_load_level(Global.LEVELS[level_id])
 
-	current_stage = Global.LEVELS[level_id].instantiate()
+func _load_level(level_scene: PackedScene):
+	current_stage = level_scene.instantiate()
 	hex_map.add_child(current_stage)
 	hex_map.terrain = current_stage._placeable_terrain
 	
 	hex_map.global_scale = Vector2(current_stage.map_scale, current_stage.map_scale)
 	
 	_reload_level()
+
 
 func _register_hex_tile(hex: HexTile) -> void:
 	hex.dnd.drag_started.connect(_on_dnd_drag_started.bind(hex))
