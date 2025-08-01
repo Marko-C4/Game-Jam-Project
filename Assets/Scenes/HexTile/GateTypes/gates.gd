@@ -24,6 +24,8 @@ var gate: GateHex
 func _ready() -> void:
 	for gate: GateHex in GATE_TYPE_MAP.values():
 		gate.visible = false
+	
+	SignalBus.simulation.end.connect(_on_simulation_end)
 
 func set_gate(type: Global.GATE_TYPE) -> void:
 	gate = GATE_TYPE_MAP[type]
@@ -39,3 +41,6 @@ func update_direction() -> void:
 	
 func _on_tree_exited() -> void:
 	gate.on_remove()
+
+func _on_simulation_end() -> void:
+	gate.on_reset()

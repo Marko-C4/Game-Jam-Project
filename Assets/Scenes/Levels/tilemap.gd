@@ -15,7 +15,7 @@ func drop_gate(gate: HexTile, global_pos: Vector2) -> bool:
 
 func remove_gate(gate: HexTile) -> void:
 	var key = gates.find_key(gate)
-	if key:
+	if key != null:
 		gates.erase(key)
 
 func add_gate(gate: HexTile, coordinate: Vector2i) -> void:
@@ -24,7 +24,7 @@ func add_gate(gate: HexTile, coordinate: Vector2i) -> void:
 	gate.global_position = terrain.to_global(terrain.map_to_local(coordinate))
 
 func is_travesible(coordinate: Vector2i) -> bool:
-	return !!terrain.get_cell_tile_data(coordinate)
+	return terrain.get_cell_tile_data(coordinate) != null
 
 func try_get_gate(coordinate: Vector2i) -> HexTile:
 	if not gates.has(coordinate):

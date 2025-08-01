@@ -105,6 +105,7 @@ func step(infinite = false):
 				print_debug("Looping path!!")
 				move_to(_path[1], infinite)
 				_path_index = 2
+				is_loop = true
 				return
 			
 			#var coord_dirs = gate.get_outputs(HexUtils.NEIGHBOR_DIRS.find(HexUtils.axial_to_cube(direction)))

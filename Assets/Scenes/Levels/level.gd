@@ -15,7 +15,7 @@ const TELEPORTER_1 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/telepo
 const TELEPORTER_2 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_2.tscn")
 const TELEPORTER_3 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_3.tscn")
 const TELEPORTER_4 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_4.tscn")
-#const TELEPORTER_5 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_5.tscn")
+const TELEPORTER_5 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_5.tscn")
 
 
 const BALL = preload("res://Assets/Scenes/Ball/ball.tscn")
@@ -25,7 +25,7 @@ var current_stage: Stage = null
 var simulation_mode = false
 
 func _ready() -> void:
-	_load_level(TELEPORTER_4)
+	_load_level(TELEPORTER_2)
 	gate_ui.gate_clicked.connect(_on_gate_ui_hex_button_pressed)
 	
 	level_overlay.start_stop_button_pressed.connect(_on_start_stop_button_pressed)
@@ -42,7 +42,9 @@ func _input(event: InputEvent) -> void:
 		
 	if event.is_action_pressed("step_simulation"):
 		step_forward()
-	
+
+func _process(delta: float) -> void:
+	check_win_condition()
 
 func _reload_level() -> void:
 	for gate: HexTile in get_tree().get_nodes_in_group('hex_gate'):
@@ -83,6 +85,13 @@ func _register_hex_tile(hex: HexTile) -> void:
 	hex.dnd.drag_started.connect(_on_dnd_drag_started.bind(hex))
 	hex.dnd.drag_dropped.connect(_on_dnd_drag_dropped.bind(hex))
 	hex.dnd.drag_canceled.connect(_on_dnd_drag_canceled.bind(hex))
+
+func check_win_condition() -> void:
+	if get_tree().get_node_count_in_group('ball') == 0:
+		false
+	
+	for ball in get_tree().get_nodes_in_group('ball'):
+		pass
 
 func end_simulation() -> void:
 	simulation_mode = false
