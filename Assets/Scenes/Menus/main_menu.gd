@@ -29,7 +29,7 @@ func _on_start_game():
 
 func _on_options():
 	print("_on_options")
-	print("Options button pressed")
+	get_tree().change_scene_to_file("res://Assets/Scenes/Menus/Options.tscn")
 
 func _on_quit():
 	print("_on_quit")
