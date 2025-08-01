@@ -18,4 +18,5 @@ var LEVELS: Dictionary[String, PackedScene] = {
 	TEST1 = preload("res://Assets/Scenes/Stage/test_stage_1.tscn"),
 	TEST2 = preload("res://Assets/Scenes/Stage/test_stage_2.tscn"),
 	TEST3 = preload("res://Assets/Scenes/Stage/test_stage_3.tscn"),
+	TEST4 = preload("res://Assets/Scenes/Stage/test_stage_4.tscn"),
 }

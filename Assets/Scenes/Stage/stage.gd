@@ -5,6 +5,7 @@ extends Node2D
 @export var stage_name: String
 @export var world_number: int
 @export var stage_number: int
+@export var map_scale: float = 1
 
 @export_category("Gate Data")
 @export var fixed_tiles: Array[HexData]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://baecyta0pxelg"]
 
-[ext_resource type="Script" uid="uid://caau44wo4bnih" path="res://Assets/Scenes/Level/Ball/ball.gd" id="1_itvf4"]
+[ext_resource type="Script" uid="uid://caau44wo4bnih" path="res://Assets/Scenes/Ball/ball.gd" id="1_itvf4"]
 
 [node name="Ball" type="Node2D" groups=["ball"]]
 script = ExtResource("1_itvf4")

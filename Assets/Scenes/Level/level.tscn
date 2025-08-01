@@ -142,6 +142,8 @@ tile = Vector2i(4, 2)
 atlas_id = 1
 metadata/_custom_type_script = "uid://byl550u315pku"
 
+[node name="Balls" type="Node2D" parent="HexMap"]
+
 [node name="CanvasGroup" type="CanvasLayer" parent="."]
 layer = -1
 

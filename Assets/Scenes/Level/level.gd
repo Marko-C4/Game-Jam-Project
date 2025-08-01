@@ -8,8 +8,9 @@ const MAX_DEPTH := 640
 
 @onready var gate_ui: GateUI = %GateUI
 @onready var level_overlay: LevelOverlay = %LevelOverlay
+@onready var balls: Node = $HexMap/Balls
 
-const BALL = preload("res://Assets/Scenes/Level/Ball/ball.tscn")
+const BALL = preload("res://Assets/Scenes/Ball/ball.tscn")
 
 var start_tiles: Array[HexTile] = []
 var holding: Dictionary[Global.GATE_TYPE, int]
@@ -17,7 +18,7 @@ var current_stage: Stage = null
 var simulation_mode = false
 
 func _ready() -> void:
-	_load_level("TEST3")
+	_load_level("TEST4")
 	gate_ui.gate_clicked.connect(_on_gate_ui_hex_button_pressed)
 	
 	level_overlay.start_stop_button_pressed.connect(_on_start_stop_button_pressed)
@@ -64,6 +65,8 @@ func _load_level(level_id: String) -> void:
 	hex_map.add_child(current_stage)
 	hex_map.terrain = current_stage._placeable_terrain
 	
+	hex_map.global_scale = Vector2(current_stage.map_scale, current_stage.map_scale)
+	
 	_reload_level()
 
 func _register_hex_tile(hex: HexTile) -> void:
@@ -94,7 +97,7 @@ func _initialize_simulation() -> void:
 	if get_tree().get_node_count_in_group('ball') == 0:
 		for start_tile in start_tiles:
 			var ball = BALL.instantiate()
-			self.add_child(ball)
+			balls.add_child(ball)
 			ball.global_position = start_tile.global_position
 			ball._start_coord = start_tile.coordinate
 			ball._start_dir = HexUtils.cube_to_axial(HexUtils.NEIGHBOR_DIRS[start_tile.direction])

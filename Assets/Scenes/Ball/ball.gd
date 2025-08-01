@@ -1,7 +1,7 @@
 class_name Ball
 extends Node2D
 
-@onready var hex_map: HexMap = $"../HexMap"
+@onready var hex_map: HexMap = $"../.."
 
 var tween: Tween
 
