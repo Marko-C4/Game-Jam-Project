@@ -42,6 +42,6 @@ func _on_back_pressed():
 
 func _on_level_pressed(level_number: int) -> void:
 	print("Loading Level %d..." % level_number)
-	if level_number == 1:
-		var scene_path = "res://Assets/Scenes/Level/level.tscn"
-		get_tree().change_scene_to_file(scene_path)
+	var scene_path = "res://Assets/Scenes/Level/level_%d.tscn" % level_number
+	get_tree().change_scene_to_file(scene_path)
+	
