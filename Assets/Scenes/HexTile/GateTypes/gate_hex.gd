@@ -2,6 +2,12 @@ class_name GateHex
 extends Node2D
 
 var hex_tile: HexTile
+var coordinate: Vector2i : get = _get_coord
+var direction: Utils.Direction : get = _get_direction
+
+
+func on_reset() -> void:
+	pass
 
 func on_place() -> void:
 	pass
@@ -19,3 +25,9 @@ func get_outputs(ball: Ball) -> Array[CoordDir]:
 
 func get_direction_from_dir_vec(dir_vec: Vector2i) -> Utils.Direction:
 	return HexUtils.NEIGHBOR_DIRS.find(HexUtils.axial_to_cube(dir_vec))
+
+func _get_coord() -> Vector2i:
+	return hex_tile.coordinate
+	
+func _get_direction() -> Utils.Direction:
+	return hex_tile.direction

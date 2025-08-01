@@ -1,14 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://ch71qprshi5bp"]
+[gd_scene load_steps=19 format=3 uid="uid://ch71qprshi5bp"]
 
 [ext_resource type="Script" uid="uid://dxcucmh2i3lxg" path="res://Assets/Scenes/HexTile/hex_tile.gd" id="1_t3cyp"]
-[ext_resource type="Script" uid="uid://bqmpu5lcp0ntm" path="res://Assets/Scenes/HexTile/gates.gd" id="2_gu4rk"]
+[ext_resource type="Script" uid="uid://bqmpu5lcp0ntm" path="res://Assets/Scenes/HexTile/GateTypes/gates.gd" id="2_gu4rk"]
 [ext_resource type="Texture2D" uid="uid://b8w1bw1p2qf81" path="res://Assets/Sprites/kenney-hex/hexagonTerrain_sheet.png" id="2_hranr"]
-[ext_resource type="Script" uid="uid://gv0mlauhxrvf" path="res://Assets/Scenes/HexTile/Tiles/GateTypes/arrow_gate.gd" id="3_3i5fn"]
-[ext_resource type="Script" uid="uid://bxt83q8l5ic8c" path="res://Assets/Scenes/HexTile/Tiles/GateTypes/start_tile.gd" id="3_du2gd"]
+[ext_resource type="Script" uid="uid://gv0mlauhxrvf" path="res://Assets/Scenes/HexTile/GateTypes/arrow_gate.gd" id="3_3i5fn"]
+[ext_resource type="Script" uid="uid://bxt83q8l5ic8c" path="res://Assets/Scenes/HexTile/GateTypes/start_tile.gd" id="3_du2gd"]
 [ext_resource type="Texture2D" uid="uid://cj6lfe53srndw" path="res://Assets/Sprites/gates.png" id="5_3pctu"]
-[ext_resource type="Script" uid="uid://dvwgmvtrgxu1v" path="res://Assets/Scenes/HexTile/split_gate.gd" id="7_hranr"]
-[ext_resource type="Script" uid="uid://dty56qawo788q" path="res://Assets/Scenes/HexTile/teleport_gate.gd" id="8_3pctu"]
+[ext_resource type="Script" uid="uid://dvwgmvtrgxu1v" path="res://Assets/Scenes/HexTile/GateTypes/split_gate.gd" id="7_hranr"]
+[ext_resource type="Script" uid="uid://dty56qawo788q" path="res://Assets/Scenes/HexTile/GateTypes/teleport_gate.gd" id="8_3pctu"]
 [ext_resource type="Script" uid="uid://t66t2iaypufb" path="res://Assets/Components/drag_and_drop.gd" id="8_hranr"]
+[ext_resource type="Script" uid="uid://c8ymmx7j6vcux" path="res://Assets/Scenes/HexTile/GateTypes/flag_gate.gd" id="9_sqtrx"]
+[ext_resource type="Script" uid="uid://djf4oyscpfoyh" path="res://Assets/Scenes/HexTile/GateTypes/bouncy_gate.gd" id="10_7842f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sqtrx"]
 atlas = ExtResource("2_hranr")
@@ -30,6 +32,14 @@ region = Rect2(360, 0, 120, 140)
 atlas = ExtResource("5_3pctu")
 region = Rect2(240, 0, 120, 140)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_na6i5"]
+atlas = ExtResource("5_3pctu")
+region = Rect2(0, 140, 120, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7rvm"]
+atlas = ExtResource("5_3pctu")
+region = Rect2(120, 140, 120, 140)
+
 [node name="HexTile" type="Area2D" groups=["hex_gate"]]
 script = ExtResource("1_t3cyp")
 gate_type = 1
@@ -44,7 +54,7 @@ polygon = PackedVector2Array(0, -65, 58, -32, 58, 32, 1, 67, -55, 34, -55, -31)
 [node name="Gates" type="Node2D" parent="."]
 script = ExtResource("2_gu4rk")
 
-[node name="StartGate" type="Node2D" parent="Gates"]
+[node name="StartGate" type="Node2D" parent="Gates" groups=["start_gate"]]
 visible = false
 script = ExtResource("3_du2gd")
 
@@ -71,6 +81,19 @@ script = ExtResource("8_3pctu")
 
 [node name="Sprite2D" type="Sprite2D" parent="Gates/TeleportGate"]
 texture = SubResource("AtlasTexture_jggy1")
+
+[node name="FlagGate" type="Node2D" parent="Gates" groups=["flag"]]
+visible = false
+script = ExtResource("9_sqtrx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Gates/FlagGate"]
+texture = SubResource("AtlasTexture_na6i5")
+
+[node name="BouncyGate" type="Node2D" parent="Gates" groups=["flag"]]
+script = ExtResource("10_7842f")
+
+[node name="Sprite2D" type="Sprite2D" parent="Gates/BouncyGate"]
+texture = SubResource("AtlasTexture_o7rvm")
 
 [node name="DnD" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("8_hranr")
