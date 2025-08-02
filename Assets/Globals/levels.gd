@@ -89,6 +89,7 @@ func get_prev_level() -> PackedScene:
 	
 	return WORLDS[current_world_num][current_stage_num]
 
+
 func get_next_level() -> PackedScene:
 	current_stage_num += 1
 	if current_stage_num == WORLDS[current_world_num].size():
