@@ -34,6 +34,13 @@ var TELEPORTER_5 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_
 var GROUND_1 = load("res://Assets/Scenes/Stage/GroundStages/ground_1.tscn")
 var GROUND_2 = load("res://Assets/Scenes/Stage/GroundStages/ground_2.tscn")
 
+# World 6
+var BELT_1 = load("res://Assets/Scenes/Stage/BeltStages/belt_1.tscn")
+var BELT_2 = load("res://Assets/Scenes/Stage/BeltStages/belt_2.tscn")
+var BELT_3 = load("res://Assets/Scenes/Stage/BeltStages/belt_3.tscn")
+var BELT_4 = load("res://Assets/Scenes/Stage/BeltStages/belt_4.tscn")
+var BELT_5 = load("res://Assets/Scenes/Stage/BeltStages/belt_5.tscn")
+
 # Random
 var PULLA_CHALLENGE = load("res://Assets/Scenes/Stage/ChallengingLevels/pulla_challenge.tscn")
 var PYRAMID_TELE = load("res://Assets/Scenes/Stage/ChallengingLevels/pyramid_tele.tscn")
@@ -75,12 +82,21 @@ var GROUND_STAGES: Array[PackedScene] = [
 	GROUND_2
 ]
 
+var BELT_STAGES: Array[PackedScene] = [
+	BELT_1,
+	BELT_2,
+	BELT_3,
+	BELT_4,
+	BELT_5,
+]
+
 var WORLDS = [
 	ARROW_STAGES,
 	SPLITTER_STAGES,
 	BOUNCY_STAGES,
 	TELEPORTER_STAGES,
 	GROUND_STAGES,
+	BELT_STAGES,
 ]
 
 var current_world_num := 0

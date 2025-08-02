@@ -4,6 +4,8 @@ extends Node2D
 const MAX_DEPTH := 640
 const TILE_MATCHES_FOR_LOOP := 3
 
+@export var load_first_level = false
+
 @onready var hex_map: HexMap = $HexMap
 @onready var gates: Node2D = $HexMap/Gates
 
@@ -22,7 +24,7 @@ var simulation_mode = false
 
 
 func _ready() -> void:
-	if not current_stage:
+	if load_first_level:
 		_load_level(Levels.get_first_stage())
 	gate_ui.gate_clicked.connect(_on_gate_ui_hex_button_pressed)
 	
