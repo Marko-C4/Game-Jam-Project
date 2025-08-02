@@ -15,6 +15,7 @@ const TELEPORTER_1 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/telepo
 const TELEPORTER_2 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_2.tscn")
 const TELEPORTER_3 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_3.tscn")
 const TELEPORTER_4 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_4.tscn")
+const MOVABLE = preload("res://Assets/Scenes/Stage/movable_splitter_stage.tscn")
 #const TELEPORTER_5 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_5.tscn")
 
 const SPLITTER_TUTORIAL = preload("res://Assets/Scenes/Stage/multi_splitter_stage.tscn")
@@ -27,7 +28,7 @@ var simulation_mode = false
 
 
 func _ready() -> void:
-	_load_level(TELEPORTER_4)
+	_load_level(MOVABLE)
 	gate_ui.gate_clicked.connect(_on_gate_ui_hex_button_pressed)
 	
 	level_overlay.start_stop_button_pressed.connect(_on_start_stop_button_pressed)
