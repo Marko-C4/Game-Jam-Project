@@ -57,7 +57,7 @@ func _process(delta: float) -> void:
 func _reload_level() -> void:
 	win_label.visible = false
 	for gate: HexTile in get_tree().get_nodes_in_group('hex_gate'):
-		gate.queue_free()
+		gate.free()
 	for ball in get_tree().get_nodes_in_group('ball'):
 		ball.queue_free()
 	hex_map.gates.clear()
