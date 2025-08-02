@@ -21,7 +21,7 @@ var simulation_mode = false
 
 
 func _ready() -> void:
-	_load_level(Global.get_first_stage())
+	_load_level(Levels.get_first_stage())
 	gate_ui.gate_clicked.connect(_on_gate_ui_hex_button_pressed)
 	
 	level_overlay.start_stop_button_pressed.connect(_on_start_stop_button_pressed)
@@ -85,12 +85,12 @@ func _load_level(level_scene: PackedScene):
 	_reload_level()
 
 func _load_prev_level():
-	var prev_level = Global.get_prev_level()
+	var prev_level = Levels.get_prev_level()
 	current_stage.queue_free()
 	_load_level(prev_level)
 
 func _load_next_level():
-	var next_level = Global.get_next_level()
+	var next_level = Levels.get_next_level()
 	current_stage.queue_free()
 	_load_level(next_level)
 
