@@ -8,7 +8,7 @@ extends Node
 @export var atlas_id: int
 
 func _process(_delta: float) -> void:
-	if not enabled:
+	if not enabled or not hex_map:
 		return
 
 	var selected_tile := hex_map.get_hovered_tile()

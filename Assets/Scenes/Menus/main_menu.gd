@@ -25,7 +25,7 @@ func _ready():
 
 func _on_start_game():
 	print("_on_start_game")
-	get_tree().change_scene_to_file("res://Assets/Scenes/Menus/LevelSelect.tscn")
+	get_tree().change_scene_to_file("res://Assets/Scenes/Menus/GridLevelSelect.tscn")
 
 func _on_options():
 	print("_on_options")

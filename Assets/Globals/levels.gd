@@ -49,6 +49,11 @@ func get_first_stage() -> PackedScene:
 	current_stage_num = 0
 	return WORLDS[current_world_num][current_stage_num]
 
+func get_stage(world: int, stage: int) -> PackedScene:
+	current_world_num = world
+	current_stage_num = stage
+	return WORLDS[current_world_num][current_stage_num]
+
 func get_prev_level() -> PackedScene:
 	current_stage_num -= 1
 	if current_stage_num < 0:
