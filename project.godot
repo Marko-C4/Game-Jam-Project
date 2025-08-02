@@ -22,6 +22,7 @@ HexUtils="*res://Assets/Globals/hex_utils.gd"
 Global="*res://Assets/Globals/global.gd"
 SignalBus="*res://Assets/Globals/signal_bus.gd"
 Levels="*res://Assets/Globals/levels.gd"
+MusicController="*res://Assets/Music/music_controller.tscn"
 
 [display]
 

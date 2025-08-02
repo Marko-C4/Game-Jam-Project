@@ -16,7 +16,11 @@ var SPLITTER_4 = load("res://Assets/Scenes/Stage/SplitterStages/splitter_4.tscn"
 var SPLITTER_5 = load("res://Assets/Scenes/Stage/SplitterStages/splitter_5.tscn")
 
 # World 3
-
+var BOUNCY_1 = load("res://Assets/Scenes/Stage/BouncyLevels/bouncy_1.tscn")
+var BOUNCY_2 = load("res://Assets/Scenes/Stage/BouncyLevels/bouncy_2.tscn")
+var BOUNCY_3 = load("res://Assets/Scenes/Stage/BouncyLevels/bouncy_3.tscn")
+var BOUNCY_4 = load("res://Assets/Scenes/Stage/BouncyLevels/bouncy_4.tscn")
+var BOUNCY_5 = load("res://Assets/Scenes/Stage/BouncyLevels/bouncy_5.tscn")
 
 # World 4
 var TELEPORTER_1 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_1.tscn")
@@ -31,6 +35,14 @@ var ARROW_STAGES: Array[PackedScene] = [
 	BASIC_2,
 	BASIC_3,
 	BASIC_4,
+]
+
+var BOUNCY_STAGES: Array[PackedScene] = [
+	BOUNCY_1,
+	BOUNCY_2,
+	BOUNCY_3,
+	BOUNCY_4,
+	BOUNCY_5,
 ]
 
 var TELEPORTER_STAGES: Array[PackedScene] = [
@@ -52,6 +64,7 @@ var SPLITTER_STAGES: Array[PackedScene] = [
 var WORLDS = [
 	ARROW_STAGES,
 	SPLITTER_STAGES,
+	BOUNCY_STAGES,
 	TELEPORTER_STAGES,
 ]
 
@@ -75,6 +88,7 @@ func get_prev_level() -> PackedScene:
 		current_stage_num = WORLDS[current_world_num].size() - 1
 	
 	return WORLDS[current_world_num][current_stage_num]
+
 
 func get_next_level() -> PackedScene:
 	current_stage_num += 1
