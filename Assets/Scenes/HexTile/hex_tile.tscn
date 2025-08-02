@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ch71qprshi5bp"]
+[gd_scene load_steps=31 format=3 uid="uid://ch71qprshi5bp"]
 
 [ext_resource type="Script" uid="uid://dxcucmh2i3lxg" path="res://Assets/Scenes/HexTile/hex_tile.gd" id="1_t3cyp"]
 [ext_resource type="Script" uid="uid://bqmpu5lcp0ntm" path="res://Assets/Scenes/HexTile/GateTypes/gates.gd" id="2_gu4rk"]
@@ -50,9 +50,9 @@ region = Rect2(240, 0, 120, 140)
 atlas = ExtResource("10_jggy1")
 region = Rect2(610, 142, 120, 140)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_na6i5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wa7g5"]
 atlas = ExtResource("5_3pctu")
-region = Rect2(240, 140, 120, 140)
+region = Rect2(0, 140, 120, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o7rvm"]
 atlas = ExtResource("5_3pctu")
@@ -64,6 +64,10 @@ load_path = "res://.godot/imported/CustomTerrain_Sheet.png-f61589bc49c4d48a4d719
 [sub_resource type="AtlasTexture" id="AtlasTexture_te6ao"]
 atlas = SubResource("CompressedTexture2D_akucw")
 region = Rect2(0, 1704, 122, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_na6i5"]
+atlas = ExtResource("5_3pctu")
+region = Rect2(240, 140, 120, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sp1u7"]
 atlas = ExtResource("5_3pctu")
@@ -127,7 +131,7 @@ modulate = Color(1, 1, 1, 0.392157)
 texture = SubResource("AtlasTexture_axowf")
 
 [node name="Sprite2D" type="Sprite2D" parent="Gates/FlagGate"]
-texture = SubResource("AtlasTexture_na6i5")
+texture = SubResource("AtlasTexture_wa7g5")
 
 [node name="BouncyGate" type="Node2D" parent="Gates"]
 visible = false
