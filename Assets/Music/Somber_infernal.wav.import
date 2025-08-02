@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://ycs45w0e476l"
+uid="uid://555ytf1yjmas"
 path="res://.godot/imported/Somber_infernal.wav-f4ee55f7b5a6ad0ea7d7fe6a2d05880d.sample"
 
 [deps]
@@ -18,7 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop_mode=0
+edit/loop_mode=2
 edit/loop_begin=0
 edit/loop_end=-1
 compress/mode=2
