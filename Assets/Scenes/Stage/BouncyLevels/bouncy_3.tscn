@@ -140,7 +140,7 @@ tile_layout = 2
 tile_size = Vector2i(120, 140)
 sources/1 = SubResource("TileSetAtlasSource_fskse")
 
-[node name="Bouncy3" type="Node2D"]
+[node name="Bouncy4" type="Node2D"]
 script = ExtResource("1_j8opl")
 stage_name = "Fishie Fish"
 offset = Vector2(100, 100)

@@ -131,6 +131,7 @@ position = Vector2(360, 280)
 script = ExtResource("3_oue8b")
 
 [node name="Highlight" type="TileMapLayer" parent="HexMap"]
+z_index = 1
 tile_set = SubResource("TileSet_r50b5")
 
 [node name="Gates" type="Node2D" parent="HexMap"]

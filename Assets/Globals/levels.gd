@@ -72,6 +72,7 @@ var current_world_num := 0
 var current_stage_num := 0
 
 func get_first_stage() -> PackedScene:
+	return preload("res://Assets/Scenes/Stage/test_stage_4.tscn")
 	current_world_num = 0
 	current_stage_num = 0
 	return WORLDS[current_world_num][current_stage_num]
