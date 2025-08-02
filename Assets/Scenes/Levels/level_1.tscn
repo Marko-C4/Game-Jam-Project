@@ -127,7 +127,7 @@ sources/1 = SubResource("TileSetAtlasSource_v0d7o")
 script = ExtResource("1_lrk52")
 
 [node name="HexMap" type="Node2D" parent="."]
-position = Vector2(373, 284)
+position = Vector2(360, 280)
 script = ExtResource("3_oue8b")
 
 [node name="Highlight" type="TileMapLayer" parent="HexMap"]

@@ -12,8 +12,10 @@ const TILE_MATCHES_FOR_LOOP := 3
 @onready var balls: Node = $HexMap/Balls
 @onready var stage_label: Label = %StageLabel
 @onready var win_label: Label = %WinLabel
+@onready var hex_map_pos := hex_map.global_position
 
 const BALL = preload("res://Assets/Scenes/Ball/ball.tscn")
+
 
 var holding: Dictionary[Global.GATE_TYPE, int]
 var current_stage: Stage = null
@@ -78,6 +80,7 @@ func _load_level(level_scene: PackedScene):
 	if not stage_label.text:
 		stage_label.text = 'No Stage Name :('
 	hex_map.add_child(current_stage)
+	hex_map.global_position = hex_map_pos + current_stage.offset
 	hex_map.terrain = current_stage._placeable_terrain
 	
 	hex_map.global_scale = Vector2(current_stage.map_scale, current_stage.map_scale)

@@ -3,8 +3,7 @@ extends Node2D
 
 @export_category("Stage Data")
 @export var stage_name: String
-@export var world_number: int
-@export var stage_number: int
+@export var offset: Vector2 = Vector2(0, 0)
 @export var map_scale: float = 1
 
 @export_category("Gate Data")
