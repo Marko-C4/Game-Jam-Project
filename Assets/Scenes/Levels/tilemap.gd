@@ -8,9 +8,16 @@ var gates: Dictionary[Vector2i, HexTile] = {}
 # Return whether drop was succesful
 func drop_gate(gate: HexTile, global_pos: Vector2) -> bool:
 	var coordinate := global_to_map(global_pos)
-	if not try_get_gate(coordinate) and is_travesible(coordinate):
-		add_gate(gate, coordinate)
-		return true
+	if not try_get_gate(coordinate):
+		if gate.gate_type == Global.GATE_TYPE.GROUND_GATE:
+			if not is_travesible(coordinate):
+				add_gate(gate, coordinate)
+				return true
+			else:
+				return false
+		if is_travesible(coordinate):
+			add_gate(gate, coordinate)
+			return true
 	return false
 
 func remove_gate(gate: HexTile) -> void:
@@ -24,7 +31,7 @@ func add_gate(gate: HexTile, coordinate: Vector2i) -> void:
 	gate.global_position = terrain.to_global(terrain.map_to_local(coordinate))
 
 func is_travesible(coordinate: Vector2i) -> bool:
-	return terrain.get_cell_tile_data(coordinate) != null
+	return terrain.get_cell_tile_data(coordinate) != null or gates.has(coordinate)
 
 func try_get_gate(coordinate: Vector2i) -> HexTile:
 	if not gates.has(coordinate):
@@ -36,3 +43,11 @@ func global_to_map(global_pos: Vector2) -> Vector2i:
 	
 func get_hovered_tile() -> Vector2i:
 	return terrain.local_to_map(terrain.get_local_mouse_position())
+
+func _toggle_at_mouse():
+	var coord = terrain.local_to_map(terrain.get_local_mouse_position())
+	if terrain.get_cell_tile_data(coord):
+		terrain.set_cell(coord)
+	else:
+		terrain.set_cell(coord, 1, Vector2i(2, 3))
+	 

@@ -30,9 +30,13 @@ func _ready() -> void:
 	)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed('rotate') and dnd.dragging:
-		direction = posmod(direction + 1, Utils.rotations.size())
-		gates.update_direction()
+	if dnd.dragging:
+		if event.is_action_pressed('rotate'):
+			direction = posmod(direction + 1, Utils.rotations.size())
+			gates.update_direction()
+		if event.is_action_pressed('rotate_backwards'):
+			direction = posmod(direction - 1, Utils.rotations.size())
+			gates.update_direction()
 
 func initialize(gate_type: Global.GATE_TYPE, direction: Utils.Direction):
 	self.gate_type = gate_type

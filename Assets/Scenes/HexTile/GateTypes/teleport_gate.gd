@@ -7,7 +7,7 @@ static var global_id_count = 0
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
-const color_map = [Color.CYAN, Color.RED, Color.GREEN_YELLOW, Color.CORAL]
+const color_map = [Color.CYAN, Color.RED, Color.GREEN, Color.CORAL]
 
 func on_place() -> void:
 	var found_pair = false

@@ -22,8 +22,8 @@ var simulation_mode = false
 
 
 func _ready() -> void:
-	#if not current_stage:
-		#_load_level(Levels.get_first_stage())
+	if not current_stage:
+		_load_level(Levels.get_first_stage())
 	gate_ui.gate_clicked.connect(_on_gate_ui_hex_button_pressed)
 	
 	level_overlay.start_stop_button_pressed.connect(_on_start_stop_button_pressed)
@@ -42,6 +42,12 @@ func _input(event: InputEvent) -> void:
 		
 	if event.is_action_pressed("step_simulation"):
 		step_forward()
+
+	if event.is_action_pressed("debug1"):
+		hex_map._toggle_at_mouse()
+	if event.is_action_pressed("debug2"):
+		current_stage.queue_free()
+		_load_level(preload("res://Assets/Scenes/Stage/test_stage_4.tscn"))
 
 func _process(delta: float) -> void:
 	if simulation_mode and not win_label.visible:

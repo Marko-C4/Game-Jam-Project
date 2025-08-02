@@ -13,7 +13,9 @@ func _process(_delta: float) -> void:
 
 	var selected_tile := hex_map.get_hovered_tile()
 
-	if not hex_map.is_travesible(selected_tile):
+	var dragging_hex = get_tree().get_nodes_in_group('dragging')
+	var dragging_ground = dragging_hex.size() > 0 and dragging_hex[0].gate_type == Global.GATE_TYPE.GROUND_GATE
+	if not dragging_ground and not hex_map.is_travesible(selected_tile):
 		highlight_layer.clear()
 		return
 

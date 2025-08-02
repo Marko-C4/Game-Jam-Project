@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cakuq7l11ld4m"]
+[gd_scene load_steps=23 format=4 uid="uid://cakuq7l11ld4m"]
 
 [ext_resource type="Script" uid="uid://cyrw6x57j2lnx" path="res://Assets/Scenes/Stage/stage.gd" id="1_1dc8d"]
 [ext_resource type="Script" uid="uid://dwtmx7tfacldi" path="res://Assets/Scenes/HexTile/HexData/hex_data.gd" id="2_crqdw"]
@@ -114,6 +114,13 @@ script = ExtResource("2_crqdw")
 coordinate = Vector2i(6, -6)
 direction = 0
 gate = 3
+metadata/_custom_type_script = "uid://dwtmx7tfacldi"
+
+[sub_resource type="Resource" id="Resource_ff31e"]
+script = ExtResource("2_crqdw")
+coordinate = Vector2i(0, 5)
+direction = 5
+gate = 0
 metadata/_custom_type_script = "uid://dwtmx7tfacldi"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fskse"]
@@ -236,9 +243,8 @@ script = ExtResource("1_1dc8d")
 stage_name = "Four Factions"
 offset = Vector2(100, 50)
 map_scale = 0.4
-fixed_tiles = Array[ExtResource("2_crqdw")]([SubResource("Resource_1dc8d"), SubResource("Resource_crqdw"), SubResource("Resource_qte34"), SubResource("Resource_0ho3j"), SubResource("Resource_rvvdn"), SubResource("Resource_8vtbt"), SubResource("Resource_x5711"), SubResource("Resource_gm0y6"), SubResource("Resource_mq0ed"), SubResource("Resource_1n1kf"), SubResource("Resource_7mbsh"), SubResource("Resource_le0pk"), SubResource("Resource_knsme"), SubResource("Resource_cmbq4"), SubResource("Resource_66dls"), SubResource("Resource_56tqo")])
+fixed_tiles = Array[ExtResource("2_crqdw")]([SubResource("Resource_1dc8d"), SubResource("Resource_crqdw"), SubResource("Resource_qte34"), SubResource("Resource_0ho3j"), SubResource("Resource_rvvdn"), SubResource("Resource_8vtbt"), SubResource("Resource_x5711"), SubResource("Resource_gm0y6"), SubResource("Resource_mq0ed"), SubResource("Resource_1n1kf"), SubResource("Resource_7mbsh"), SubResource("Resource_le0pk"), SubResource("Resource_knsme"), SubResource("Resource_cmbq4"), SubResource("Resource_66dls"), SubResource("Resource_56tqo"), SubResource("Resource_ff31e")])
 placeable = Dictionary[int, int]({
-0: 1,
 1: 10,
 5: 4
 })
