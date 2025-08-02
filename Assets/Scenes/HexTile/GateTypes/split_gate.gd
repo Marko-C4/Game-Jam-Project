@@ -13,8 +13,8 @@ var DIR_TO_SPRITE := {
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 func set_hex_rotation(dir: Utils.Direction) -> void:
-	var atlas_pos = DIR_TO_SPRITE[dir] * Vector2(Global.GATE_ATLAS_X_OFFSET, Global.GATE_ATLAS_Y_OFFSET) * Global.GATE_ATLAS_SEPARATION
-	sprite_2d.texture.region.position = DIR_TO_SPRITE[dir] * Vector2(Global.GATE_ATLAS_X_OFFSET, Global.GATE_ATLAS_Y_OFFSET)
+	var separation = DIR_TO_SPRITE[dir] * Global.GATE_ATLAS_SEPARATION
+	sprite_2d.texture.region.position = separation + DIR_TO_SPRITE[dir] * Vector2(Global.GATE_ATLAS_X_OFFSET, Global.GATE_ATLAS_Y_OFFSET)
 	global_rotation = 0
 
 func get_outputs(ball: Ball) -> Array[CoordDir]:
