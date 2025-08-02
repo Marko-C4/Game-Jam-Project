@@ -12,7 +12,7 @@ const color_map = [Color.CYAN, Color.RED, Color.GREEN, Color.CORAL]
 func on_place() -> void:
 	var found_pair = false
 	for teleport: TeleportGate in get_tree().get_nodes_in_group("teleport_gate"):
-		if teleport.visible and not teleport.pair and teleport != self and not found_pair:
+		if teleport.visible and not teleport.is_queued_for_deletion() and not teleport.pair and teleport != self and not found_pair:
 			teleport.pair = self
 			pair = teleport
 			found_pair = true

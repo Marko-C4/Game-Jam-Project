@@ -63,6 +63,9 @@ func _ready():
 		func(): start_stop_button.text = "Start (S)"
 	)
 
+func _process(delta: float) -> void:
+	score.text = "%d-%d" % [Levels.current_world_num + 1, Levels.current_stage_num + 1]
+
 func _on_back_pressed():
 	get_parent().get_parent().queue_free()
 
@@ -81,6 +84,3 @@ func _on_step_backward_pressed():
 
 func _on_reset_pressed():
 	reset_button_pressed.emit()
-
-func update_score(points: int):
-	score.text = "Score: " + str(points)

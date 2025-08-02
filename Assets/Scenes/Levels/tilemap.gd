@@ -10,7 +10,7 @@ func drop_gate(gate: HexTile, global_pos: Vector2) -> bool:
 	var coordinate := global_to_map(global_pos)
 	if not try_get_gate(coordinate):
 		if gate.gate_type == Global.GATE_TYPE.GROUND_GATE:
-			if not is_travesible(coordinate):
+			if can_drop_ground(coordinate):
 				add_gate(gate, coordinate)
 				return true
 			else:
@@ -50,4 +50,13 @@ func _toggle_at_mouse():
 		terrain.set_cell(coord)
 	else:
 		terrain.set_cell(coord, 1, Vector2i(2, 3))
-	 
+	
+func can_drop_ground(coordinate: Vector2i) -> bool:
+	if not is_travesible(coordinate) and HexUtils.get_neighbors(coordinate).any(
+		func(coord):
+			print(is_travesible(coord))
+			return is_travesible(coord)
+	):
+		return true
+	else:
+		return false

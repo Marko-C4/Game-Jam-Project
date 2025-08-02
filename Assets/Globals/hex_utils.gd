@@ -26,7 +26,7 @@ func get_neighbors(hex: Vector2i) -> Array[Vector2i]:
 func get_neighbors_pred(hex: Vector2i, pred: Callable) -> Array[Vector2i]:
 	var result: Array[Vector2i] = []
 	for i in range(0, 6):
-		var neighbor = get_cell_in_dir(hex, NEIGHBOR_DIRS[i])
+		var neighbor = get_cell_in_dir(hex, i)
 		if pred.call(neighbor):
 			result.push_back(cube_to_axial(neighbor))
 	return result

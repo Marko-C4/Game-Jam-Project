@@ -26,6 +26,7 @@ var BOUNCY_5 = load("res://Assets/Scenes/Stage/BouncyLevels/bouncy_5.tscn")
 var TELEPORTER_1 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_1.tscn")
 var TELEPORTER_2 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_2.tscn")
 var TELEPORTER_3 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_3.tscn")
+var TELEPORTER_3_5 =preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_3.5.tscn")
 var TELEPORTER_4 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_4.tscn")
 var TELEPORTER_5 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_5.tscn")
 
@@ -49,15 +50,15 @@ var BOUNCY_STAGES: Array[PackedScene] = [
 	BOUNCY_1,
 	BOUNCY_2,
 	BOUNCY_3,
-	BOUNCY_4,
-	BOUNCY_5,
+	TELEPORTER_2,
+	TELEPORTER_3,
 ]
 
 var TELEPORTER_STAGES: Array[PackedScene] = [
-	TELEPORTER_1,
-	TELEPORTER_2,
-	TELEPORTER_3,
+	BOUNCY_4,
+	TELEPORTER_3_5,
 	TELEPORTER_4,
+	BOUNCY_5,
 	TELEPORTER_5,
 ]
 
@@ -78,6 +79,7 @@ var WORLDS = [
 	ARROW_STAGES,
 	SPLITTER_STAGES,
 	BOUNCY_STAGES,
+	TELEPORTER_STAGES,
 	GROUND_STAGES,
 ]
 
