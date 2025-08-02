@@ -10,15 +10,8 @@ const TILE_MATCHES_FOR_LOOP := 3
 @onready var gate_ui: GateUI = %GateUI
 @onready var level_overlay: LevelOverlay = %LevelOverlay
 @onready var balls: Node = $HexMap/Balls
-const TEST_STAGE_2 = preload("res://Assets/Scenes/Stage/test_stage_2.tscn")
-const TELEPORTER_1 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_1.tscn")
-const TELEPORTER_2 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_2.tscn")
-const TELEPORTER_3 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_3.tscn")
-const TELEPORTER_4 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_4.tscn")
-const MOVABLE = preload("res://Assets/Scenes/Stage/movable_splitter_stage.tscn")
-#const TELEPORTER_5 = preload("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_5.tscn")
-
-const SPLITTER_TUTORIAL = preload("res://Assets/Scenes/Stage/multi_splitter_stage.tscn")
+@onready var stage_label: Label = %StageLabel
+@onready var win_label: Label = %WinLabel
 
 const BALL = preload("res://Assets/Scenes/Ball/ball.tscn")
 
@@ -28,13 +21,15 @@ var simulation_mode = false
 
 
 func _ready() -> void:
-	_load_level(MOVABLE)
+	_load_level(Global.get_first_stage())
 	gate_ui.gate_clicked.connect(_on_gate_ui_hex_button_pressed)
 	
 	level_overlay.start_stop_button_pressed.connect(_on_start_stop_button_pressed)
 	level_overlay.reset_button_pressed.connect(_reload_level)
 	level_overlay.step_forward_button_pressed.connect(step_forward)
 	level_overlay.step_backward_button_pressed.connect(step_backward)
+	level_overlay.prev_level_button_pressed.connect(_load_prev_level)
+	level_overlay.next_level_button_pressed.connect(_load_next_level)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("reset_stage"):
@@ -45,9 +40,14 @@ func _input(event: InputEvent) -> void:
 		
 	if event.is_action_pressed("step_simulation"):
 		step_forward()
-	
+
+func _process(delta: float) -> void:
+	if simulation_mode and not win_label.visible:
+		if check_win_condition():
+			win_label.visible = true
 
 func _reload_level() -> void:
+	win_label.visible = false
 	for gate: HexTile in get_tree().get_nodes_in_group('hex_gate'):
 		gate.queue_free()
 	for ball in get_tree().get_nodes_in_group('ball'):
@@ -74,6 +74,9 @@ func _load_level_from_id(level_id: String) -> void:
 
 func _load_level(level_scene: PackedScene):
 	current_stage = level_scene.instantiate()
+	stage_label.text = current_stage.stage_name
+	if not stage_label.text:
+		stage_label.text = 'No Stage Name :('
 	hex_map.add_child(current_stage)
 	hex_map.terrain = current_stage._placeable_terrain
 	
@@ -81,11 +84,38 @@ func _load_level(level_scene: PackedScene):
 	
 	_reload_level()
 
+func _load_prev_level():
+	var prev_level = Global.get_prev_level()
+	current_stage.queue_free()
+	_load_level(prev_level)
+
+func _load_next_level():
+	var next_level = Global.get_next_level()
+	current_stage.queue_free()
+	_load_level(next_level)
 
 func _register_hex_tile(hex: HexTile) -> void:
 	hex.dnd.drag_started.connect(_on_dnd_drag_started.bind(hex))
 	hex.dnd.drag_dropped.connect(_on_dnd_drag_dropped.bind(hex))
 	hex.dnd.drag_canceled.connect(_on_dnd_drag_canceled.bind(hex))
+
+func check_win_condition() -> bool:
+	if get_tree().get_node_count_in_group('ball') == 0:
+		return false
+		
+	var all_looping = get_tree().get_nodes_in_group('ball').all(
+		func(ball: Ball):
+			return ball.is_loop
+	)
+
+	var all_flags = get_tree().get_nodes_in_group('flag').all(
+		func(flag: FlagGate):
+			if not flag.visible:
+				return true
+			return flag.checked
+	)
+	
+	return all_looping and all_flags
 
 func end_simulation() -> void:
 	simulation_mode = false

@@ -179,3 +179,51 @@ unique_name_in_owner = true
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+
+[node name="BottomBar" type="Control" parent="CanvasGroup"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasGroup/BottomBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="WinLabel" type="Label" parent="CanvasGroup/BottomBar/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "You've LOOPED!!"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasGroup/BottomBar/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+color = Color(0.476754, 0.547428, 0.589137, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasGroup/BottomBar/VBoxContainer/ColorRect"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StageLabel" type="Label" parent="CanvasGroup/BottomBar/VBoxContainer/ColorRect/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Peepee Poopoo"
+horizontal_alignment = 1

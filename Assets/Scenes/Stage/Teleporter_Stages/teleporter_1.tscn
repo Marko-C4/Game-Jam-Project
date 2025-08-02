@@ -128,7 +128,7 @@ sources/1 = SubResource("TileSetAtlasSource_fskse")
 
 [node name="TeleporterStage1" type="Node2D"]
 script = ExtResource("1_3l05g")
-stage_name = "Test"
+stage_name = "Instant Travel"
 world_number = -1
 fixed_tiles = Array[ExtResource("2_uc7ek")]([SubResource("Resource_bh65a")])
 placeable = Dictionary[int, int]({

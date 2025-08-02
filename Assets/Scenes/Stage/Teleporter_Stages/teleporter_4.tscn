@@ -142,6 +142,7 @@ sources/1 = SubResource("TileSetAtlasSource_fskse")
 
 [node name="TeleporterStage4" type="Node2D"]
 script = ExtResource("1_qj5gx")
+stage_name = "Leap of Faith"
 fixed_tiles = Array[ExtResource("2_14wcj")]([SubResource("Resource_6o5ph"), SubResource("Resource_lvtlr"), SubResource("Resource_qj5gx")])
 placeable = Dictionary[int, int]({
 1: 4,
