@@ -151,8 +151,8 @@ sources/1 = SubResource("TileSetAtlasSource_fskse")
 position = Vector2(5, 2)
 script = ExtResource("1_o2ey6")
 stage_name = "Test"
-world_number = -1
-map_scale = 0.4
+offset = Vector2(55, 35)
+map_scale = 0.7
 fixed_tiles = Array[ExtResource("2_0b3b6")]([SubResource("Resource_2ctbh"), SubResource("Resource_duy3t"), SubResource("Resource_v54eo"), SubResource("Resource_6owja")])
 placeable = Dictionary[int, int]({
 1: 5,

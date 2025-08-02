@@ -185,7 +185,8 @@ sources/1 = SubResource("TileSetAtlasSource_fskse")
 [node name="TeleporterStage5" type="Node2D"]
 script = ExtResource("1_x11ve")
 stage_name = "Hellagon"
-map_scale = 0.6
+offset = Vector2(0, -45)
+map_scale = 0.7
 fixed_tiles = Array[ExtResource("2_nx1he")]([SubResource("Resource_6o5ph"), SubResource("Resource_lvtlr"), SubResource("Resource_qj5gx"), SubResource("Resource_x11ve"), SubResource("Resource_nx1he"), SubResource("Resource_oa707"), SubResource("Resource_mvcya"), SubResource("Resource_fjp0t"), SubResource("Resource_3auk7")])
 placeable = Dictionary[int, int]({
 1: 2,

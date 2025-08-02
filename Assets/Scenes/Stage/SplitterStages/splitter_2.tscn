@@ -134,10 +134,9 @@ tile_size = Vector2i(120, 140)
 sources/1 = SubResource("TileSetAtlasSource_fskse")
 
 [node name="SplitterChallengeStage" type="Node2D"]
-position = Vector2(-118, -78)
 script = ExtResource("1_r8am7")
 stage_name = "Test"
-world_number = -1
+offset = Vector2(-150, -100)
 fixed_tiles = Array[ExtResource("2_wh73u")]([SubResource("Resource_bh65a"), SubResource("Resource_am3sf")])
 placeable = Dictionary[int, int]({
 1: 4
