@@ -2,6 +2,7 @@
 extends Node
 
 enum GATE_TYPE {
+	EMPTY_GATE,
 	START_GATE,
 	ARROW_GATE,
 	SPLIT_GATE,
@@ -11,6 +12,7 @@ enum GATE_TYPE {
 }
 
 var GATE_TO_NAME = {
+	GATE_TYPE.EMPTY_GATE: 'Empty Gate',
 	GATE_TYPE.START_GATE: 'Start Gate',
 	GATE_TYPE.ARROW_GATE: 'Arrow Gate',
 	GATE_TYPE.SPLIT_GATE: 'Split Gate',
@@ -22,6 +24,7 @@ var GATE_TO_NAME = {
 var GATE_ATLAS_X_OFFSET = 120
 var GATE_ATLAS_Y_OFFSET = 140
 var GATE_TO_ATLAS = {
+	GATE_TYPE.EMPTY_GATE: Vector2(0, 8),
 	GATE_TYPE.START_GATE: Vector2(1, 0),
 	GATE_TYPE.ARROW_GATE: Vector2(0, 0),
 	GATE_TYPE.SPLIT_GATE: Vector2(3, 0),

@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var hex_tile: HexTile = $".."
 
+@onready var empty_gate: EmptyGate = $EmptyGate
 @onready var start_gate: GateHex = $StartGate
 @onready var arrow_gate: GateHex = $ArrowGate
 @onready var split_gate: SplitGate = $SplitGate
@@ -11,6 +12,7 @@ extends Node2D
 @onready var bouncy_gate: BouncyGate = $BouncyGate
 
 @onready var GATE_TYPE_MAP := {
+	Global.GATE_TYPE.EMPTY_GATE: empty_gate,
 	Global.GATE_TYPE.START_GATE: start_gate,
 	Global.GATE_TYPE.ARROW_GATE: arrow_gate,
 	Global.GATE_TYPE.SPLIT_GATE: split_gate,
