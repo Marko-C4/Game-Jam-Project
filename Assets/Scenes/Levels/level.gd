@@ -22,8 +22,8 @@ var simulation_mode = false
 
 
 func _ready() -> void:
-	#if not current_stage:
-		#_load_level(Levels.get_first_stage())
+	if not current_stage:
+		_load_level(Levels.get_first_stage())
 	gate_ui.gate_clicked.connect(_on_gate_ui_hex_button_pressed)
 	
 	level_overlay.start_stop_button_pressed.connect(_on_start_stop_button_pressed)
