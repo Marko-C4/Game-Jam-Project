@@ -86,7 +86,7 @@ func step(infinite = false):
 		return
 	else:
 		var hex = hex_map.try_get_gate(current_hex)
-		var direction = Vector2i(current_hex.x - prev_hex.x, current_hex.y - prev_hex.y)
+		#var direction = Vector2i(current_hex.x - prev_hex.x, current_hex.y - prev_hex.y)
 		if not hex:
 			# Normal hex so go forwards
 			_path.append(current_hex + _head_dir)
@@ -98,18 +98,13 @@ func step(infinite = false):
 			var gate := hex.get_gate()
 			
 			# Loop check
-			if (
-				gate == _start_gate and # Is start gate
-				_path_index > 1 and # Is not start of path
-				direction == Vector2i(_path[1].x - _path[0].x, _path[1].y - _path[0].y) # Is going the same direction as start
-			):
+			if (_has_looped(gate, _head_dir)):
 				print_debug("Looping path!!")
 				move_to(_path[1], infinite)
 				_path_index = 2
 				is_loop = true
 				return
 			
-			#var coord_dirs = gate.get_outputs(HexUtils.NEIGHBOR_DIRS.find(HexUtils.axial_to_cube(direction)))
 			var coord_dirs = gate.get_outputs(self)
 			for index in coord_dirs.size():
 				var coord_dir = coord_dirs[index]
@@ -117,6 +112,7 @@ func step(infinite = false):
 
 				if coord_dir.dir == -1: # The trust me bro branch
 					ball_instance.move_to(ball_instance._path[_path_index], infinite)
+
 					ball_instance._path_index += 1
 					return
 				
@@ -126,6 +122,13 @@ func step(infinite = false):
 				ball_instance.move_to(ball_instance._path[_path_index], infinite)
 
 				ball_instance._path_index += 1
+
+func _has_looped(gate: GateHex, direction: Vector2i) -> bool:
+	return (
+		gate == _start_gate and # Is start gate
+		_path_index > 1 and # Is not start of path
+		direction == Vector2i(_path[1].x - _path[0].x, _path[1].y - _path[0].y) # Is going the same direction as start
+	)
 
 func _clone_self() -> Ball:
 	var clone := duplicate() as Ball
