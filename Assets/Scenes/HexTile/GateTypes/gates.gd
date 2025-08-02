@@ -11,6 +11,8 @@ extends Node2D
 @onready var flag_gate: FlagGate = $FlagGate
 @onready var bouncy_gate: BouncyGate = $BouncyGate
 @onready var ground_gate: GroundGate = $GroundGate
+@onready var belt_gate: BeltGate = $BeltGate
+@onready var turn_gate: TurnGate = $TurnGate
 
 @onready var GATE_TYPE_MAP := {
 	Global.GATE_TYPE.START_GATE: start_gate,
@@ -20,7 +22,9 @@ extends Node2D
 	Global.GATE_TYPE.FLAG_GATE: flag_gate,
 	Global.GATE_TYPE.BOUNCY_GATE: bouncy_gate,
 	Global.GATE_TYPE.EMPTY_GATE: empty_gate,
-	Global.GATE_TYPE.GROUND_GATE: ground_gate
+	Global.GATE_TYPE.GROUND_GATE: ground_gate,
+	Global.GATE_TYPE.BELT_GATE: belt_gate,
+	Global.GATE_TYPE.TURN_GATE: turn_gate,
 }
 
 var gate: GateHex
