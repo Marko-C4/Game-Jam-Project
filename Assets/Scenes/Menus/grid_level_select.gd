@@ -16,6 +16,7 @@ const WORLD_NAMES = [
 var common_level_scene = load("res://Assets/Scenes/Levels/level_1.tscn")
 
 func _ready():
+	MusicController.play_menu_music()
 	for i in Levels.WORLDS.size():
 		var world_box = VBoxContainer.new()
 		

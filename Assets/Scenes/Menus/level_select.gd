@@ -14,6 +14,7 @@ extends Control
 ]
 
 func _ready():
+	MusicController.play_menu_music()
 	back_button.text = "← Back to Main Menu"
 	#back_button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	back_button.modulate = Color(0.2, 0.8, 0.2)  
