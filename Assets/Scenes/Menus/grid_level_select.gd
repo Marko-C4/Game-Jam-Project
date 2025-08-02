@@ -31,7 +31,7 @@ func _ready():
 		world_box.add_child(grid)
 		
 		for j in Levels.WORLDS[i].size():
-			var stage_scene: PackedScene = Levels.WORLDS[i][j]
+			var stage_scene: PackedScene = Levels.get_stage(i, j)
 			var button = Button.new()
 			button.text = "Stage %d" % (j + 1)
 			button.connect("pressed", _on_stage_button_pressed.bind(i, j))
