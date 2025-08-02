@@ -43,6 +43,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("step_simulation"):
 		step_forward()
 
+	if event.is_action_pressed("debug1"):
+		hex_map._toggle_at_mouse()
+
 func _process(delta: float) -> void:
 	if simulation_mode and not win_label.visible:
 		if check_win_condition():

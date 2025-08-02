@@ -25,8 +25,9 @@ atlas = ExtResource("10_jggy1")
 region = Rect2(0, 1704, 120, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7842f"]
+resource_local_to_scene = true
 atlas = ExtResource("9_o7rvm")
-region = Rect2(0, 0, 120, 140)
+region = Rect2(610, 0, 120, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pyhu"]
 resource_local_to_scene = true
@@ -35,6 +36,7 @@ region = Rect2(366, 0, 120, 140)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_176fg"]
+resource_local_to_scene = true
 atlas = ExtResource("9_o7rvm")
 region = Rect2(120, 0, 122, 140)
 
@@ -82,7 +84,6 @@ texture = SubResource("AtlasTexture_akucw")
 script = ExtResource("2_gu4rk")
 
 [node name="StartGate" type="Node2D" parent="Gates" groups=["start_gate"]]
-visible = false
 script = ExtResource("3_du2gd")
 
 [node name="Sprite2D" type="Sprite2D" parent="Gates/StartGate"]
@@ -96,6 +97,7 @@ script = ExtResource("3_3i5fn")
 texture = SubResource("AtlasTexture_5pyhu")
 
 [node name="SplitGate" type="Node2D" parent="Gates"]
+visible = false
 script = ExtResource("7_hranr")
 
 [node name="Sprite2D" type="Sprite2D" parent="Gates/SplitGate"]

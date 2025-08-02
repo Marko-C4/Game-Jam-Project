@@ -43,3 +43,11 @@ func global_to_map(global_pos: Vector2) -> Vector2i:
 	
 func get_hovered_tile() -> Vector2i:
 	return terrain.local_to_map(terrain.get_local_mouse_position())
+
+func _toggle_at_mouse():
+	var coord = terrain.local_to_map(terrain.get_local_mouse_position())
+	if terrain.get_cell_tile_data(coord):
+		terrain.set_cell(coord)
+	else:
+		terrain.set_cell(coord, 1, Vector2i(2, 3))
+	 
