@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bag5gl7grfhc0"]
+
+[ext_resource type="Script" uid="uid://ibe1dl8m021" path="res://Assets/Music/music_controller.gd" id="1_rbmpf"]
+
+[node name="MusicController" type="Node"]
+script = ExtResource("1_rbmpf")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]

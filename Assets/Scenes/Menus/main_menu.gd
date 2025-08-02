@@ -8,7 +8,7 @@ extends Control
 @onready var quit_button = $CenterContainer/VBoxContainer/QuitButton
 
 func _ready():
-	
+	MusicController.play_menu_music()
 	var button_min_size = Vector2(400, 100)
 	for button in [start_button, options_button, quit_button]:
 		button.custom_minimum_size = button_min_size
