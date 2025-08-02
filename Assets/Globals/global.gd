@@ -13,14 +13,72 @@ enum GATE_TYPE {
 var GATE_TO_NAME = {
 	GATE_TYPE.START_GATE: 'Start Gate',
 	GATE_TYPE.ARROW_GATE: 'Arrow Gate',
+	GATE_TYPE.SPLIT_GATE: 'Split Gate',
 	GATE_TYPE.TELEPORT_GATE: 'Portal Gate',
 	GATE_TYPE.FLAG_GATE: 'Flag',
 	GATE_TYPE.BOUNCY_GATE: 'Bouncy Gate',
 }
 
-var LEVELS: Dictionary[String, PackedScene] = {
-	TEST1 = preload("res://Assets/Scenes/Stage/test_stage_1.tscn"),
-	TEST2 = preload("res://Assets/Scenes/Stage/test_stage_2.tscn"),
-	TEST3 = preload("res://Assets/Scenes/Stage/test_stage_3.tscn"),
-	TEST4 = preload("res://Assets/Scenes/Stage/test_stage_4.tscn"),
+var GATE_ATLAS_X_OFFSET = 120
+var GATE_ATLAS_Y_OFFSET = 140
+var GATE_TO_ATLAS = {
+	GATE_TYPE.START_GATE: Vector2(1, 0),
+	GATE_TYPE.ARROW_GATE: Vector2(0, 0),
+	GATE_TYPE.SPLIT_GATE: Vector2(3, 0),
+	GATE_TYPE.TELEPORT_GATE: Vector2(2, 0),
+	GATE_TYPE.FLAG_GATE: Vector2(0, 1),
+	GATE_TYPE.BOUNCY_GATE: Vector2(1, 1),
 }
+
+var TEST_STAGE_1 = load("res://Assets/Scenes/Stage/test_stage_1.tscn")
+
+var TELEPORTER_1 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_1.tscn")
+var TELEPORTER_2 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_2.tscn")
+var TELEPORTER_3 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_3.tscn")
+var TELEPORTER_4 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_4.tscn")
+var TELEPORTER_5 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_5.tscn")
+
+var ARROW_STAGES: Array[PackedScene] = [
+	TEST_STAGE_1
+]
+
+var TELEPORTER_STAGES: Array[PackedScene] = [
+	TELEPORTER_1,
+	TELEPORTER_2,
+	TELEPORTER_3,
+	TELEPORTER_4,
+	TELEPORTER_5,
+]
+
+var SPLITTER_STAGES: Array[PackedScene] = [
+]
+
+var WORLDS = [
+	ARROW_STAGES,
+	TELEPORTER_STAGES,
+	SPLITTER_STAGES,
+]
+
+var current_world_num := 0
+var current_stage_num := 0
+
+func get_first_stage() -> PackedScene:
+	current_world_num = 0
+	current_stage_num = 0
+	return WORLDS[current_world_num][current_stage_num]
+
+func get_prev_level() -> PackedScene:
+	current_stage_num -= 1
+	if current_stage_num < 0:
+		current_world_num -= 1
+		current_stage_num = WORLDS[current_world_num].size() - 1
+	
+	return WORLDS[current_world_num][current_stage_num]
+
+func get_next_level() -> PackedScene:
+	current_stage_num += 1
+	if current_stage_num == WORLDS[current_world_num].size():
+		current_world_num += 1
+		current_stage_num = 0
+	
+	return WORLDS[current_world_num][current_stage_num]

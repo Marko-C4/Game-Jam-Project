@@ -98,7 +98,7 @@ texture = SubResource("AtlasTexture_akucw")
 [node name="Sprite2D" type="Sprite2D" parent="Gates/FlagGate"]
 texture = SubResource("AtlasTexture_na6i5")
 
-[node name="BouncyGate" type="Node2D" parent="Gates" groups=["flag"]]
+[node name="BouncyGate" type="Node2D" parent="Gates"]
 visible = false
 script = ExtResource("10_7842f")
 
