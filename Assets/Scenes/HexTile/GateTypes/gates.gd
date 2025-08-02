@@ -39,7 +39,7 @@ func get_outputs(ball: Ball) -> Array[CoordDir]:
 	return gate.get_outputs(ball)
 
 func update_direction() -> void:
-	global_rotation = Utils.rotations[hex_tile.direction]
+	gate.set_hex_rotation(hex_tile.direction)
 	
 func _on_tree_exited() -> void:
 	gate.on_remove()

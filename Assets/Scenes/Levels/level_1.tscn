@@ -146,8 +146,6 @@ metadata/_custom_type_script = "uid://byl550u315pku"
 [node name="Balls" type="Node2D" parent="HexMap"]
 
 [node name="DebugDrawCoordinates" type="Node2D" parent="HexMap" node_paths=PackedStringArray("tile_map")]
-visible = false
-scale = Vector2(2, 2)
 script = ExtResource("5_uamee")
 limit = 10
 offset = Vector2(-40, 8)
