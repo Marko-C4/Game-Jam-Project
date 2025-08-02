@@ -45,6 +45,8 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("debug1"):
 		hex_map._toggle_at_mouse()
+	if event.is_action_pressed("debug2"):
+		_load_level(preload("res://Assets/Scenes/Stage/test_stage_4.tscn"))
 
 func _process(delta: float) -> void:
 	if simulation_mode and not win_label.visible:
