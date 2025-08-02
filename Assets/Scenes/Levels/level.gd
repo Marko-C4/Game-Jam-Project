@@ -11,6 +11,7 @@ const TILE_MATCHES_FOR_LOOP := 3
 @onready var level_overlay: LevelOverlay = %LevelOverlay
 @onready var balls: Node = $HexMap/Balls
 @onready var stage_label: Label = %StageLabel
+@onready var win_label: Label = %WinLabel
 
 const BALL = preload("res://Assets/Scenes/Ball/ball.tscn")
 
@@ -40,10 +41,12 @@ func _input(event: InputEvent) -> void:
 		step_forward()
 
 func _process(delta: float) -> void:
-	if simulation_mode:
-		check_win_condition()
+	if simulation_mode and not win_label.visible:
+		if check_win_condition():
+			win_label.visible = true
 
 func _reload_level() -> void:
+	win_label.visible = false
 	for gate: HexTile in get_tree().get_nodes_in_group('hex_gate'):
 		gate.queue_free()
 	for ball in get_tree().get_nodes_in_group('ball'):
