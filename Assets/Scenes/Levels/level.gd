@@ -46,6 +46,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug1"):
 		hex_map._toggle_at_mouse()
 	if event.is_action_pressed("debug2"):
+		current_stage.queue_free()
 		_load_level(preload("res://Assets/Scenes/Stage/test_stage_4.tscn"))
 
 func _process(delta: float) -> void:
