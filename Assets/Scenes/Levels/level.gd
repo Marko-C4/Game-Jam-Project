@@ -147,6 +147,7 @@ func _initialize_simulation() -> void:
 			var ball = BALL.instantiate()
 			balls.add_child(ball)
 			ball.global_position = start_tile.global_position
+			ball._start_gate = start_tile
 			ball._start_coord = start_tile.coordinate
 			ball._start_dir = HexUtils.cube_to_axial(HexUtils.NEIGHBOR_DIRS[start_tile.direction])
 

@@ -1,22 +1,36 @@
 # class_name Levels
 extends Node
 
-var TEST_STAGE_1 = load("res://Assets/Scenes/Stage/test_stage_1.tscn")
+# World 1
+var BASIC_1 = load("res://Assets/Scenes/Stage/BasicLevels/basic_1.tscn")
+var BASIC_2 = load("res://Assets/Scenes/Stage/BasicLevels/basic_2.tscn")
+var BASIC_3 = load("res://Assets/Scenes/Stage/BasicLevels/basic_3.tscn")
+var BASIC_4 = load("res://Assets/Scenes/Stage/BasicLevels/basic_4.tscn")
+var BASIC_5 = load("res://Assets/Scenes/Stage/BasicLevels/basic_5.tscn")
 
-var TELEPORTER_1 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_1.tscn")
-var TELEPORTER_2 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_2.tscn")
-var TELEPORTER_3 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_3.tscn")
-var TELEPORTER_4 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_4.tscn")
-var TELEPORTER_5 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_5.tscn")
-
+# World 2
 var SPLITTER_1 = load("res://Assets/Scenes/Stage/SplitterStages/splitter_1.tscn")
 var SPLITTER_2 = load("res://Assets/Scenes/Stage/SplitterStages/splitter_2.tscn")
 var SPLITTER_3 = load("res://Assets/Scenes/Stage/SplitterStages/splitter_3.tscn")
 var SPLITTER_4 = load("res://Assets/Scenes/Stage/SplitterStages/splitter_4.tscn")
 var SPLITTER_5 = load("res://Assets/Scenes/Stage/SplitterStages/splitter_5.tscn")
 
+# World 3
+
+
+# World 4
+var TELEPORTER_1 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_1.tscn")
+var TELEPORTER_2 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_2.tscn")
+var TELEPORTER_3 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_3.tscn")
+var TELEPORTER_4 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_4.tscn")
+var TELEPORTER_5 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_5.tscn")
+
+
 var ARROW_STAGES: Array[PackedScene] = [
-	TEST_STAGE_1
+	BASIC_1,
+	BASIC_2,
+	BASIC_3,
+	BASIC_4,
 ]
 
 var TELEPORTER_STAGES: Array[PackedScene] = [
@@ -37,8 +51,8 @@ var SPLITTER_STAGES: Array[PackedScene] = [
 
 var WORLDS = [
 	ARROW_STAGES,
-	TELEPORTER_STAGES,
 	SPLITTER_STAGES,
+	TELEPORTER_STAGES,
 ]
 
 var current_world_num := 0

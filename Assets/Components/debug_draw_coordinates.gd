@@ -6,7 +6,7 @@ extends Node2D
 	set(value):
 		offset = value
 		queue_redraw()
-	
+
 @export var tile_map: TileMapLayer
 
 func _input(event: InputEvent) -> void:

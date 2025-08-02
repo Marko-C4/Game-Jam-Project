@@ -7,6 +7,7 @@ var tween: Tween
 
 var _start_coord: Vector2i
 var _start_dir: Vector2i
+var _start_gate: StartTile
 
 var _head_dir: Vector2i
 var _path_index: int
@@ -98,7 +99,7 @@ func step(infinite = false):
 			
 			# Loop check
 			if (
-				is_instance_of(gate, StartTile) and # Is start gate
+				gate == _start_gate and # Is start gate
 				_path_index > 1 and # Is not start of path
 				direction == Vector2i(_path[1].x - _path[0].x, _path[1].y - _path[0].y) # Is going the same direction as start
 			):
@@ -128,6 +129,7 @@ func step(infinite = false):
 
 func _clone_self() -> Ball:
 	var clone := duplicate() as Ball
+	clone._start_gate = _start_gate
 	clone._start_coord = _start_coord
 	clone._start_dir = _start_dir
 	clone._path = _path.duplicate()

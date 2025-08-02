@@ -5,7 +5,6 @@ var hex_tile: HexTile
 var coordinate: Vector2i : get = _get_coord
 var direction: Utils.Direction : get = _get_direction
 
-
 func on_reset() -> void:
 	pass
 
@@ -25,6 +24,9 @@ func get_outputs(ball: Ball) -> Array[CoordDir]:
 
 func get_direction_from_dir_vec(dir_vec: Vector2i) -> Utils.Direction:
 	return HexUtils.NEIGHBOR_DIRS.find(HexUtils.axial_to_cube(dir_vec))
+
+func set_hex_rotation(dir: Utils.Direction) -> void:
+	global_rotation = Utils.rotations[dir]
 
 func _get_coord() -> Vector2i:
 	return hex_tile.coordinate
