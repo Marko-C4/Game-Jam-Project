@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://p42xsu17k48n" path="res://Assets/Scenes/Levels/tilemap.gd" id="3_oue8b"]
 [ext_resource type="Texture2D" uid="uid://b8w1bw1p2qf81" path="res://Assets/Sprites/kenney-hex/hexagonTerrain_sheet.png" id="4_v0d7o"]
 [ext_resource type="Script" uid="uid://byl550u315pku" path="res://Assets/Components/tile_highlighter.gd" id="5_75ljv"]
-[ext_resource type="Script" path="res://Assets/Components/debug_draw_coordinates.gd" id="5_uamee"]
+[ext_resource type="Script" uid="uid://cab5ksxc15j6i" path="res://Assets/Components/debug_draw_coordinates.gd" id="5_uamee"]
 [ext_resource type="PackedScene" uid="uid://cg1u5dd6dgxwt" path="res://Assets/Scenes/UI/GateUI/GateUI.tscn" id="7_v0d7o"]
 [ext_resource type="PackedScene" uid="uid://c7iyp161hnyaj" path="res://Assets/Scenes/UI/LevelOverlay/LevelOverlay.tscn" id="8_evxrp"]
 

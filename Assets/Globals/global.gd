@@ -38,6 +38,12 @@ var TELEPORTER_3 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_
 var TELEPORTER_4 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_4.tscn")
 var TELEPORTER_5 = load("res://Assets/Scenes/Stage/Teleporter_Stages/teleporter_5.tscn")
 
+var SPLITTER_1 = load("res://Assets/Scenes/Stage/SplitterStages/splitter_1.tscn")
+var SPLITTER_2 = load("res://Assets/Scenes/Stage/SplitterStages/splitter_2.tscn")
+var SPLITTER_3 = load("res://Assets/Scenes/Stage/SplitterStages/splitter_3.tscn")
+var SPLITTER_4 = load("res://Assets/Scenes/Stage/SplitterStages/splitter_4.tscn")
+var SPLITTER_5 = load("res://Assets/Scenes/Stage/SplitterStages/splitter_5.tscn")
+
 var ARROW_STAGES: Array[PackedScene] = [
 	TEST_STAGE_1
 ]
@@ -51,6 +57,11 @@ var TELEPORTER_STAGES: Array[PackedScene] = [
 ]
 
 var SPLITTER_STAGES: Array[PackedScene] = [
+	SPLITTER_1,
+	SPLITTER_2,
+	SPLITTER_3,
+	SPLITTER_4,
+	SPLITTER_5,
 ]
 
 var WORLDS = [
