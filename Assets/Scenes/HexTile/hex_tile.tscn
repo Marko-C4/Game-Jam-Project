@@ -1,9 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://ch71qprshi5bp"]
+[gd_scene load_steps=33 format=3 uid="uid://ch71qprshi5bp"]
 
 [ext_resource type="Script" uid="uid://dxcucmh2i3lxg" path="res://Assets/Scenes/HexTile/hex_tile.gd" id="1_t3cyp"]
 [ext_resource type="Script" uid="uid://bqmpu5lcp0ntm" path="res://Assets/Scenes/HexTile/GateTypes/gates.gd" id="2_gu4rk"]
 [ext_resource type="Texture2D" uid="uid://b8w1bw1p2qf81" path="res://Assets/Sprites/kenney-hex/hexagonTerrain_sheet.png" id="2_hranr"]
 [ext_resource type="Script" uid="uid://gv0mlauhxrvf" path="res://Assets/Scenes/HexTile/GateTypes/arrow_gate.gd" id="3_3i5fn"]
+[ext_resource type="Texture2D" uid="uid://dk8jj3pngm0lp" path="res://Assets/Sprites/Custom Hell Hexes/Hell Layers.png" id="3_176fg"]
 [ext_resource type="Script" uid="uid://bxt83q8l5ic8c" path="res://Assets/Scenes/HexTile/GateTypes/start_tile.gd" id="3_du2gd"]
 [ext_resource type="Script" uid="uid://bturuhmeegqkb" path="res://Assets/Scenes/HexTile/GateTypes/empty_gate.gd" id="4_na6i5"]
 [ext_resource type="Texture2D" uid="uid://cj6lfe53srndw" path="res://Assets/Sprites/gates.png" id="5_3pctu"]
@@ -13,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://glojulgvbf5k" path="res://Assets/Sprites/Custom Hell Hexes/Transparent_Arrows.png" id="9_o7rvm"]
 [ext_resource type="Script" uid="uid://c8ymmx7j6vcux" path="res://Assets/Scenes/HexTile/GateTypes/flag_gate.gd" id="9_sqtrx"]
 [ext_resource type="Script" uid="uid://djf4oyscpfoyh" path="res://Assets/Scenes/HexTile/GateTypes/bouncy_gate.gd" id="10_7842f"]
-[ext_resource type="Texture2D" uid="uid://dkxpf02rpqkou" path="res://Assets/Sprites/kenney-hex/CustomTerrain_Sheet.png" id="10_jggy1"]
 [ext_resource type="Texture2D" uid="uid://cnexycu6jvckp" path="res://Assets/Sprites/Custom Hell Hexes/Hell Utilities.png" id="12_176fg"]
 [ext_resource type="Script" uid="uid://c5jltc8wqy4oa" path="res://Assets/Scenes/HexTile/ground_gate.gd" id="14_akucw"]
 [ext_resource type="Script" uid="uid://cy67m4g873dly" path="res://Assets/Scenes/HexTile/belt_gate.gd" id="15_axowf"]
@@ -24,8 +24,8 @@ atlas = ExtResource("2_hranr")
 region = Rect2(122, 568, 120, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_akucw"]
-atlas = ExtResource("10_jggy1")
-region = Rect2(0, 1704, 120, 140)
+atlas = ExtResource("3_176fg")
+region = Rect2(122, 284, 120, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7842f"]
 resource_local_to_scene = true
@@ -66,12 +66,10 @@ region = Rect2(123, 284, 120, 140)
 atlas = ExtResource("12_176fg")
 region = Rect2(0, 142, 120, 140)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_akucw"]
-load_path = "res://.godot/imported/CustomTerrain_Sheet.png-f61589bc49c4d48a4d71904f09e3064e.ctex"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_te6ao"]
-atlas = SubResource("CompressedTexture2D_akucw")
-region = Rect2(244, 426, 120, 140)
+resource_local_to_scene = true
+atlas = ExtResource("3_176fg")
+region = Rect2(120, 284, 122, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_na6i5"]
 atlas = ExtResource("5_3pctu")
@@ -83,7 +81,7 @@ region = Rect2(360, 140, 120, 140)
 
 [node name="HexTile" type="Area2D" groups=["hex_gate"]]
 script = ExtResource("1_t3cyp")
-gate_type = 3
+gate_type = 6
 direction = 1
 
 [node name="HexSprite" type="Sprite2D" parent="."]
@@ -95,7 +93,7 @@ visible = false
 polygon = PackedVector2Array(0, -65, 58, -32, 58, 32, 1, 67, -55, 34, -55, -31)
 
 [node name="HexBg" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.392157)
+modulate = Color(1, 0.8, 1, 0.392157)
 texture = SubResource("AtlasTexture_akucw")
 
 [node name="Gates" type="Node2D" parent="."]
@@ -154,11 +152,10 @@ script = ExtResource("10_7842f")
 texture = SubResource("AtlasTexture_o7rvm")
 
 [node name="EmptyGate" type="Node2D" parent="Gates"]
-visible = false
 script = ExtResource("4_na6i5")
 
 [node name="HexBg" type="Sprite2D" parent="Gates/EmptyGate"]
-modulate = Color(0, 0, 0, 0.392157)
+modulate = Color(0.454898, 0.25912, 0.249841, 1)
 texture = SubResource("AtlasTexture_te6ao")
 
 [node name="GroundGate" type="Node2D" parent="Gates"]

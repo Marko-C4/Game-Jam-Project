@@ -40,7 +40,7 @@ theme_override_colors/font_outline_color = Color(0.572549, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_q0tfb")
 theme_override_font_sizes/font_size = 64
-text = "Infinite Torment"
+text = "ENDLESS TORMENT"
 horizontal_alignment = 1
 
 [node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer"]
