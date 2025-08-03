@@ -168,6 +168,7 @@ script = ExtResource("1_e2r02")
 stage_name = "Buckle Up"
 offset = Vector2(50, 20)
 map_scale = 0.8
+level_dialog = Array[String](["Now for the belt. Not quite arrow, but for quick adjustments jexactly what you want."])
 fixed_tiles = Array[ExtResource("2_ats3o")]([SubResource("Resource_bh65a"), SubResource("Resource_bvvx7"), SubResource("Resource_7pu8f"), SubResource("Resource_jpyud")])
 placeable = Dictionary[int, int]({
 0: 1,

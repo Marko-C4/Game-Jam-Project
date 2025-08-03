@@ -166,6 +166,7 @@ sources/2 = SubResource("TileSetAtlasSource_kccqd")
 script = ExtResource("1_0l25u")
 stage_name = "Humble Beginnings"
 offset = Vector2(100, 0)
+level_dialog = Array[String](["Circle of anger.", "Vile but ficle sin. Getle turning help sometimes more than a command for a direction."])
 fixed_tiles = Array[ExtResource("2_ff8ky")]([SubResource("Resource_bh65a"), SubResource("Resource_d0loq")])
 placeable = Dictionary[int, int]({
 1: 4,

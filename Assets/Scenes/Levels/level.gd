@@ -24,6 +24,7 @@ const TILE_MATCHES_FOR_LOOP := 3
 @onready var lose_label: VBoxContainer = %LoseLabelContainer
 
 @onready var hex_map_pos := hex_map.global_position
+@onready var fadeout: ColorRect = $CanvasLayer/Fadeout
 
 const BALL = preload("res://Assets/Scenes/Ball/ball.tscn")
 var og_balls: Array[Ball] = []
@@ -34,6 +35,8 @@ var simulation_mode = false
 
 var dialog_index: int
 var current_dialog: Array[String]
+
+var fadeout_tween: Tween = null
 
 func _ready() -> void:
 	if load_first_level:
@@ -121,7 +124,7 @@ func _load_level(level_scene: PackedScene):
 	hex_map.add_child(current_stage)
 	hex_map.global_position = hex_map_pos + current_stage.offset
 	hex_map.terrain = current_stage._placeable_terrain
-	
+		
 	hex_map.global_scale = Vector2(current_stage.map_scale, current_stage.map_scale)
 	MusicController.play_stage_music(Levels.current_world_num)
 	
@@ -131,15 +134,29 @@ func _load_level(level_scene: PackedScene):
 	
 	_reload_level()
 
+	fadeout.color = Color(0, 0, 0, 1)
+	if fadeout_tween:
+		fadeout_tween.kill()
+	fadeout_tween = create_tween()
+	fadeout_tween.tween_property(fadeout, "color", Color(0, 0, 0, 0), 0.5)
+
 func _load_prev_level():
 	var prev_level = Levels.get_prev_level()
 	current_stage.queue_free()
 	_load_level(prev_level)
 
 func _load_next_level():
-	var next_level = Levels.get_next_level()
-	current_stage.queue_free()
-	_load_level(next_level)
+	if fadeout_tween:
+		fadeout_tween.kill()
+	fadeout_tween = create_tween()
+	fadeout.color = Color(0, 0, 0, 0)
+	fadeout_tween.tween_property(fadeout, "color", Color(0, 0, 0, 1), 0.5)
+	fadeout_tween.tween_callback(func():
+		var next_level = Levels.get_next_level()
+		current_stage.queue_free()
+		_load_level(next_level)
+	)
+
 
 func _register_hex_tile(hex: HexTile) -> void:
 	hex.dnd.drag_started.connect(_on_dnd_drag_started.bind(hex))
