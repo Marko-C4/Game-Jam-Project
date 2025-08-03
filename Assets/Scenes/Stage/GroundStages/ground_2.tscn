@@ -154,6 +154,7 @@ script = ExtResource("1_0ffse")
 stage_name = "Rupture"
 offset = Vector2(50, 200)
 map_scale = 0.9
+level_dialog = Array[String](["The circle for the greedy!", "Let them run around for some humility."])
 fixed_tiles = Array[ExtResource("2_p3dvg")]([SubResource("Resource_bh65a"), SubResource("Resource_rmq2h")])
 placeable = Dictionary[int, int]({
 1: 4,
