@@ -38,6 +38,8 @@ var current_dialog: Array[String]
 
 var fadeout_tween: Tween = null
 
+const VICTORY_LEVEL = preload("res://Assets/Scenes/Stage/victory_level.tscn")
+
 func _ready() -> void:
 	if load_first_level:
 		_load_level(Levels.get_first_stage())
@@ -117,7 +119,10 @@ func _load_level_from_id(level_id: String) -> void:
 	_load_level(Global.LEVELS[level_id])
 
 func _load_level(level_scene: PackedScene):
-	current_stage = level_scene.instantiate()
+	if level_scene == null:
+		current_stage = VICTORY_LEVEL.instantiate()
+	else:
+		current_stage = level_scene.instantiate()
 	stage_label.text = current_stage.stage_name
 	if not stage_label.text:
 		stage_label.text = 'No Stage Name :('
