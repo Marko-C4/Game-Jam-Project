@@ -7,7 +7,7 @@ static var global_id_count = 0
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
-var tween = Tween.new()
+var tween: Tween
 
 const color_map = [
 	Color.CYAN, Color.GREEN, Color.DEEP_PINK,

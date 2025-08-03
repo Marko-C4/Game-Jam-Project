@@ -64,4 +64,3 @@ func _on_stage_button_pressed(world: int, stage: int):
 	get_tree().root.add_child(common_level_scene_instance)
 	common_level_scene_instance._load_level(Levels.get_stage(world, stage));
 	hide()
-	print("test")

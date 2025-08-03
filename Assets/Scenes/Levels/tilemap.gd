@@ -54,7 +54,6 @@ func _toggle_at_mouse():
 func can_drop_ground(coordinate: Vector2i) -> bool:
 	if not is_travesible(coordinate) and HexUtils.get_neighbors(coordinate).any(
 		func(coord):
-			print(is_travesible(coord))
 			return is_travesible(coord)
 	):
 		return true
