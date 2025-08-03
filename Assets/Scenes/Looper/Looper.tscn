@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce0a1p8qlcjdr"]
+
+[ext_resource type="Script" uid="uid://gbbx106iatup" path="res://Assets/Scenes/Looper/looper.gd" id="1_ndgm7"]
+
+[sub_resource type="Curve" id="Curve_ndgm7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.758865, 0.933577), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Looper" type="Node2D"]
+script = ExtResource("1_ndgm7")
+MAX_LENGTH = 100
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 40.0
+width_curve = SubResource("Curve_ndgm7")
+default_color = Color(0, 0.698039, 1, 1)

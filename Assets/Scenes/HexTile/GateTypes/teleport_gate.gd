@@ -37,6 +37,7 @@ func get_outputs(ball: Ball) -> Array[CoordDir]:
 	if pair:
 		ball._path.append(pair.hex_tile.coordinate)
 		ball._path.append(pair.hex_tile.coordinate + ball._head_dir)
+		ball.special_movement[ball._path_index] = hex_tile.gate_type
 		return [ CoordDir.new(pair.hex_tile.coordinate, -1) ]
 
 

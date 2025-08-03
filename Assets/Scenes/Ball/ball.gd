@@ -11,45 +11,46 @@ var _head_dir: Vector2i
 var _path_index: int
 var _path: Array[Vector2i]
 var is_loop = false
+var special_movement: Dictionary[int, Global.GATE_TYPE] = {}
 
 func reset() -> void:
 	if tween:
 		tween.kill()
 
-func set_path(new_path: Array[Vector2i]) -> void:
-	_path_index = 0
-	_path = new_path
-	is_loop = new_path[new_path.size() - 1] == _start_gate.coordinate
-
-func advance_to_next_tile(infinite: bool, backwards = false):
-	if not backwards and _path_index == _path.size() - 1 and not is_loop:
-		return
-	if backwards and _path_index == 0 and not is_loop:
-		return
-	if _path.is_empty():
-		return
-	
-	var _prev_path_index := _path_index
-	_path_index = posmod(_path_index + (-1 if backwards else 1), _path.size())
-
-	var target_pos := hex_map.to_global(hex_map.terrain.map_to_local(_path[_path_index]))
-	var time := HexUtils.axial_distance(_path[_prev_path_index], _path[_path_index]) * 0.2
-	tween = create_tween()
-	tween.tween_property(self, "global_position", target_pos, time).from_current()
-	
-	tween.tween_callback(func():
-		if infinite:
-			advance_to_next_tile(infinite)
-	)
-
 func move_to(target: Vector2i, infinite = false):
 	var target_pos := hex_map.to_global(hex_map.terrain.map_to_local(target))
-	tween = create_tween()
-	tween.tween_property(self, "global_position", target_pos, 0.25)
-	tween.tween_callback(func():
-		if infinite:
-			step(infinite)
-	)
+	if special_movement.has(_path_index):
+		match special_movement[_path_index]:
+			Global.GATE_TYPE.TELEPORT_GATE:
+				tween = create_tween()
+				tween.tween_property(self, "global_rotation", deg_to_rad(360), 0.25)
+				tween.tween_callback(func():
+					global_position = hex_map.to_global(hex_map.terrain.map_to_local(target))
+					if infinite:
+						step(infinite)
+				)
+			Global.GATE_TYPE.BOUNCY_GATE:
+				tween = create_tween()
+				tween.parallel().tween_property(self, "global_position", target_pos, 0.40)
+				tween.parallel().tween_property(self, "global_rotation", deg_to_rad(360), 0.40)
+				tween.parallel().tween_property(self, "scale", Vector2(2, 2), 0.20)
+				tween.tween_property(self, "scale", Vector2(1, 1), 0.20)
+				tween.tween_callback(func():
+					if infinite:
+						step(infinite)
+				)
+				#var real_target_pos := hex_map.to_global(hex_map.terrain.map_to_local(target))
+				#global_position = real_target_pos
+				#if infinite:
+					#call_deferred("step", infinite)
+					
+	else:
+		tween = create_tween()
+		tween.tween_property(self, "global_position", target_pos, 0.25)
+		tween.tween_callback(func():
+			if infinite:
+				step(infinite)
+		)
 
 func undo_step():
 	if _path_index  <= 1:
