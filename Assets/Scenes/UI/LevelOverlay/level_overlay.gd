@@ -25,7 +25,7 @@ func _ready():
 	start_stop_button.text = "Start (Space)"
 
 	back_button.custom_minimum_size = Vector2(BUTTON_WIDTH, BUTTON_HEIGHT)
-	back_button.text = "Level Select (Esc)"
+	back_button.text = "Level Select"
 
 	start_stop_button.custom_minimum_size = Vector2(BUTTON_WIDTH, BUTTON_HEIGHT)
 
