@@ -184,7 +184,6 @@ var LEVEL_5:  Array[PackedScene] = [
 var LEVEL_6:  Array[PackedScene] = [
 	SPLITTER_3,
 	PULLACHALLENGE,
-	BOUNCY_5, # FOUR FACTIONS
 	BELT_5,
 ]
 
