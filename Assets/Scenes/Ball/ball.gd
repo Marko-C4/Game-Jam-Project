@@ -5,8 +5,6 @@ extends Node2D
 
 var tween: Tween
 
-var _start_coord: Vector2i
-var _start_dir: Vector2i
 var _start_gate: StartTile
 
 var _head_dir: Vector2i
@@ -21,7 +19,7 @@ func reset() -> void:
 func set_path(new_path: Array[Vector2i]) -> void:
 	_path_index = 0
 	_path = new_path
-	is_loop = new_path[new_path.size() - 1] == _start_coord
+	is_loop = new_path[new_path.size() - 1] == _start_gate.coordinate
 
 func advance_to_next_tile(infinite: bool, backwards = false):
 	if not backwards and _path_index == _path.size() - 1 and not is_loop:
@@ -79,8 +77,8 @@ func step(infinite = false):
 		print_debug("Illegal path")
 		return
 	elif _path_index == 1: # Special start of path stuff
-		_path.append(current_hex + _start_dir)
-		_head_dir = _start_dir
+		_head_dir = HexUtils.cube_to_axial(HexUtils.NEIGHBOR_DIRS[_start_gate.direction])
+		_path.append(current_hex + _head_dir)
 		move_to(_path[_path_index], infinite)
 		_path_index += 1
 		return
@@ -133,8 +131,6 @@ func _has_looped(gate: GateHex, direction: Vector2i) -> bool:
 func _clone_self() -> Ball:
 	var clone := duplicate() as Ball
 	clone._start_gate = _start_gate
-	clone._start_coord = _start_coord
-	clone._start_dir = _start_dir
 	clone._path = _path.duplicate()
 	clone._path_index = _path_index
 	clone._head_dir = _head_dir
