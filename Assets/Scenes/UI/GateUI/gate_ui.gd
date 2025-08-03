@@ -15,7 +15,7 @@ func update_ui(holding_data: Dictionary[Global.GATE_TYPE, int]) -> void:
 		var count = holding_data[gate_type]
 		var button = HexButton.create_instance(button_container, gate_type, count)
 		type_to_button[gate_type] = button
-		button.button_down.connect(_on_hex_button_pressed.bind(gate_type))
+		button.gui_input.connect(_on_hex_button_pressed.bind(button, gate_type))
  
 func take_gate(type: Global.GATE_TYPE) -> void:
 	type_to_button[type].count -= 1
@@ -23,5 +23,6 @@ func take_gate(type: Global.GATE_TYPE) -> void:
 func return_gate(type: Global.GATE_TYPE) -> void:
 	type_to_button[type].count += 1
 
-func _on_hex_button_pressed(type: Global.GATE_TYPE):
-	gate_clicked.emit(type)
+func _on_hex_button_pressed(event: InputEvent, node: Button, type: Global.GATE_TYPE):
+	if event.is_action_pressed('mouse1') and not node.disabled:
+		gate_clicked.emit(type)

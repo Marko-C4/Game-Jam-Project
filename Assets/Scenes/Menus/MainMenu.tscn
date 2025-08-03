@@ -26,7 +26,9 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+visible = false
 layout_mode = 2

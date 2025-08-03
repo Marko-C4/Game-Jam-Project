@@ -185,7 +185,7 @@ func check_lose_condition() -> bool:
 				return true
 			return flag.checked
 	)
-	return all_done and not all_looping and (no_flags or not all_flags)
+	return all_done and (not all_looping or (all_looping and  not all_flags))
 
 func end_simulation() -> void:
 	simulation_mode = false
