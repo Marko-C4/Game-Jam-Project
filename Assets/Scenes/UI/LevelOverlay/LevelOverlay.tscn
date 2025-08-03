@@ -20,9 +20,11 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="StepBackwardButton" type="Button" parent="MarginContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="StepForwardButton" type="Button" parent="MarginContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="ResetButton" type="Button" parent="MarginContainer/HBoxContainer"]

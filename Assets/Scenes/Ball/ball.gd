@@ -23,8 +23,10 @@ func move_to(target: Vector2i, infinite = false):
 		match special_movement[_path_index]:
 			Global.GATE_TYPE.TELEPORT_GATE:
 				tween = create_tween()
-				tween.tween_property(self, "global_rotation", deg_to_rad(360), 0.25)
+				tween.parallel().tween_property(self, "global_rotation", deg_to_rad(360), 0.25)
+				tween.parallel().tween_property(self, "scale", Vector2(0.1, 0.1), 0.25)
 				tween.tween_callback(func():
+					scale = Vector2(1, 1)
 					global_position = hex_map.to_global(hex_map.terrain.map_to_local(target))
 					if infinite:
 						step(infinite)
@@ -33,8 +35,8 @@ func move_to(target: Vector2i, infinite = false):
 				tween = create_tween()
 				tween.parallel().tween_property(self, "global_position", target_pos, 0.40)
 				tween.parallel().tween_property(self, "global_rotation", deg_to_rad(360), 0.40)
-				tween.parallel().tween_property(self, "scale", Vector2(2, 2), 0.20)
-				tween.tween_property(self, "scale", Vector2(1, 1), 0.20)
+				tween.parallel().tween_property(self, "scale", Vector2(2, 2), 0.10)
+				tween.tween_property(self, "scale", Vector2(1, 1), 0.10)
 				tween.tween_callback(func():
 					if infinite:
 						step(infinite)

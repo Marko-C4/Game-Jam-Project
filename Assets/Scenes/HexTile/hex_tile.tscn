@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ch71qprshi5bp"]
+[gd_scene load_steps=33 format=3 uid="uid://ch71qprshi5bp"]
 
 [ext_resource type="Script" uid="uid://dxcucmh2i3lxg" path="res://Assets/Scenes/HexTile/hex_tile.gd" id="1_t3cyp"]
 [ext_resource type="Script" uid="uid://bqmpu5lcp0ntm" path="res://Assets/Scenes/HexTile/GateTypes/gates.gd" id="2_gu4rk"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://c8ymmx7j6vcux" path="res://Assets/Scenes/HexTile/GateTypes/flag_gate.gd" id="9_sqtrx"]
 [ext_resource type="Script" uid="uid://djf4oyscpfoyh" path="res://Assets/Scenes/HexTile/GateTypes/bouncy_gate.gd" id="10_7842f"]
 [ext_resource type="Texture2D" uid="uid://dkxpf02rpqkou" path="res://Assets/Sprites/kenney-hex/CustomTerrain_Sheet.png" id="10_jggy1"]
+[ext_resource type="Texture2D" uid="uid://cnexycu6jvckp" path="res://Assets/Sprites/Custom Hell Hexes/Hell Utilities.png" id="12_176fg"]
 [ext_resource type="Script" uid="uid://c5jltc8wqy4oa" path="res://Assets/Scenes/HexTile/ground_gate.gd" id="14_akucw"]
 [ext_resource type="Script" uid="uid://cy67m4g873dly" path="res://Assets/Scenes/HexTile/belt_gate.gd" id="15_axowf"]
 [ext_resource type="Script" uid="uid://clb4w1brbwpdm" path="res://Assets/Scenes/HexTile/turn_gate.gd" id="16_te6ao"]
@@ -48,11 +49,15 @@ region = Rect2(240, 0, 120, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_axowf"]
 atlas = ExtResource("10_jggy1")
-region = Rect2(610, 142, 120, 140)
+region = Rect2(246, 426, 120, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wa7g5"]
-atlas = ExtResource("5_3pctu")
-region = Rect2(0, 140, 120, 140)
+atlas = ExtResource("12_176fg")
+region = Rect2(0, 284, 120, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb3x2"]
+atlas = ExtResource("12_176fg")
+region = Rect2(123, 284, 120, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o7rvm"]
 atlas = ExtResource("5_3pctu")
@@ -122,16 +127,19 @@ script = ExtResource("8_3pctu")
 texture = SubResource("AtlasTexture_jggy1")
 
 [node name="FlagGate" type="Node2D" parent="Gates" groups=["flag"]]
-visible = false
 script = ExtResource("9_sqtrx")
 
 [node name="FlagBg" type="Sprite2D" parent="Gates/FlagGate"]
 visible = false
 modulate = Color(1, 1, 1, 0.392157)
+self_modulate = Color(0, 1, 0, 0.392157)
 texture = SubResource("AtlasTexture_axowf")
 
 [node name="Sprite2D" type="Sprite2D" parent="Gates/FlagGate"]
 texture = SubResource("AtlasTexture_wa7g5")
+
+[node name="Light" type="Sprite2D" parent="Gates/FlagGate"]
+texture = SubResource("AtlasTexture_rb3x2")
 
 [node name="BouncyGate" type="Node2D" parent="Gates"]
 visible = false
@@ -163,6 +171,7 @@ script = ExtResource("15_axowf")
 texture = SubResource("AtlasTexture_na6i5")
 
 [node name="TurnGate" type="Node2D" parent="Gates"]
+visible = false
 script = ExtResource("16_te6ao")
 
 [node name="Sprite2D" type="Sprite2D" parent="Gates/TurnGate"]
