@@ -144,6 +144,7 @@ sources/1 = SubResource("TileSetAtlasSource_fskse")
 script = ExtResource("1_e75r6")
 stage_name = "Humble Beginnings"
 offset = Vector2(100, 100)
+level_dialog = Array[String](["Hi sexyy ;)))", "Wanna come to my place today ;))"])
 fixed_tiles = Array[ExtResource("2_n5ewr")]([SubResource("Resource_bh65a"), SubResource("Resource_bvvx7"), SubResource("Resource_d0loq")])
 placeable = Dictionary[int, int]({
 1: 2

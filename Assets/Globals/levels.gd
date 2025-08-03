@@ -94,7 +94,7 @@ var BELT_STAGES: Array[PackedScene] = [
 	BELT_2,
 	BELT_3,
 	BELT_4,
-	BELT_5,
+	# BELT_5,
 ]
 
 var TURN_STAGES: Array[PackedScene] = [
@@ -102,7 +102,7 @@ var TURN_STAGES: Array[PackedScene] = [
 	TURN_2,
 	TURN_3,
 	TURN_4,
-	TURN_5,
+	# TURN_5,
 ]
 
 var WORLDS = [

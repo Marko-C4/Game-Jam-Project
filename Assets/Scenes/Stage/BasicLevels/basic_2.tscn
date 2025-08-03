@@ -130,6 +130,7 @@ sources/1 = SubResource("TileSetAtlasSource_fskse")
 script = ExtResource("1_brhkg")
 stage_name = "Endless Choices"
 offset = Vector2(100, 100)
+level_dialog = Array[String](["Wow", "ur smort"])
 fixed_tiles = Array[ExtResource("2_kdaad")]([SubResource("Resource_bh65a")])
 placeable = Dictionary[int, int]({
 1: 3

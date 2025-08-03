@@ -9,6 +9,11 @@ const TILE_MATCHES_FOR_LOOP := 3
 @onready var hex_map: HexMap = $HexMap
 @onready var gates: Node2D = $HexMap/Gates
 
+@onready var dialog_layer: CanvasLayer = $DialogLayer
+@onready var speaker_name: Label = $DialogLayer/Dialog/ColorRect/MarginContainer/VBoxContainer/SpeakerName
+@onready var dialog: Label = $DialogLayer/Dialog/ColorRect/MarginContainer/VBoxContainer/Dialog
+
+
 @onready var gate_ui: GateUI = %GateUI
 @onready var level_overlay: LevelOverlay = %LevelOverlay
 @onready var balls: Node = $HexMap/Balls
@@ -22,6 +27,8 @@ var holding: Dictionary[Global.GATE_TYPE, int]
 var current_stage: Stage = null
 var simulation_mode = false
 
+var dialog_index: int
+var current_dialog: Array[String]
 
 func _ready() -> void:
 	if load_first_level:
@@ -92,6 +99,10 @@ func _load_level(level_scene: PackedScene):
 	hex_map.terrain = current_stage._placeable_terrain
 	
 	hex_map.global_scale = Vector2(current_stage.map_scale, current_stage.map_scale)
+	
+	dialog_index = 0
+	current_dialog = current_stage.level_dialog
+	_update_dialog_ui()
 	
 	_reload_level()
 
@@ -184,6 +195,13 @@ func is_looping(path: Array[Vector2i]) -> bool:
 				return true
 	return false
 
+func _update_dialog_ui() -> void:
+	if dialog_index >= current_dialog.size():
+		dialog_layer.visible = false
+	else:
+		dialog_layer.visible = true
+		dialog.text = current_dialog[dialog_index]
+
 func _put_gate_to_holding(hex: HexTile) -> void:
 	gate_ui.return_gate(hex.gate_type)
 	hex.queue_free()
@@ -215,3 +233,9 @@ func _on_start_stop_button_pressed() -> void:
 		end_simulation()
 	else:
 		start_full_simulation()
+
+
+func _on_dialog_gui_input(event: InputEvent) -> void:
+	if event.is_action_pressed("mouse1"):
+		dialog_index += 1
+		_update_dialog_ui()

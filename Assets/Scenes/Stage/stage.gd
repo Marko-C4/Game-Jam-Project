@@ -5,9 +5,12 @@ extends Node2D
 @export var stage_name: String
 @export var offset: Vector2 = Vector2(0, 0)
 @export var map_scale: float = 1
+@export var level_dialog: Array[String] = []
 
 @export_category("Gate Data")
 @export var fixed_tiles: Array[HexData]
+
+
 
 # Type of gate and the number the player can place
 @export var placeable: Dictionary[Global.GATE_TYPE, int]
