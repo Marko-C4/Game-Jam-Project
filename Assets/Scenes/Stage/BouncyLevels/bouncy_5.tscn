@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=4 uid="uid://cakuq7l11ld4m"]
+[gd_scene load_steps=25 format=4 uid="uid://cakuq7l11ld4m"]
 
 [ext_resource type="Script" uid="uid://cyrw6x57j2lnx" path="res://Assets/Scenes/Stage/stage.gd" id="1_1dc8d"]
 [ext_resource type="Script" uid="uid://dwtmx7tfacldi" path="res://Assets/Scenes/HexTile/HexData/hex_data.gd" id="2_crqdw"]
+[ext_resource type="Texture2D" uid="uid://dk8jj3pngm0lp" path="res://Assets/Sprites/Custom Hell Hexes/Hell Layers.png" id="3_crqdw"]
 [ext_resource type="Texture2D" uid="uid://b8w1bw1p2qf81" path="res://Assets/Sprites/kenney-hex/hexagonTerrain_sheet.png" id="3_qte34"]
 
 [sub_resource type="Resource" id="Resource_1dc8d"]
@@ -123,6 +124,20 @@ direction = 5
 gate = 0
 metadata/_custom_type_script = "uid://dwtmx7tfacldi"
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qte34"]
+texture = ExtResource("3_crqdw")
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(120, 140)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fskse"]
 texture = ExtResource("3_qte34")
 separation = Vector2i(2, 2)
@@ -237,6 +252,7 @@ tile_shape = 3
 tile_layout = 2
 tile_size = Vector2i(120, 140)
 sources/1 = SubResource("TileSetAtlasSource_fskse")
+sources/0 = SubResource("TileSetAtlasSource_qte34")
 
 [node name="Bouncy5" type="Node2D"]
 script = ExtResource("1_1dc8d")
@@ -255,5 +271,5 @@ tile_set = SubResource("TileSet_bh65a")
 
 [node name="PlaceableTerrain" type="TileMapLayer" parent="."]
 z_index = -1
-tile_map_data = PackedByteArray("AAAAAP7/AQACAAMAAAD/////AQACAAMAAAAAAPz/AQACAAMAAAD///3/AQACAAMAAAD+//7/AQACAAMAAAAAAP3/AQACAAMAAAD///7/AQACAAMAAAD+////AQACAAMAAAD9/wEAAQACAAMAAAD+/wEAAQACAAMAAAD9/wIAAQACAAMAAAD8/wIAAQACAAMAAAD8/wMAAQACAAMAAAD9/wMAAQACAAMAAAD+/wIAAQACAAMAAAD8/wQAAQACAAMAAAACAP7/AQACAAMAAAAAAAAAAQACAAMAAAACAAAAAQACAAMAAAAAAAIAAQACAAMAAAACAAIAAQACAAMAAAADAAEAAQACAAMAAAAEAAEAAQACAAMAAAADAAIAAQACAAMAAAACAAMAAQACAAMAAAACAAQAAQACAAMAAAADAAMAAQACAAMAAAAEAAIAAQACAAMAAAAEAP//AQACAAMAAAAFAP//AQACAAMAAAAFAP7/AQACAAMAAAAEAP7/AQACAAMAAAAGAP7/AQACAAMAAAAFAP3/AQACAAMAAAAGAPz/AQACAAMAAAAGAP3/AQACAAMAAAACAPz/AQACAAMAAAACAPv/AQACAAMAAAAEAPz/AQACAAMAAAAFAPv/AQACAAMAAAACAPr/AQACAAMAAAAGAPr/AQACAAMAAAD+/wQAAQACAAMAAAD9/wUAAQACAAMAAAD8/wYAAQACAAMAAAAAAAQAAQACAAMAAAAAAAUAAQACAAMAAAAAAAYAAQACAAMAAAA=")
+tile_map_data = PackedByteArray("AAAAAP7/AAABAAEAAAD/////AAABAAEAAAAAAPz/AAABAAEAAAD///3/AAABAAEAAAD+//7/AAABAAEAAAAAAP3/AAABAAEAAAD///7/AAABAAEAAAD+////AAABAAEAAAD9/wEAAAABAAEAAAD+/wEAAAABAAEAAAD9/wIAAAABAAEAAAD8/wIAAAABAAEAAAD8/wMAAAABAAEAAAD9/wMAAAABAAEAAAD+/wIAAAABAAEAAAD8/wQAAAABAAEAAAACAP7/AAABAAEAAAAAAAAAAAABAAEAAAACAAAAAAABAAEAAAAAAAIAAAABAAEAAAACAAIAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAABAAEAAAADAAIAAAABAAEAAAACAAMAAAABAAEAAAACAAQAAAABAAEAAAADAAMAAAABAAEAAAAEAAIAAAABAAEAAAAEAP//AAABAAEAAAAFAP//AAABAAEAAAAFAP7/AAABAAEAAAAEAP7/AAABAAEAAAAGAP7/AAABAAEAAAAFAP3/AAABAAEAAAAGAPz/AAABAAEAAAAGAP3/AAABAAEAAAACAPz/AAABAAEAAAACAPv/AAABAAEAAAAEAPz/AAABAAEAAAAFAPv/AAABAAEAAAACAPr/AAABAAEAAAAGAPr/AAABAAEAAAD+/wQAAAABAAEAAAD9/wUAAAABAAEAAAD8/wYAAAABAAEAAAAAAAQAAAABAAEAAAAAAAUAAAABAAEAAAAAAAYAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_bh65a")
