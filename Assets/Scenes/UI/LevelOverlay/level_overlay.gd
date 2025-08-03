@@ -22,7 +22,7 @@ const ARROW_BUTTON_WIDTH = 45
 @onready var score = $Score
 
 func _ready():	
-	start_stop_button.text = "Start (S)"
+	start_stop_button.text = "Start (Space)"
 
 	back_button.custom_minimum_size = Vector2(BUTTON_WIDTH, BUTTON_HEIGHT)
 	back_button.text = "Level Select (Esc)"
@@ -57,10 +57,10 @@ func _ready():
 	)
 	
 	SignalBus.simulation.start.connect(
-		func(): start_stop_button.text = "Stop (X)"
+		func(): start_stop_button.text = "Stop (Space)"
 	)
 	SignalBus.simulation.end.connect(
-		func(): start_stop_button.text = "Start (S)"
+		func(): start_stop_button.text = "Start (Space)"
 	)
 
 func _process(delta: float) -> void:

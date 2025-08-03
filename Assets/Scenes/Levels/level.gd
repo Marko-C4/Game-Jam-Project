@@ -19,7 +19,10 @@ const TILE_MATCHES_FOR_LOOP := 3
 @onready var level_overlay: LevelOverlay = %LevelOverlay
 @onready var balls: Node = $HexMap/Balls
 @onready var stage_label: Label = %StageLabel
-@onready var win_label: Label = %WinLabel
+
+@onready var win_label: VBoxContainer = %WinLabelContainer
+@onready var lose_label: VBoxContainer = %LoseLabelContainer
+
 @onready var hex_map_pos := hex_map.global_position
 
 const BALL = preload("res://Assets/Scenes/Ball/ball.tscn")
@@ -47,26 +50,45 @@ func _ready() -> void:
 		timer.timeout.connect(_spawn_souls_and_step_full)
 
 func _input(event: InputEvent) -> void:
+	if dialog_layer.visible:
+		if event.is_action_pressed('spacebar'):
+			_advance_dialog()
+		return
+	
 	if event.is_action_pressed("reset_stage"):
 		_reload_level()
-		
-	if event.is_action_pressed('ui_accept'):
-		start_full_simulation()
+
+	if event.is_action_pressed('spacebar'):
+		_on_start_stop_button_pressed()
+	
+	if event.is_action_pressed("spacebar"):
+		if win_label.visible:
+			_load_next_level()
 
 	if event.is_action_pressed("debug1"):
 		hex_map._toggle_at_mouse()
 	if event.is_action_pressed("debug2"):
 		current_stage.queue_free()
 		_load_level(preload("res://Assets/Scenes/Stage/test_stage_4.tscn"))
+		
+	if event.is_action_pressed("ctrl_n"):
+		_load_next_level()
+	if event.is_action_pressed("ctrl_b"):
+		_load_prev_level()
 
 func _process(delta: float) -> void:
 	if simulation_mode and not win_label.visible:
 		if check_win_condition():
 			timer.stop()
 			win_label.visible = true
+	if simulation_mode and not lose_label.visible:
+		if check_lose_condition():
+			timer.stop()
+			lose_label.visible = true
 
 func _reload_level() -> void:
 	win_label.visible = false
+	lose_label.visible = false
 	for gate: HexTile in get_tree().get_nodes_in_group('hex_gate'):
 		gate.free()
 	for ball in get_tree().get_nodes_in_group('ball'):
@@ -125,10 +147,10 @@ func _register_hex_tile(hex: HexTile) -> void:
 	hex.dnd.drag_canceled.connect(_on_dnd_drag_canceled.bind(hex))
 
 func check_win_condition() -> bool:
-	if og_balls.size() == 0:
+	if get_tree().get_nodes_in_group('ball').size() == 0:
 		return false
 		
-	var all_looping = og_balls.all(
+	var all_looping = get_tree().get_nodes_in_group('ball').all(
 		func(ball: Ball):
 			return ball.is_loop
 	)
@@ -142,8 +164,32 @@ func check_win_condition() -> bool:
 	
 	return all_looping and all_flags
 
+
+func check_lose_condition() -> bool:
+	if get_tree().get_nodes_in_group('ball').size() == 0:
+		return false
+
+	var all_done = get_tree().get_nodes_in_group('ball').all(
+		func(ball: Ball):
+			return ball.is_done
+	)
+	var all_looping = get_tree().get_nodes_in_group('ball').all(
+		func(ball: Ball):
+			return ball.is_loop
+	)
+
+	var no_flags = get_tree().get_node_count_in_group('flag')
+	var all_flags = get_tree().get_nodes_in_group('flag').all(
+		func(flag: FlagGate):
+			if not flag.visible:
+				return true
+			return flag.checked
+	)
+	return all_done and not all_looping and (no_flags or not all_flags)
+
 func end_simulation() -> void:
 	simulation_mode = false
+	lose_label.visible = false
 	timer.stop()
 	SignalBus.simulation.end.emit()
 	for ball in get_tree().get_nodes_in_group('ball'):
@@ -155,7 +201,7 @@ func start_full_simulation() -> void:
 	
 	_initialize_simulation()
 
-	og_balls = _spawn_souls_and_step_full()
+	_spawn_souls_and_step_full()
 	timer.start()
 
 func _initialize_simulation() -> void:
@@ -253,8 +299,10 @@ func _on_start_stop_button_pressed() -> void:
 	else:
 		start_full_simulation()
 
+func _advance_dialog():
+	dialog_index += 1
+	_update_dialog_ui()
 
 func _on_dialog_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse1"):
-		dialog_index += 1
-		_update_dialog_ui()
+		_advance_dialog()

@@ -12,6 +12,7 @@ var _head_dir: Vector2i
 var _path_index: int
 var _path: Array[Vector2i]
 var is_loop = false
+var is_done = false
 var special_movement: Dictionary[int, Global.GATE_TYPE] = {}
 var time := 0.0
 func reset() -> void:
@@ -84,6 +85,7 @@ func step(infinite = false):
 		tween = create_tween()
 		tween.parallel().tween_property(self, "global_rotation", deg_to_rad(720), 1)
 		tween.parallel().tween_property(self, "scale", Vector2(0, 0), 1)
+		is_done = true
 		print_debug("Illegal path")
 		return
 	elif _path_index == 1: # Special start of path stuff
@@ -110,6 +112,7 @@ func step(infinite = false):
 				move_to(_path[1], infinite)
 				_path_index = 2
 				is_loop = true
+				is_done = true
 				return
 			
 			var coord_dirs = gate.get_outputs(self)

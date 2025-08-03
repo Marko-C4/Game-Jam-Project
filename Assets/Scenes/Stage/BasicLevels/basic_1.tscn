@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://b0tgm5a8de85l"]
+[gd_scene load_steps=12 format=4 uid="uid://b0tgm5a8de85l"]
 
 [ext_resource type="Script" uid="uid://cyrw6x57j2lnx" path="res://Assets/Scenes/Stage/stage.gd" id="1_e75r6"]
 [ext_resource type="Script" uid="uid://dwtmx7tfacldi" path="res://Assets/Scenes/HexTile/HexData/hex_data.gd" id="2_n5ewr"]
@@ -172,15 +172,15 @@ placeable = Dictionary[int, int]({
 
 [node name="PlaceableTerrain" type="TileMapLayer" parent="."]
 z_index = -1
-tile_map_data = PackedByteArray("AAD///7/AQACAAMAAAAAAP7/AQACAAMAAAABAP7/AQACAAMAAAABAP//AQAAAAwAAAABAAAAAQACAAMAAAAAAAAAAQABAA0AAAD//wAAAQACAAMAAAD/////AQACAAMAAAA=")
-tile_set = SubResource("TileSet_bh65a")
-
-[node name="PlaceableTerrain" type="TileMapLayer" parent="PlaceableTerrain"]
-z_index = -1
-tile_map_data = PackedByteArray("AAD///7/AQACAAMAAAAAAP7/AQACAAMAAAABAP7/AQACAAMAAAD//wAAAQACAAMAAAD/////AQACAAMAAAA=")
+tile_map_data = PackedByteArray("AAAAAP7/AQACAAMAAAABAP7/AQACAAMAAAD+/wAAAQACAAMAAAD/////AQACAAMAAAACAP7/AQACAAMAAAABAP//AQACAAMAAAAAAAAAAQACAAMAAAD//wAAAQACAAMAAAA=")
 tile_set = SubResource("TileSet_bh65a")
 
 [node name="VisualTerrain" type="TileMapLayer" parent="."]
 z_index = -1
-tile_map_data = PackedByteArray("AAABAAAAAAABAAIAAAAAAAAAAAAAAAIAAAABAP//AAAAAAIAAAABAP7/AAABAAAAAAAAAP7/AAAAAAAAAAD//wAAAAAAAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAIAAAABAP//AAAAAAIAAAD//wAAAAAAAAIAAAAAAP//AQACAAMAAAA=")
+tile_set = SubResource("TileSet_bh65a")
+
+[node name="Props" type="TileMapLayer" parent="."]
+z_index = -1
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAIAAAABAP//AAAAAAIAAAD//wAAAAAAAAIAAAAAAP//AAABAAIAAAA=")
 tile_set = SubResource("TileSet_bh65a")

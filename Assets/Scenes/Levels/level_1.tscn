@@ -205,7 +205,7 @@ anchor_right = 1.0
 grow_horizontal = 2
 
 [node name="BottomBar" type="Control" parent="TopLayer"]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
@@ -226,12 +226,40 @@ grow_vertical = 2
 mouse_filter = 2
 alignment = 2
 
-[node name="WinLabel" type="Label" parent="TopLayer/BottomBar/VBoxContainer"]
+[node name="WinLabelContainer" type="VBoxContainer" parent="TopLayer/BottomBar/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+
+[node name="WinLabel" type="Label" parent="TopLayer/BottomBar/VBoxContainer/WinLabelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "You've LOOPED!!"
+horizontal_alignment = 1
+
+[node name="NextLevelPrompt" type="Label" parent="TopLayer/BottomBar/VBoxContainer/WinLabelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "press 'SPACE' to proceed"
+horizontal_alignment = 1
+
+[node name="LoseLabelContainer" type="VBoxContainer" parent="TopLayer/BottomBar/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="LoseLabel" type="Label" parent="TopLayer/BottomBar/VBoxContainer/LoseLabelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "No loops..."
+horizontal_alignment = 1
+
+[node name="NextLevelPrompt" type="Label" parent="TopLayer/BottomBar/VBoxContainer/LoseLabelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "press 'SPACE' to retry"
 horizontal_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="TopLayer/BottomBar/VBoxContainer"]
