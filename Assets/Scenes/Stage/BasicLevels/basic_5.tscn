@@ -243,5 +243,10 @@ tile_set = SubResource("TileSet_bh65a")
 
 [node name="VisualTerrain" type="TileMapLayer" parent="."]
 z_index = -1
+tile_map_data = PackedByteArray("AAACAP//AAABAAIAAAA=")
+tile_set = SubResource("TileSet_bh65a")
+
+[node name="VisualTerrain2" type="TileMapLayer" parent="."]
+z_index = -1
 tile_map_data = PackedByteArray("AAACAP//AgABAAIAAAA=")
 tile_set = SubResource("TileSet_bh65a")

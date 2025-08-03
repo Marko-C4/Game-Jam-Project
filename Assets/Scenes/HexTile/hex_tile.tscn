@@ -103,6 +103,7 @@ script = ExtResource("2_gu4rk")
 
 [node name="StartGate" type="Node2D" parent="Gates" groups=["start_gate"]]
 visible = false
+z_index = 1
 script = ExtResource("3_du2gd")
 
 [node name="Sprite2D" type="Sprite2D" parent="Gates/StartGate"]
@@ -161,6 +162,7 @@ modulate = Color(0, 0, 0, 0.392157)
 texture = SubResource("AtlasTexture_te6ao")
 
 [node name="GroundGate" type="Node2D" parent="Gates"]
+visible = false
 script = ExtResource("14_akucw")
 
 [node name="HexBg" type="Sprite2D" parent="Gates/GroundGate"]

@@ -74,7 +74,6 @@ popup/item_1/text = "Fullscreen"
 popup/item_1/id = 1
 
 [node name="Back_button" type="Button" parent="MarginContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 10
 text = "<- Back"

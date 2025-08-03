@@ -151,7 +151,7 @@ sources/0 = SubResource("TileSetAtlasSource_phi2x")
 
 [node name="Belt3" type="Node2D"]
 script = ExtResource("1_2ujn3")
-stage_name = "Cookie"
+stage_name = "Leap of Faith"
 offset = Vector2(-50, 0)
 fixed_tiles = Array[ExtResource("2_u625d")]([SubResource("Resource_tgi83"), SubResource("Resource_jpyud")])
 placeable = Dictionary[int, int]({
