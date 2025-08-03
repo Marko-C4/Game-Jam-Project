@@ -152,6 +152,7 @@ sources/0 = SubResource("TileSetAtlasSource_ygexe")
 [node name="TeleporterStage2" type="Node2D"]
 script = ExtResource("1_6o5ph")
 stage_name = "Islands"
+level_dialog = Array[String](["Welcome to the swamp of gluttony. Try not minding the odour, its meant for the tormented.", "We have few space anomalies here. Mass bends spacetime and well. We have few severe cases. Sagittarius A* being the star of the show."])
 fixed_tiles = Array[ExtResource("2_lvtlr")]([SubResource("Resource_6o5ph"), SubResource("Resource_lvtlr")])
 placeable = Dictionary[int, int]({
 1: 6,
