@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://baecyta0pxelg"]
+[gd_scene load_steps=3 format=3 uid="uid://baecyta0pxelg"]
 
 [ext_resource type="Script" uid="uid://caau44wo4bnih" path="res://Assets/Scenes/Ball/ball.gd" id="1_itvf4"]
+[ext_resource type="Texture2D" uid="uid://cevkke1squqsb" path="res://Assets/Sprites/Pixelorama/Soul but extra thicc.png" id="2_3vq5u"]
 
 [node name="Ball" type="Node2D" groups=["ball"]]
 script = ExtResource("1_itvf4")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 custom_minimum_size = Vector2(40, 40)
 anchors_preset = 8
 anchor_left = 0.5
@@ -19,3 +21,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.561203, 0.46164, 0.821323, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_3vq5u")

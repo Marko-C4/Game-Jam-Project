@@ -5,6 +5,7 @@ const MAX_DEPTH := 640
 const TILE_MATCHES_FOR_LOOP := 3
 
 @export var load_first_level = false
+@export var multi_ghost_mode = false
 
 @onready var hex_map: HexMap = $HexMap
 @onready var gates: Node2D = $HexMap/Gates
@@ -12,7 +13,7 @@ const TILE_MATCHES_FOR_LOOP := 3
 @onready var dialog_layer: CanvasLayer = $DialogLayer
 @onready var speaker_name: Label = $DialogLayer/Dialog/ColorRect/MarginContainer/VBoxContainer/SpeakerName
 @onready var dialog: Label = $DialogLayer/Dialog/ColorRect/MarginContainer/VBoxContainer/Dialog
-
+@onready var timer: Timer = $Timer
 
 @onready var gate_ui: GateUI = %GateUI
 @onready var level_overlay: LevelOverlay = %LevelOverlay
@@ -22,6 +23,7 @@ const TILE_MATCHES_FOR_LOOP := 3
 @onready var hex_map_pos := hex_map.global_position
 
 const BALL = preload("res://Assets/Scenes/Ball/ball.tscn")
+var og_balls: Array[Ball] = []
 
 var holding: Dictionary[Global.GATE_TYPE, int]
 var current_stage: Stage = null
@@ -41,6 +43,8 @@ func _ready() -> void:
 	level_overlay.step_backward_button_pressed.connect(step_backward)
 	level_overlay.prev_level_button_pressed.connect(_load_prev_level)
 	level_overlay.next_level_button_pressed.connect(_load_next_level)
+	if multi_ghost_mode:
+		timer.timeout.connect(_spawn_souls_and_step_full)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("reset_stage"):
@@ -48,9 +52,6 @@ func _input(event: InputEvent) -> void:
 		
 	if event.is_action_pressed('ui_accept'):
 		start_full_simulation()
-		
-	if event.is_action_pressed("step_simulation"):
-		step_forward()
 
 	if event.is_action_pressed("debug1"):
 		hex_map._toggle_at_mouse()
@@ -61,6 +62,7 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if simulation_mode and not win_label.visible:
 		if check_win_condition():
+			timer.stop()
 			win_label.visible = true
 
 func _reload_level() -> void:
@@ -123,10 +125,10 @@ func _register_hex_tile(hex: HexTile) -> void:
 	hex.dnd.drag_canceled.connect(_on_dnd_drag_canceled.bind(hex))
 
 func check_win_condition() -> bool:
-	if get_tree().get_node_count_in_group('ball') == 0:
+	if og_balls.size() == 0:
 		return false
 		
-	var all_looping = get_tree().get_nodes_in_group('ball').all(
+	var all_looping = og_balls.all(
 		func(ball: Ball):
 			return ball.is_loop
 	)
@@ -142,6 +144,7 @@ func check_win_condition() -> bool:
 
 func end_simulation() -> void:
 	simulation_mode = false
+	timer.stop()
 	SignalBus.simulation.end.emit()
 	for ball in get_tree().get_nodes_in_group('ball'):
 		ball.queue_free()
@@ -151,26 +154,39 @@ func start_full_simulation() -> void:
 		ball.queue_free()
 	
 	_initialize_simulation()
-	for ball: Ball in get_tree().get_nodes_in_group('ball'):
-		if ball.tween:
-			ball.tween.kill()
-		ball.step_full()
+
+	og_balls = _spawn_souls_and_step_full()
+	timer.start()
 
 func _initialize_simulation() -> void:
 	if not simulation_mode:
 		simulation_mode = true
 		SignalBus.simulation.start.emit()
-	if get_tree().get_node_count_in_group('ball') == 0:
-		for start_tile: StartTile in get_tree().get_nodes_in_group("start_gate"):
-			if not start_tile.visible:
-				continue # Not visible == not active 
-			var ball = BALL.instantiate()
-			balls.add_child(ball)
-			ball.global_position = start_tile.global_position
-			ball._start_gate = start_tile
+
+func _spawn_souls_and_step_full() -> Array[Ball]:
+	var new_balls = _spawn_souls()
+	for ball: Ball in new_balls:
+		if ball.tween:
+			ball.tween.kill()
+		ball.step_full()
+	return new_balls
+	
+func _spawn_souls() -> Array[Ball]:
+	var new_balls: Array[Ball] = []
+	for start_tile: StartTile in get_tree().get_nodes_in_group("start_gate"):
+		if not start_tile.visible:
+			continue # Not visible == not active 
+		var ball = BALL.instantiate()
+		new_balls.append(ball)
+		balls.add_child(ball)
+		ball.global_position = start_tile.global_position
+		ball._start_gate = start_tile
+	return new_balls
 
 func step_backward() -> void:
 	_initialize_simulation()
+	if get_tree().get_node_count_in_group('ball') == 0:
+		_spawn_souls()
 	for ball: Ball in get_tree().get_nodes_in_group('ball'):
 		if ball.tween:
 			ball.tween.kill()
@@ -178,6 +194,8 @@ func step_backward() -> void:
 
 func step_forward() -> void:
 	_initialize_simulation()
+	if get_tree().get_node_count_in_group('ball') == 0:
+		_spawn_souls()
 	for ball: Ball in get_tree().get_nodes_in_group('ball'):
 		if ball.tween:
 			ball.tween.kill()
