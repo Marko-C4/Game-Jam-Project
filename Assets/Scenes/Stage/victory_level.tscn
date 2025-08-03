@@ -202,7 +202,7 @@ sources/2 = SubResource("TileSetAtlasSource_rfp0v")
 
 [node name="TestStage4" type="Node2D"]
 script = ExtResource("1_pq8ej")
-stage_name = "Sandbox"
+stage_name = "Endless Torment"
 map_scale = 0.5
 level_dialog = Array[String](["Congratulations, you have now brought more suffering to the world than any would have imagined.", "We are now in the last circle. It's brand new.", "I made it myself. Just for the ocasion. I hope you like it.", "As you are and will be its only inhabitance. For all of ETERNITY"])
 fixed_tiles = Array[ExtResource("2_h6sf8")]([SubResource("Resource_v4mhl"), SubResource("Resource_dfnif"), SubResource("Resource_1b4v2"), SubResource("Resource_rfp0v"), SubResource("Resource_t1jp3"), SubResource("Resource_jsanp"), SubResource("Resource_88da3")])
