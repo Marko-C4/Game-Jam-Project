@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ch71qprshi5bp"]
+[gd_scene load_steps=34 format=3 uid="uid://ch71qprshi5bp"]
 
 [ext_resource type="Script" uid="uid://dxcucmh2i3lxg" path="res://Assets/Scenes/HexTile/hex_tile.gd" id="1_t3cyp"]
 [ext_resource type="Script" uid="uid://bqmpu5lcp0ntm" path="res://Assets/Scenes/HexTile/GateTypes/gates.gd" id="2_gu4rk"]
@@ -44,11 +44,14 @@ atlas = ExtResource("9_o7rvm")
 region = Rect2(120, 0, 122, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jggy1"]
-atlas = ExtResource("5_3pctu")
-region = Rect2(240, 0, 120, 140)
+atlas = ExtResource("12_176fg")
+region = Rect2(122, 0, 120, 140)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_176fg"]
+load_path = "res://.godot/imported/CustomTerrain_Sheet.png-f61589bc49c4d48a4d71904f09e3064e.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_axowf"]
-atlas = ExtResource("10_jggy1")
+atlas = SubResource("CompressedTexture2D_176fg")
 region = Rect2(246, 426, 120, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wa7g5"]
@@ -60,15 +63,15 @@ atlas = ExtResource("12_176fg")
 region = Rect2(123, 284, 120, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o7rvm"]
-atlas = ExtResource("5_3pctu")
-region = Rect2(120, 140, 120, 140)
+atlas = ExtResource("12_176fg")
+region = Rect2(0, 142, 120, 140)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_akucw"]
 load_path = "res://.godot/imported/CustomTerrain_Sheet.png-f61589bc49c4d48a4d71904f09e3064e.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_te6ao"]
 atlas = SubResource("CompressedTexture2D_akucw")
-region = Rect2(0, 1704, 122, 140)
+region = Rect2(244, 426, 120, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_na6i5"]
 atlas = ExtResource("5_3pctu")
@@ -80,7 +83,7 @@ region = Rect2(360, 140, 120, 140)
 
 [node name="HexTile" type="Area2D" groups=["hex_gate"]]
 script = ExtResource("1_t3cyp")
-gate_type = 1
+gate_type = 3
 direction = 1
 
 [node name="HexSprite" type="Sprite2D" parent="."]
@@ -127,6 +130,7 @@ script = ExtResource("8_3pctu")
 texture = SubResource("AtlasTexture_jggy1")
 
 [node name="FlagGate" type="Node2D" parent="Gates" groups=["flag"]]
+visible = false
 script = ExtResource("9_sqtrx")
 
 [node name="FlagBg" type="Sprite2D" parent="Gates/FlagGate"]
@@ -153,15 +157,19 @@ visible = false
 script = ExtResource("4_na6i5")
 
 [node name="HexBg" type="Sprite2D" parent="Gates/EmptyGate"]
-modulate = Color(1, 0, 0, 0.392157)
+modulate = Color(0, 0, 0, 0.392157)
 texture = SubResource("AtlasTexture_te6ao")
 
 [node name="GroundGate" type="Node2D" parent="Gates"]
-visible = false
 script = ExtResource("14_akucw")
 
 [node name="HexBg" type="Sprite2D" parent="Gates/GroundGate"]
 texture = SubResource("AtlasTexture_te6ao")
+
+[node name="OverlayBg" type="Sprite2D" parent="Gates/GroundGate"]
+modulate = Color(1, 1, 1, 0.392157)
+self_modulate = Color(0, 0, 0.447059, 0.619608)
+texture = SubResource("AtlasTexture_axowf")
 
 [node name="BeltGate" type="Node2D" parent="Gates"]
 visible = false
