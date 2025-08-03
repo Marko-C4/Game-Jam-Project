@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://cvo8ihdpw666r"]
+[gd_scene load_steps=10 format=4 uid="uid://cvo8ihdpw666r"]
 
 [ext_resource type="Script" uid="uid://cyrw6x57j2lnx" path="res://Assets/Scenes/Stage/stage.gd" id="1_6o5ph"]
 [ext_resource type="Script" uid="uid://dwtmx7tfacldi" path="res://Assets/Scenes/HexTile/HexData/hex_data.gd" id="2_lvtlr"]
+[ext_resource type="Texture2D" uid="uid://dk8jj3pngm0lp" path="res://Assets/Sprites/Custom Hell Hexes/Hell Layers.png" id="3_lvtlr"]
 [ext_resource type="Texture2D" uid="uid://b8w1bw1p2qf81" path="res://Assets/Sprites/kenney-hex/hexagonTerrain_sheet.png" id="3_ygexe"]
 
 [sub_resource type="Resource" id="Resource_6o5ph"]
@@ -17,6 +18,20 @@ coordinate = Vector2i(3, 0)
 direction = 0
 gate = 4
 metadata/_custom_type_script = "uid://dwtmx7tfacldi"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ygexe"]
+texture = ExtResource("3_lvtlr")
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(120, 140)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fskse"]
 texture = ExtResource("3_ygexe")
@@ -132,6 +147,7 @@ tile_shape = 3
 tile_layout = 2
 tile_size = Vector2i(120, 140)
 sources/1 = SubResource("TileSetAtlasSource_fskse")
+sources/0 = SubResource("TileSetAtlasSource_ygexe")
 
 [node name="TeleporterStage2" type="Node2D"]
 script = ExtResource("1_6o5ph")
@@ -148,5 +164,5 @@ tile_set = SubResource("TileSet_bh65a")
 
 [node name="PlaceableTerrain" type="TileMapLayer" parent="."]
 z_index = -1
-tile_map_data = PackedByteArray("AAAAAP//AQACAAMAAAAAAAAAAQACAAMAAAD//wEAAQACAAMAAAD//wAAAQACAAMAAAD+/wAAAQACAAMAAAD+/wEAAQACAAMAAAADAP//AQACAAMAAAACAAAAAQACAAMAAAACAAEAAQACAAMAAAADAAAAAQACAAMAAAADAAEAAQACAAMAAAAEAAAAAQACAAMAAAA=")
+tile_map_data = PackedByteArray("AAAAAP//AAACAAIAAAAAAAAAAAACAAIAAAD//wEAAAACAAIAAAD//wAAAAACAAIAAAD+/wAAAAACAAIAAAD+/wEAAAACAAIAAAADAP//AAACAAIAAAACAAAAAAACAAIAAAACAAEAAAACAAIAAAADAAAAAAACAAIAAAADAAEAAAACAAIAAAAEAAAAAAACAAIAAAA=")
 tile_set = SubResource("TileSet_bh65a")
