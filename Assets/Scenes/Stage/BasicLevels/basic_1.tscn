@@ -188,7 +188,7 @@ placeable = Dictionary[int, int]({
 
 [node name="PlaceableTerrain" type="TileMapLayer" parent="."]
 z_index = -1
-tile_map_data = PackedByteArray("AAAAAP7/AgABAAIAAAABAP7/AgABAAIAAAD+/wAAAgABAAIAAAD/////AgABAAIAAAACAP7/AgABAAIAAAABAP//AgABAAIAAAAAAAAAAgABAAIAAAD//wAAAgABAAIAAAAAAP//AgABAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAAP7/AgABAAIAAAABAP7/AgABAAIAAAD+/wAAAgABAAIAAAD/////AgABAAIAAAACAP7/AgABAAIAAAABAP//AgABAAIAAAAAAAAAAgABAAIAAAD//wAAAgABAAIAAAA=")
 tile_set = SubResource("TileSet_bh65a")
 
 [node name="VisualTerrain" type="TileMapLayer" parent="."]
