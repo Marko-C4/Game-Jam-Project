@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://rkvnpw30n6s0"]
+[gd_scene load_steps=13 format=4 uid="uid://rkvnpw30n6s0"]
 
 [ext_resource type="Script" uid="uid://cyrw6x57j2lnx" path="res://Assets/Scenes/Stage/stage.gd" id="1_j8opl"]
 [ext_resource type="Script" uid="uid://dwtmx7tfacldi" path="res://Assets/Scenes/HexTile/HexData/hex_data.gd" id="2_wuv0o"]
 [ext_resource type="Texture2D" uid="uid://b8w1bw1p2qf81" path="res://Assets/Sprites/kenney-hex/hexagonTerrain_sheet.png" id="3_24ose"]
+[ext_resource type="Texture2D" uid="uid://dk8jj3pngm0lp" path="res://Assets/Sprites/Custom Hell Hexes/Hell Layers.png" id="3_pto81"]
+[ext_resource type="Texture2D" uid="uid://c2jtmmh4yulk4" path="res://Assets/Sprites/Custom Hell Hexes/Selection tile.png" id="5_mtjab"]
 
 [sub_resource type="Resource" id="Resource_bh65a"]
 script = ExtResource("2_wuv0o")
@@ -24,6 +26,20 @@ coordinate = Vector2i(1, -1)
 direction = 4
 gate = 2
 metadata/_custom_type_script = "uid://dwtmx7tfacldi"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q6sj1"]
+texture = ExtResource("3_pto81")
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(120, 140)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fskse"]
 texture = ExtResource("3_24ose")
@@ -134,11 +150,24 @@ texture_region_size = Vector2i(120, 140)
 5:13/0 = 0
 6:13/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y8txk"]
+texture = ExtResource("5_mtjab")
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(120, 140)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_bh65a"]
 tile_shape = 3
 tile_layout = 2
 tile_size = Vector2i(120, 140)
 sources/1 = SubResource("TileSetAtlasSource_fskse")
+sources/0 = SubResource("TileSetAtlasSource_q6sj1")
+sources/2 = SubResource("TileSetAtlasSource_y8txk")
 
 [node name="Bouncy4" type="Node2D"]
 script = ExtResource("1_j8opl")
@@ -152,9 +181,10 @@ placeable = Dictionary[int, int]({
 
 [node name="VisualTerrain" type="TileMapLayer" parent="."]
 z_index = -1
+tile_map_data = PackedByteArray("AAACAAAAAgABAAIAAAADAP7/AgABAAIAAAA=")
 tile_set = SubResource("TileSet_bh65a")
 
 [node name="PlaceableTerrain" type="TileMapLayer" parent="."]
 z_index = -1
-tile_map_data = PackedByteArray("AAAAAP7/AQACAAMAAAABAP7/AQACAAMAAAABAAAAAQACAAMAAAAAAAAAAQACAAMAAAD/////AQACAAMAAAAAAP//AQACAAMAAAD+////AQACAAMAAAD//wAAAQACAAMAAAABAP3/AQACAAMAAAACAP3/AQACAAMAAAD//wEAAQACAAMAAAAAAAEAAQACAAMAAAABAP//AQACAAMAAAACAP7/AQACAAMAAAACAP//AQACAAMAAAADAP//AQACAAMAAAACAAEAAQACAAMAAAADAAAAAQACAAMAAAAEAP//AQACAAMAAAAEAP7/AQACAAMAAAAEAP3/AQACAAMAAAA=")
+tile_map_data = PackedByteArray("AAAAAP7/AAAAAAEAAAABAP7/AAAAAAEAAAABAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAD/////AAAAAAEAAAAAAP//AAAAAAEAAAD+////AAAAAAEAAAD//wAAAAAAAAEAAAABAP3/AAAAAAEAAAACAP3/AAAAAAEAAAD//wEAAAAAAAEAAAAAAAEAAAAAAAEAAAABAP//AAAAAAEAAAACAP7/AAAAAAEAAAACAP//AAAAAAEAAAADAP//AAAAAAEAAAACAAEAAAAAAAEAAAADAAAAAAAAAAEAAAAEAP//AAAAAAEAAAAEAP7/AAAAAAEAAAAEAP3/AAAAAAEAAAA=")
 tile_set = SubResource("TileSet_bh65a")

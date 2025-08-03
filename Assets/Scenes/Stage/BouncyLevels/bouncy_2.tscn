@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://df5tqhm0jx1uh"]
+[gd_scene load_steps=13 format=4 uid="uid://df5tqhm0jx1uh"]
 
 [ext_resource type="Script" uid="uid://cyrw6x57j2lnx" path="res://Assets/Scenes/Stage/stage.gd" id="1_nwr1h"]
 [ext_resource type="Script" uid="uid://dwtmx7tfacldi" path="res://Assets/Scenes/HexTile/HexData/hex_data.gd" id="2_qpoxd"]
 [ext_resource type="Texture2D" uid="uid://b8w1bw1p2qf81" path="res://Assets/Sprites/kenney-hex/hexagonTerrain_sheet.png" id="3_7gj2s"]
+[ext_resource type="Texture2D" uid="uid://c2jtmmh4yulk4" path="res://Assets/Sprites/Custom Hell Hexes/Selection tile.png" id="3_d0xul"]
+[ext_resource type="Texture2D" uid="uid://dk8jj3pngm0lp" path="res://Assets/Sprites/Custom Hell Hexes/Hell Layers.png" id="5_e1k3f"]
 
 [sub_resource type="Resource" id="Resource_bh65a"]
 script = ExtResource("2_qpoxd")
@@ -24,6 +26,17 @@ coordinate = Vector2i(6, -1)
 direction = 0
 gate = 4
 metadata/_custom_type_script = "uid://dwtmx7tfacldi"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0jsa3"]
+texture = ExtResource("3_d0xul")
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(120, 140)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fskse"]
 texture = ExtResource("3_7gj2s")
@@ -134,11 +147,27 @@ texture_region_size = Vector2i(120, 140)
 5:13/0 = 0
 6:13/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_raq23"]
+texture = ExtResource("5_e1k3f")
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(120, 140)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_bh65a"]
 tile_shape = 3
 tile_layout = 2
 tile_size = Vector2i(120, 140)
 sources/1 = SubResource("TileSetAtlasSource_fskse")
+sources/0 = SubResource("TileSetAtlasSource_0jsa3")
+sources/2 = SubResource("TileSetAtlasSource_raq23")
 
 [node name="Bouncy2" type="Node2D"]
 script = ExtResource("1_nwr1h")
@@ -157,5 +186,5 @@ tile_set = SubResource("TileSet_bh65a")
 
 [node name="PlaceableTerrain" type="TileMapLayer" parent="."]
 z_index = -1
-tile_map_data = PackedByteArray("AAAAAP7/AQACAAMAAAABAP7/AQACAAMAAAABAAAAAQACAAMAAAAAAAAAAQACAAMAAAD/////AQACAAMAAAD+/wAAAQACAAMAAAAAAP//AQACAAMAAAD+////AQACAAMAAAD///7/AQACAAMAAAD//wAAAQACAAMAAAABAP//AQACAAMAAAACAP7/AQACAAMAAAACAAAAAQACAAMAAAADAP7/AQACAAMAAAADAP//AQACAAMAAAADAAAAAQACAAMAAAAEAP7/AQACAAMAAAAEAAAAAQACAAMAAAAFAP//AQACAAMAAAAFAP7/AQACAAMAAAD+//7/AQACAAMAAAD9////AQACAAMAAAD9/wAAAQACAAMAAAAGAP7/AQACAAMAAAAGAP//AQACAAMAAAAFAAAAAQACAAMAAAAHAP7/AQACAAMAAAAHAP//AQACAAMAAAAGAAAAAQACAAMAAAA=")
+tile_map_data = PackedByteArray("AAAAAP7/AgAAAAEAAAABAP7/AgAAAAEAAAABAAAAAgAAAAEAAAAAAAAAAgAAAAEAAAD/////AgAAAAEAAAD+/wAAAgAAAAEAAAAAAP//AgAAAAEAAAD+////AgAAAAEAAAD///7/AgAAAAEAAAD//wAAAgAAAAEAAAABAP//AgAAAAEAAAACAP7/AgAAAAEAAAACAAAAAgAAAAEAAAADAP7/AgAAAAEAAAADAP//AgAAAAEAAAADAAAAAgAAAAEAAAAEAP7/AgAAAAEAAAAEAAAAAgAAAAEAAAAFAP//AgAAAAEAAAAFAP7/AgAAAAEAAAD+//7/AgAAAAEAAAD9////AgAAAAEAAAD9/wAAAgAAAAEAAAAGAP7/AgAAAAEAAAAGAP//AgAAAAEAAAAFAAAAAgAAAAEAAAAHAP7/AgAAAAEAAAAHAP//AgAAAAEAAAAGAAAAAgAAAAEAAAACAP//AAABAAIAAAAEAP//AAABAAIAAAA=")
 tile_set = SubResource("TileSet_bh65a")
