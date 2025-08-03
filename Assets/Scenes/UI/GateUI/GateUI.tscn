@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b35g0jyo8vdub" path="res://Assets/Scenes/UI/GateUI/gate_ui.gd" id="1_746kh"]
 
 [node name="GateUi" type="Control"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 3
 anchors_preset = 11
 anchor_left = 1.0
@@ -20,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.476754, 0.547428, 0.589137, 1)
+color = Color(0.384114, 0.157155, 0.191903, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -39,6 +39,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 37
 text = "Soul Funnels"
 
 [node name="ButtonContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]

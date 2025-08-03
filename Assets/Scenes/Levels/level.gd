@@ -9,6 +9,11 @@ const TILE_MATCHES_FOR_LOOP := 3
 @onready var hex_map: HexMap = $HexMap
 @onready var gates: Node2D = $HexMap/Gates
 
+@onready var dialog_layer: CanvasLayer = $DialogLayer
+@onready var speaker_name: Label = $DialogLayer/Dialog/ColorRect/MarginContainer/VBoxContainer/SpeakerName
+@onready var dialog: Label = $DialogLayer/Dialog/ColorRect/MarginContainer/VBoxContainer/Dialog
+
+
 @onready var gate_ui: GateUI = %GateUI
 @onready var level_overlay: LevelOverlay = %LevelOverlay
 @onready var balls: Node = $HexMap/Balls
@@ -22,6 +27,8 @@ var holding: Dictionary[Global.GATE_TYPE, int]
 var current_stage: Stage = null
 var simulation_mode = false
 
+var dialog_index: int
+var current_dialog: Array[String]
 
 func _ready() -> void:
 	if load_first_level:
@@ -70,7 +77,7 @@ func _reload_level() -> void:
 			continue
 		
 		var fixed_tile := fixed_tile_data.create_instance(gates)
-		fixed_tile.fixed_in_place = true
+		fixed_tile.set_fixed()
 		fixed_tile.dnd.enabled = false # Disable dragging
 		hex_map.add_gate(fixed_tile, fixed_tile_data.coordinate)
 	
@@ -92,6 +99,11 @@ func _load_level(level_scene: PackedScene):
 	hex_map.terrain = current_stage._placeable_terrain
 	
 	hex_map.global_scale = Vector2(current_stage.map_scale, current_stage.map_scale)
+	MusicController.play_stage_music(Levels.current_world_num)
+	
+	dialog_index = 0
+	current_dialog = current_stage.level_dialog
+	_update_dialog_ui()
 	
 	_reload_level()
 
@@ -156,8 +168,6 @@ func _initialize_simulation() -> void:
 			balls.add_child(ball)
 			ball.global_position = start_tile.global_position
 			ball._start_gate = start_tile
-			ball._start_coord = start_tile.coordinate
-			ball._start_dir = HexUtils.cube_to_axial(HexUtils.NEIGHBOR_DIRS[start_tile.direction])
 
 func step_backward() -> void:
 	_initialize_simulation()
@@ -185,6 +195,13 @@ func is_looping(path: Array[Vector2i]) -> bool:
 				level_overlay.update_score(len(path) - i - TILE_MATCHES_FOR_LOOP)
 				return true
 	return false
+
+func _update_dialog_ui() -> void:
+	if dialog_index >= current_dialog.size():
+		dialog_layer.visible = false
+	else:
+		dialog_layer.visible = true
+		dialog.text = current_dialog[dialog_index]
 
 func _put_gate_to_holding(hex: HexTile) -> void:
 	gate_ui.return_gate(hex.gate_type)
@@ -217,3 +234,9 @@ func _on_start_stop_button_pressed() -> void:
 		end_simulation()
 	else:
 		start_full_simulation()
+
+
+func _on_dialog_gui_input(event: InputEvent) -> void:
+	if event.is_action_pressed("mouse1"):
+		dialog_index += 1
+		_update_dialog_ui()

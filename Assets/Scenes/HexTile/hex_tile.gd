@@ -3,9 +3,10 @@ extends Node2D
 
 @export var gate_type: Global.GATE_TYPE
 @export var direction: Utils.Direction
-@onready var dnd: DragAndDrop = $DnD
 
+@onready var dnd: DragAndDrop = $DnD
 @onready var gates: Gates = $Gates
+@onready var hex_bg: Sprite2D = $HexBg
 
 var fixed_in_place = false
 var coordinate: Vector2i
@@ -44,6 +45,10 @@ func initialize(gate_type: Global.GATE_TYPE, direction: Utils.Direction):
 
 func get_gate() -> GateHex:
 	return gates.gate
+
+func set_fixed() -> void:
+	fixed_in_place = true
+	hex_bg.modulate = Color(0.314, 0.0, 0.0, 0.2)
 
 func _on_dnd_drag_started() -> void:
 	z_index = 100

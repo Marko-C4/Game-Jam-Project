@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://tyddymiw7gft"]
+[gd_scene load_steps=12 format=3 uid="uid://tyddymiw7gft"]
 
 [ext_resource type="Script" uid="uid://duiv100qy324d" path="res://Assets/Scenes/Levels/level.gd" id="1_lrk52"]
 [ext_resource type="Script" uid="uid://p42xsu17k48n" path="res://Assets/Scenes/Levels/tilemap.gd" id="3_oue8b"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://byl550u315pku" path="res://Assets/Components/tile_highlighter.gd" id="5_75ljv"]
 [ext_resource type="Script" uid="uid://cab5ksxc15j6i" path="res://Assets/Components/debug_draw_coordinates.gd" id="5_uamee"]
 [ext_resource type="PackedScene" uid="uid://cg1u5dd6dgxwt" path="res://Assets/Scenes/UI/GateUI/GateUI.tscn" id="7_v0d7o"]
+[ext_resource type="Texture2D" uid="uid://brf51254d2rjs" path="res://Assets/Sprites/purepng.com-devildevilchristianityopponent-of-godsatanevil-170152775558534hqz.png" id="8_6sbb7"]
 [ext_resource type="PackedScene" uid="uid://c7iyp161hnyaj" path="res://Assets/Scenes/UI/LevelOverlay/LevelOverlay.tscn" id="8_evxrp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v0d7o"]
@@ -123,6 +124,14 @@ tile_layout = 2
 tile_size = Vector2i(120, 140)
 sources/1 = SubResource("TileSetAtlasSource_v0d7o")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uamee"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.164706, 0, 0, 1)
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_lrk52")
 load_first_level = true
@@ -157,8 +166,17 @@ tile_map = NodePath("../Highlight")
 [node name="BottomGroup" type="CanvasLayer" parent="."]
 layer = -1
 
+[node name="Background" type="ColorRect" parent="BottomGroup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.167444, 0.0488613, 0.0533419, 1)
+
 [node name="RightSidebar" type="Control" parent="BottomGroup"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 3
 anchors_preset = 11
 anchor_left = 1.0
@@ -217,7 +235,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 mouse_filter = 2
-color = Color(0.476754, 0.547428, 0.589137, 1)
+color = Color(0.384114, 0.157155, 0.191903, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="TopLayer/BottomBar/VBoxContainer/ColorRect"]
 custom_minimum_size = Vector2(0, 50)
@@ -235,3 +253,86 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Peepee Poopoo"
 horizontal_alignment = 1
+
+[node name="DialogLayer" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="Dialog" type="Control" parent="DialogLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="DialogLayer/Dialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.168627, 0.0470588, 0.054902, 0.392157)
+
+[node name="ColorRect" type="ColorRect" parent="DialogLayer/Dialog"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+color = Color(0.384114, 0.157155, 0.191903, 1)
+
+[node name="Outline" type="Panel" parent="DialogLayer/Dialog/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_uamee")
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogLayer/Dialog/ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogLayer/Dialog/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="SpeakerName" type="Label" parent="DialogLayer/Dialog/ColorRect/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 32
+text = "Satan"
+
+[node name="Dialog" type="Label" parent="DialogLayer/Dialog/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 32
+text = "The quick brown fox jumps over the lazy dog
+"
+
+[node name="TextureRect" type="TextureRect" parent="DialogLayer/Dialog"]
+layout_mode = 0
+offset_left = 910.0
+offset_top = 195.0
+offset_right = 1276.0
+offset_bottom = 562.0
+texture = ExtResource("8_6sbb7")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="gui_input" from="DialogLayer/Dialog" to="." method="_on_dialog_gui_input"]
