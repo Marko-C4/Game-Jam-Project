@@ -135,7 +135,7 @@ sources/1 = SubResource("TileSetAtlasSource_fskse")
 
 [node name="TestStage2" type="Node2D"]
 script = ExtResource("1_fqtsa")
-stage_name = "Test"
+stage_name = "Double The Trouble"
 offset = Vector2(80, 10)
 fixed_tiles = Array[ExtResource("2_fqtsa")]([SubResource("Resource_gxrlt"), SubResource("Resource_uh54p")])
 placeable = Dictionary[int, int]({
