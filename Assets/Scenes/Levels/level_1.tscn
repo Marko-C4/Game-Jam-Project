@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://byl550u315pku" path="res://Assets/Components/tile_highlighter.gd" id="5_75ljv"]
 [ext_resource type="Script" uid="uid://cab5ksxc15j6i" path="res://Assets/Components/debug_draw_coordinates.gd" id="5_uamee"]
 [ext_resource type="PackedScene" uid="uid://cg1u5dd6dgxwt" path="res://Assets/Scenes/UI/GateUI/GateUI.tscn" id="7_v0d7o"]
-[ext_resource type="Texture2D" uid="uid://brf51254d2rjs" path="res://Assets/Sprites/purepng.com-devildevilchristianityopponent-of-godsatanevil-170152775558534hqz.png" id="8_6sbb7"]
+[ext_resource type="Texture2D" uid="uid://3e6fdr6xxy8b" path="res://Assets/Sprites/Custom Hell Hexes/Prince of Darkness.png" id="8_6sbb7"]
 [ext_resource type="PackedScene" uid="uid://c7iyp161hnyaj" path="res://Assets/Scenes/UI/LevelOverlay/LevelOverlay.tscn" id="8_evxrp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v0d7o"]
@@ -306,78 +306,103 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0.168627, 0.0470588, 0.054902, 0.392157)
 
-[node name="ColorRect" type="ColorRect" parent="DialogLayer/Dialog"]
-custom_minimum_size = Vector2(0, 200)
+[node name="Dialogue BG" type="ColorRect" parent="DialogLayer/Dialog"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -200.0
+offset_left = 314.0
+offset_top = -189.0
+offset_right = -40.0
+offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
 color = Color(0.384114, 0.157155, 0.191903, 1)
 
-[node name="Outline" type="Panel" parent="DialogLayer/Dialog/ColorRect"]
+[node name="DialogueFrame" type="Panel" parent="DialogLayer/Dialog"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 310.0
+offset_top = 525.0
+offset_right = -31.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_uamee")
 
-[node name="MarginContainer" type="MarginContainer" parent="DialogLayer/Dialog/ColorRect"]
+[node name="DialogueBox" type="MarginContainer" parent="DialogLayer/Dialog"]
 layout_mode = 0
-offset_left = 315.0
-offset_top = 41.0
-offset_right = 1179.0
-offset_bottom = 150.0
+offset_left = 323.0
+offset_top = 527.0
+offset_right = 1249.0
+offset_bottom = 701.0
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DialogLayer/Dialog/ColorRect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogLayer/Dialog/DialogueBox"]
 layout_mode = 2
 
-[node name="SpeakerName" type="Label" parent="DialogLayer/Dialog/ColorRect/MarginContainer/VBoxContainer"]
+[node name="SpeakerName" type="Label" parent="DialogLayer/Dialog/DialogueBox/VBoxContainer"]
 visible = false
 layout_mode = 2
 mouse_filter = 1
 theme_override_font_sizes/font_size = 32
 text = "Satan"
 
-[node name="Dialog" type="Label" parent="DialogLayer/Dialog/ColorRect/MarginContainer/VBoxContainer"]
+[node name="Dialog" type="Label" parent="DialogLayer/Dialog/DialogueBox/VBoxContainer"]
+custom_minimum_size = Vector2(300, 120)
 layout_mode = 2
 mouse_filter = 1
 theme_override_font_sizes/font_size = 32
 text = "The quick brown fox jumps over the lazy dog"
 autowrap_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="DialogLayer/Dialog"]
-layout_mode = 0
-offset_left = 910.0
-offset_top = 195.0
-offset_right = 1276.0
-offset_bottom = 562.0
-texture = ExtResource("8_6sbb7")
-expand_mode = 1
-stretch_mode = 5
+[node name="CharacterBG" type="ColorRect" parent="DialogLayer/Dialog"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 41.0
+offset_top = -256.0
+offset_right = -983.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+color = Color(0.384114, 0.157155, 0.191903, 1)
 
-[node name="Outline2" type="Panel" parent="DialogLayer/Dialog"]
+[node name="CharacterFrame" type="Panel" parent="DialogLayer/Dialog"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 909.0
-offset_top = 268.0
-offset_bottom = -197.0
+offset_left = 32.0
+offset_top = 460.0
+offset_right = -982.0
+offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_uamee")
+
+[node name="CharacterArt" type="TextureRect" parent="DialogLayer/Dialog"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 432.0
+offset_right = 299.0
+offset_bottom = 694.0
+texture = ExtResource("8_6sbb7")
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="gui_input" from="DialogLayer/Dialog" to="." method="_on_dialog_gui_input"]

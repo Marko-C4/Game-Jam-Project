@@ -12,7 +12,7 @@ const TILE_MATCHES_FOR_LOOP := 3
 
 @onready var dialog_layer: CanvasLayer = $DialogLayer
 @onready var speaker_name: Label = $DialogLayer/Dialog/ColorRect/MarginContainer/VBoxContainer/SpeakerName
-@onready var dialog: Label = $DialogLayer/Dialog/ColorRect/MarginContainer/VBoxContainer/Dialog
+@onready var dialog: Label = $"DialogLayer/Dialog/DialogueBox/VBoxContainer/Dialog"
 @onready var timer: Timer = $Timer
 
 @onready var gate_ui: GateUI = %GateUI
