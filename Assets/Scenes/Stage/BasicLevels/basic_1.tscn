@@ -180,7 +180,7 @@ sources/2 = SubResource("TileSetAtlasSource_4hnp4")
 script = ExtResource("1_e75r6")
 stage_name = "Humble Beginnings"
 offset = Vector2(100, 100)
-level_dialog = Array[String](["Excellent! We have been looking for a new middle manager here in the First Circle of Hell! ", "Your task is simple, construct a loop for the soul by dragging the Soul Funnels from the right"])
+level_dialog = Array[String](["Excellent! We have been looking for a new middle manager here in the First Circle of Hell! ", "Your task is simple, construct a loop for the soul by dragging the Soul Funnels from the right", "You can start the loop by pressing (Space) and Reset the loop by pressing (Q)"])
 fixed_tiles = Array[ExtResource("2_n5ewr")]([SubResource("Resource_bh65a"), SubResource("Resource_bvvx7"), SubResource("Resource_d0loq"), SubResource("Resource_ad4ef")])
 placeable = Dictionary[int, int]({
 1: 1
