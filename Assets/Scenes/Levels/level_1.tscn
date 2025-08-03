@@ -287,7 +287,6 @@ horizontal_alignment = 1
 
 [node name="DialogLayer" type="CanvasLayer" parent="."]
 layer = 2
-visible = false
 
 [node name="Dialog" type="Control" parent="DialogLayer"]
 layout_mode = 3
@@ -332,8 +331,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_uamee")
 
 [node name="MarginContainer" type="MarginContainer" parent="DialogLayer/Dialog/ColorRect"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 315.0
+offset_top = 41.0
+offset_right = 1179.0
+offset_bottom = 150.0
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -353,8 +354,8 @@ text = "Satan"
 layout_mode = 2
 mouse_filter = 1
 theme_override_font_sizes/font_size = 32
-text = "The quick brown fox jumps over the lazy dog
-"
+text = "The quick brown fox jumps over the lazy dog"
+autowrap_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="DialogLayer/Dialog"]
 layout_mode = 0
@@ -365,5 +366,18 @@ offset_bottom = 562.0
 texture = ExtResource("8_6sbb7")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Outline2" type="Panel" parent="DialogLayer/Dialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 909.0
+offset_top = 268.0
+offset_bottom = -197.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_uamee")
 
 [connection signal="gui_input" from="DialogLayer/Dialog" to="." method="_on_dialog_gui_input"]
