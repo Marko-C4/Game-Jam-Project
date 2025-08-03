@@ -166,6 +166,7 @@ sources/2 = SubResource("TileSetAtlasSource_b58gr")
 script = ExtResource("1_fqtsa")
 stage_name = "Double The Trouble"
 offset = Vector2(80, 10)
+level_dialog = Array[String](["Congratsulations! ", "Your hadling of the pist of despair did not go unnoticed. We decided to promote you to the second circle.", "Here lies the lustfull. Make sure to tear them painfully to slices so they can scather everywhere. Exactly how they wanted in life."])
 fixed_tiles = Array[ExtResource("2_fqtsa")]([SubResource("Resource_gxrlt"), SubResource("Resource_uh54p")])
 placeable = Dictionary[int, int]({
 1: 5

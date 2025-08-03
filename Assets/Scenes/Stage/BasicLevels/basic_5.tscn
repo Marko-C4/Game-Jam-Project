@@ -230,6 +230,7 @@ script = ExtResource("1_a2mgd")
 stage_name = "Staring..."
 offset = Vector2(0, 100)
 map_scale = 0.6
+level_dialog = Array[String](["Ah. Welcome to the pits of despair!", "We leave it to your care."])
 fixed_tiles = Array[ExtResource("2_8csue")]([SubResource("Resource_8csue"), SubResource("Resource_loymq"), SubResource("Resource_agbye"), SubResource("Resource_2w3t8"), SubResource("Resource_5k4ct"), SubResource("Resource_23et4"), SubResource("Resource_007os"), SubResource("Resource_nc3ts"), SubResource("Resource_gvmbr"), SubResource("Resource_l6u12"), SubResource("Resource_a2mgd")])
 placeable = Dictionary[int, int]({
 1: 8

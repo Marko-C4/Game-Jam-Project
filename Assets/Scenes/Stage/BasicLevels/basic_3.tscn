@@ -160,6 +160,7 @@ sources/0 = SubResource("TileSetAtlasSource_un2mx")
 script = ExtResource("1_jtc2w")
 stage_name = "Capture the Flag"
 offset = Vector2(100, 100)
+level_dialog = Array[String](["Ah, I forgot the torment pits.", "Here, try again. This time be sure to give them a little pain. "])
 fixed_tiles = Array[ExtResource("2_gratq")]([SubResource("Resource_bh65a"), SubResource("Resource_jtc2w"), SubResource("Resource_gratq")])
 placeable = Dictionary[int, int]({
 1: 6

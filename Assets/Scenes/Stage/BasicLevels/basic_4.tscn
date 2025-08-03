@@ -227,6 +227,7 @@ sources/3 = SubResource("TileSetAtlasSource_kyqt1")
 script = ExtResource("1_0eg1t")
 stage_name = "One Legged Starfish"
 offset = Vector2(100, 100)
+level_dialog = Array[String](["Limbo is known for its emptiness. Vast but full of nothing. Most of it useless for construction although souls can still traverse it."])
 fixed_tiles = Array[ExtResource("2_5tn4s")]([SubResource("Resource_bh65a"), SubResource("Resource_jtc2w"), SubResource("Resource_gratq"), SubResource("Resource_0eg1t"), SubResource("Resource_5tn4s"), SubResource("Resource_gtiaf"), SubResource("Resource_t53uu"), SubResource("Resource_8kopj"), SubResource("Resource_oa6b1")])
 placeable = Dictionary[int, int]({
 1: 7
