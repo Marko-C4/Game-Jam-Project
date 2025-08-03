@@ -11,7 +11,6 @@ const WORLD_NAMES = [
 		"Fraud", 
 		"Treachery"
 	]
-	
 
 var common_level_scene = load("res://Assets/Scenes/Levels/level_1.tscn")
 

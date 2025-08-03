@@ -405,4 +405,16 @@ texture = ExtResource("8_6sbb7")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Fadeout" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.27451, 0, 0, 0)
+
 [connection signal="gui_input" from="DialogLayer/Dialog" to="." method="_on_dialog_gui_input"]
