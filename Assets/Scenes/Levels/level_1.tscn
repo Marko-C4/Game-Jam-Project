@@ -163,6 +163,9 @@ limit = 10
 offset = Vector2(-40, 8)
 tile_map = NodePath("../Highlight")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
 [node name="BottomGroup" type="CanvasLayer" parent="."]
 layer = -1
 

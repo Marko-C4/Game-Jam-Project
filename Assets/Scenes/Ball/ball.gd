@@ -6,16 +6,24 @@ extends Node2D
 var tween: Tween
 
 var _start_gate: StartTile
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 var _head_dir: Vector2i
 var _path_index: int
 var _path: Array[Vector2i]
 var is_loop = false
 var special_movement: Dictionary[int, Global.GATE_TYPE] = {}
-
+var time := 0.0
 func reset() -> void:
 	if tween:
 		tween.kill()
+
+func _ready() -> void:
+	var tw = create_tween()
+	tw.set_loops()
+	tw.set_ease(Tween.EASE_OUT_IN)
+	tw.tween_property(self, "rotation", deg_to_rad(10), 0.5)
+	tw.tween_property(self, "rotation", deg_to_rad(-10), 0.5) 
 
 func move_to(target: Vector2i, infinite = false):
 	var target_pos := hex_map.to_global(hex_map.terrain.map_to_local(target))
@@ -35,17 +43,13 @@ func move_to(target: Vector2i, infinite = false):
 				tween = create_tween()
 				tween.parallel().tween_property(self, "global_position", target_pos, 0.40)
 				tween.parallel().tween_property(self, "global_rotation", deg_to_rad(360), 0.40)
-				tween.parallel().tween_property(self, "scale", Vector2(2, 2), 0.10)
+				tween.parallel().tween_property(self, "scale", Vector2(1.5, 1.5), 0.10)
 				tween.tween_property(self, "scale", Vector2(1, 1), 0.10)
 				tween.tween_callback(func():
 					if infinite:
 						step(infinite)
 				)
-				#var real_target_pos := hex_map.to_global(hex_map.terrain.map_to_local(target))
-				#global_position = real_target_pos
-				#if infinite:
-					#call_deferred("step", infinite)
-					
+
 	else:
 		tween = create_tween()
 		tween.tween_property(self, "global_position", target_pos, 0.25)
@@ -55,7 +59,7 @@ func move_to(target: Vector2i, infinite = false):
 		)
 
 func undo_step():
-	if _path_index  <= 1:
+	if _path_index <= 1:
 		print_debug("can't go beyond start")
 		return
 	
@@ -77,6 +81,9 @@ func step(infinite = false):
 		_path_index += 1
 		return
 	elif not hex_map.is_travesible(current_hex): # Can't move
+		tween = create_tween()
+		tween.parallel().tween_property(self, "global_rotation", deg_to_rad(720), 1)
+		tween.parallel().tween_property(self, "scale", Vector2(0, 0), 1)
 		print_debug("Illegal path")
 		return
 	elif _path_index == 1: # Special start of path stuff
@@ -100,7 +107,6 @@ func step(infinite = false):
 			
 			# Loop check
 			if (_has_looped(gate, _head_dir)):
-				print_debug("Looping path!!")
 				move_to(_path[1], infinite)
 				_path_index = 2
 				is_loop = true
