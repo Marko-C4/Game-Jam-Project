@@ -184,6 +184,7 @@ script = ExtResource("1_nc5qx")
 stage_name = "Wayward Sons"
 offset = Vector2(30, 10)
 map_scale = 0.6
+level_dialog = Array[String](["You have gotten yourself far.", "Violence, we are aproaching the end stages. Here it's hard to punish them enough."])
 fixed_tiles = Array[ExtResource("2_oqlmi")]([SubResource("Resource_nc5qx"), SubResource("Resource_oqlmi"), SubResource("Resource_o7mhv"), SubResource("Resource_6db5r")])
 placeable = Dictionary[int, int]({
 1: 5
