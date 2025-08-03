@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://8wj3pjol5ul"]
+
+[ext_resource type="Script" uid="uid://cmhc4lk8gxnx" path="res://Assets/Scenes/Menus/win_screen.gd" id="1_yy1e2"]
+
+[sub_resource type="Theme" id="Theme_nbpxl"]
+
+[sub_resource type="Theme" id="Theme_yy1e2"]
+
+[sub_resource type="FontVariation" id="FontVariation_yy1e2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nbpxl"]
+
+[sub_resource type="Theme" id="Theme_punph"]
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yy1e2")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_nbpxl")
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_yy1e2")
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = SubResource("FontVariation_yy1e2")
+theme_override_font_sizes/font_size = 30
+text = "Congrats! You'd beat the Devil at Deviling."
+label_settings = SubResource("LabelSettings_nbpxl")
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_punph")
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 24
+text = "Back to menu
+"

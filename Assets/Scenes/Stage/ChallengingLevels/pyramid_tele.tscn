@@ -221,7 +221,7 @@ sources/0 = SubResource("TileSetAtlasSource_lqjpy")
 
 [node name="PyramidTele" type="Node2D"]
 script = ExtResource("1_tu8e8")
-stage_name = "Sandbox"
+stage_name = "Pyramids"
 offset = Vector2(0, -20)
 map_scale = 0.6
 fixed_tiles = Array[ExtResource("2_en4ou")]([SubResource("Resource_tu8e8"), SubResource("Resource_en4ou"), SubResource("Resource_lqjpy"), SubResource("Resource_ns56t"), SubResource("Resource_pawm6"), SubResource("Resource_s15op"), SubResource("Resource_3dr0u"), SubResource("Resource_donso"), SubResource("Resource_e65ae"), SubResource("Resource_acf87"), SubResource("Resource_1pbo5"), SubResource("Resource_5jjyg")])

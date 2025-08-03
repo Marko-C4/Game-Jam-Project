@@ -159,7 +159,7 @@ sources/2 = SubResource("TileSetAtlasSource_7wkph")
 script = ExtResource("1_5ibuq")
 stage_name = "Spring Boots"
 offset = Vector2(100, 100)
-level_dialog = Array[String](["One of our hellions got a burnout and made big holes on this level during his tantrum.", "However, this is a perfect opportunity to test the most recent innovation of our R&G department: Boucy Gate!", "Use it to cross the gaps on level."])
+level_dialog = Array[String](["One of our hellions got a burnout and made big holes on this level during his tantrum.", "However, this is a perfect opportunity to test the most recent innovation of our R&G department: Bouncy Gate!", "Use it to cross the gaps on the level."])
 fixed_tiles = Array[ExtResource("2_ysl4p")]([SubResource("Resource_bh65a")])
 placeable = Dictionary[int, int]({
 1: 3,

@@ -203,7 +203,7 @@ script = ExtResource("1_x11ve")
 stage_name = "Hellagon"
 offset = Vector2(0, -45)
 map_scale = 0.7
-level_dialog = Array[String](["Shhh...", "Here lies the trecherous. Eternaly encased in ice. Unable to move, Unable to think. Too dangerous otherwise."])
+level_dialog = Array[String](["Shhh...", "Here lay the treacherous. Eternally encased in ice. Unable to move, Unable to think. Too dangerous otherwise."])
 fixed_tiles = Array[ExtResource("2_nx1he")]([SubResource("Resource_6o5ph"), SubResource("Resource_lvtlr"), SubResource("Resource_qj5gx"), SubResource("Resource_x11ve"), SubResource("Resource_nx1he"), SubResource("Resource_oa707"), SubResource("Resource_mvcya"), SubResource("Resource_fjp0t"), SubResource("Resource_3auk7")])
 placeable = Dictionary[int, int]({
 1: 2,

@@ -164,9 +164,9 @@ sources/2 = SubResource("TileSetAtlasSource_kccqd")
 
 [node name="TurnStage1" type="Node2D"]
 script = ExtResource("1_0l25u")
-stage_name = "Humble Beginnings"
+stage_name = "You Spin my Head Right Round"
 offset = Vector2(100, 0)
-level_dialog = Array[String](["Circle of anger. Here the wrathfull fight for eternity. Let the strongest have the possibility to swim to the surface for few second of air.", "Vile but ficle sin. Getle turning help sometimes more than a command for a direction."])
+level_dialog = Array[String](["The Circle of anger. Here the wrathful fight for an eternity. Let the strongest have the possibility to swim to the surface for a few second of air.", "Vile but ficle sin. Gentle turning help sometimes more than a command for a direction."])
 fixed_tiles = Array[ExtResource("2_ff8ky")]([SubResource("Resource_bh65a"), SubResource("Resource_d0loq")])
 placeable = Dictionary[int, int]({
 1: 4,
