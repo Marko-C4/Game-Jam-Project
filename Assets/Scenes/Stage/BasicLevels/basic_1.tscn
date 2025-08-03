@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://b0tgm5a8de85l"]
+[gd_scene load_steps=14 format=4 uid="uid://b0tgm5a8de85l"]
 
 [ext_resource type="Script" uid="uid://cyrw6x57j2lnx" path="res://Assets/Scenes/Stage/stage.gd" id="1_e75r6"]
 [ext_resource type="Script" uid="uid://dwtmx7tfacldi" path="res://Assets/Scenes/HexTile/HexData/hex_data.gd" id="2_n5ewr"]
 [ext_resource type="Texture2D" uid="uid://c2jtmmh4yulk4" path="res://Assets/Sprites/Custom Hell Hexes/Selection tile.png" id="3_d0loq"]
 [ext_resource type="Texture2D" uid="uid://b8w1bw1p2qf81" path="res://Assets/Sprites/kenney-hex/hexagonTerrain_sheet.png" id="3_uovqy"]
+[ext_resource type="Texture2D" uid="uid://dk8jj3pngm0lp" path="res://Assets/Sprites/Custom Hell Hexes/Hell Layers.png" id="5_ad4ef"]
 
 [sub_resource type="Resource" id="Resource_bh65a"]
 script = ExtResource("2_n5ewr")
@@ -153,18 +154,33 @@ texture_region_size = Vector2i(120, 140)
 5:13/0 = 0
 6:13/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4hnp4"]
+texture = ExtResource("5_ad4ef")
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(120, 140)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_bh65a"]
 tile_shape = 3
 tile_layout = 2
 tile_size = Vector2i(120, 140)
 sources/1 = SubResource("TileSetAtlasSource_fskse")
 sources/0 = SubResource("TileSetAtlasSource_ad4ef")
+sources/2 = SubResource("TileSetAtlasSource_4hnp4")
 
 [node name="BasicStage1" type="Node2D"]
 script = ExtResource("1_e75r6")
 stage_name = "Humble Beginnings"
 offset = Vector2(100, 100)
-level_dialog = Array[String](["Hi sexyy ;)))", "Wanna come to my place today ;))", "Your objective is to make a loop!"])
+level_dialog = Array[String](["Excellent! We have been looking for a new middle manager here in the First Circle of Hell! ", "Your task is simple, construct a loop for the soul by dragging the Soul Funnels from the right", "You can start the loop by pressing (Space) and Reset the loop by pressing (Q)"])
 fixed_tiles = Array[ExtResource("2_n5ewr")]([SubResource("Resource_bh65a"), SubResource("Resource_bvvx7"), SubResource("Resource_d0loq"), SubResource("Resource_ad4ef")])
 placeable = Dictionary[int, int]({
 1: 1
@@ -172,15 +188,15 @@ placeable = Dictionary[int, int]({
 
 [node name="PlaceableTerrain" type="TileMapLayer" parent="."]
 z_index = -1
-tile_map_data = PackedByteArray("AAD///7/AQACAAMAAAAAAP7/AQACAAMAAAABAP7/AQACAAMAAAABAP//AQAAAAwAAAABAAAAAQACAAMAAAAAAAAAAQABAA0AAAD//wAAAQACAAMAAAD/////AQACAAMAAAA=")
-tile_set = SubResource("TileSet_bh65a")
-
-[node name="PlaceableTerrain" type="TileMapLayer" parent="PlaceableTerrain"]
-z_index = -1
-tile_map_data = PackedByteArray("AAD///7/AQACAAMAAAAAAP7/AQACAAMAAAABAP7/AQACAAMAAAD//wAAAQACAAMAAAD/////AQACAAMAAAA=")
+tile_map_data = PackedByteArray("AAAAAP7/AgABAAIAAAABAP7/AgABAAIAAAD+/wAAAgABAAIAAAD/////AgABAAIAAAACAP7/AgABAAIAAAABAP//AgABAAIAAAAAAAAAAgABAAIAAAD//wAAAgABAAIAAAAAAP//AgABAAIAAAA=")
 tile_set = SubResource("TileSet_bh65a")
 
 [node name="VisualTerrain" type="TileMapLayer" parent="."]
 z_index = -1
-tile_map_data = PackedByteArray("AAABAAAAAAABAAIAAAAAAAAAAAAAAAIAAAABAP//AAAAAAIAAAABAP7/AAABAAAAAAAAAP7/AAAAAAAAAAD//wAAAAAAAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAAP//AgABAAIAAAA=")
+tile_set = SubResource("TileSet_bh65a")
+
+[node name="Props" type="TileMapLayer" parent="."]
+z_index = -1
+tile_map_data = PackedByteArray("AAAAAP//AAABAAIAAAA=")
 tile_set = SubResource("TileSet_bh65a")
