@@ -99,6 +99,7 @@ func _load_level(level_scene: PackedScene):
 	hex_map.terrain = current_stage._placeable_terrain
 	
 	hex_map.global_scale = Vector2(current_stage.map_scale, current_stage.map_scale)
+	MusicController.play_stage_music(Levels.current_world_num)
 	
 	dialog_index = 0
 	current_dialog = current_stage.level_dialog
