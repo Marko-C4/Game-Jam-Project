@@ -2,6 +2,7 @@ extends Node
 
 var menu_music = load("res://Assets/Music/Somber_infernal.wav")
 var limbo_music = load("res://Assets/Music/Limbo.wav")
+var lust_music = load("res://Assets/Music/Lust.wav")
 var fraud_music = load("res://Assets/Music/Fraud.wav")
 
 func play_menu_music() -> void:
@@ -10,16 +11,17 @@ func play_menu_music() -> void:
 		$Music.play()
 
 func play_stage_music(stage_num: int) -> void:
+	var music = menu_music
 	match stage_num:
 		0:
-			if $Music.stream != limbo_music:
-				$Music.stream = limbo_music
-				$Music.play()
+			music = limbo_music
+		1:
+			music = lust_music 
 		5:
-			if $Music.stream != fraud_music:
-				$Music.stream = fraud_music
-				$Music.play()
+			music = fraud_music
 		_:
-			if $Music.stream != menu_music:
-				$Music.stream = menu_music
+			music = menu_music
+			
+	if $Music.stream != music:
+				$Music.stream = music
 				$Music.play()
