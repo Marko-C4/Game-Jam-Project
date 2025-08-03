@@ -1,25 +1,25 @@
-[gd_scene load_steps=8 format=4 uid="uid://bhsm1xw748vu6"]
+[gd_scene load_steps=8 format=4 uid="uid://er4h6j3pnxb1"]
 
-[ext_resource type="Script" uid="uid://cyrw6x57j2lnx" path="res://Assets/Scenes/Stage/stage.gd" id="1_r8am7"]
-[ext_resource type="Script" uid="uid://dwtmx7tfacldi" path="res://Assets/Scenes/HexTile/HexData/hex_data.gd" id="2_wh73u"]
-[ext_resource type="Texture2D" uid="uid://b8w1bw1p2qf81" path="res://Assets/Sprites/kenney-hex/hexagonTerrain_sheet.png" id="3_ocf13"]
+[ext_resource type="Script" uid="uid://cyrw6x57j2lnx" path="res://Assets/Scenes/Stage/stage.gd" id="1_qg3eu"]
+[ext_resource type="Script" uid="uid://dwtmx7tfacldi" path="res://Assets/Scenes/HexTile/HexData/hex_data.gd" id="2_gr8fu"]
+[ext_resource type="Texture2D" uid="uid://b8w1bw1p2qf81" path="res://Assets/Sprites/kenney-hex/hexagonTerrain_sheet.png" id="3_kx5xu"]
 
-[sub_resource type="Resource" id="Resource_bh65a"]
-script = ExtResource("2_wh73u")
-coordinate = Vector2i(1, 1)
-direction = 1
+[sub_resource type="Resource" id="Resource_tgi83"]
+script = ExtResource("2_gr8fu")
+coordinate = Vector2i(3, -1)
+direction = 0
 gate = 0
 metadata/_custom_type_script = "uid://dwtmx7tfacldi"
 
-[sub_resource type="Resource" id="Resource_am3sf"]
-script = ExtResource("2_wh73u")
-coordinate = Vector2i(2, 1)
-direction = 1
-gate = 2
+[sub_resource type="Resource" id="Resource_jpyud"]
+script = ExtResource("2_gr8fu")
+coordinate = Vector2i(0, -1)
+direction = 0
+gate = 4
 metadata/_custom_type_script = "uid://dwtmx7tfacldi"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fskse"]
-texture = ExtResource("3_ocf13")
+texture = ExtResource("3_kx5xu")
 separation = Vector2i(2, 2)
 texture_region_size = Vector2i(120, 140)
 0:0/0 = 0
@@ -133,13 +133,15 @@ tile_layout = 2
 tile_size = Vector2i(120, 140)
 sources/1 = SubResource("TileSetAtlasSource_fskse")
 
-[node name="SplitterChallengeStage" type="Node2D"]
-script = ExtResource("1_r8am7")
-stage_name = "Hearding"
-offset = Vector2(-150, -100)
-fixed_tiles = Array[ExtResource("2_wh73u")]([SubResource("Resource_bh65a"), SubResource("Resource_am3sf")])
+[node name="Belt3" type="Node2D"]
+script = ExtResource("1_qg3eu")
+stage_name = "Grasses On"
+offset = Vector2(50, 150)
+fixed_tiles = Array[ExtResource("2_gr8fu")]([SubResource("Resource_tgi83"), SubResource("Resource_jpyud")])
 placeable = Dictionary[int, int]({
-1: 4
+1: 2,
+3: 2,
+8: 2
 })
 
 [node name="VisualTerrain" type="TileMapLayer" parent="."]
@@ -148,5 +150,5 @@ tile_set = SubResource("TileSet_bh65a")
 
 [node name="PlaceableTerrain" type="TileMapLayer" parent="."]
 z_index = -1
-tile_map_data = PackedByteArray("AAABAAAAAQACAAMAAAACAP//AQACAAMAAAABAAEAAQACAAMAAAAAAAIAAQACAAMAAAACAAEAAQACAAMAAAADAP//AQACAAMAAAADAAAAAQACAAMAAAACAAIAAQACAAMAAAAAAAMAAQACAAMAAAADAAEAAQACAAMAAAABAAMAAQACAAMAAAAAAAEAAQACAAMAAAA=")
+tile_map_data = PackedByteArray("AAAAAP//AQACAAMAAAACAP//AQACAAMAAAD/////AQACAAMAAAAAAP7/AQACAAMAAAABAP7/AQACAAMAAAADAP7/AQACAAMAAAADAP//AQACAAMAAAAEAP7/AQACAAMAAAA=")
 tile_set = SubResource("TileSet_bh65a")

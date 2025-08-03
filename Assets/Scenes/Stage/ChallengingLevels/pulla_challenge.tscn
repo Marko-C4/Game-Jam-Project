@@ -142,7 +142,7 @@ sources/1 = SubResource("TileSetAtlasSource_fskse")
 
 [node name="TestStage4" type="Node2D"]
 script = ExtResource("1_mxvn7")
-stage_name = "Sandbox"
+stage_name = "Cinnamon Roll"
 offset = Vector2(0, -20)
 map_scale = 0.6
 fixed_tiles = Array[ExtResource("2_kbktu")]([SubResource("Resource_n6pb3"), SubResource("Resource_0rp61"), SubResource("Resource_0po7v")])
