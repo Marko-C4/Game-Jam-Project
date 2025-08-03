@@ -18,28 +18,35 @@ layout_mode = 2
 
 [node name="StartStopButton" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 
 [node name="StepBackwardButton" type="Button" parent="MarginContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
+focus_mode = 0
 
 [node name="StepForwardButton" type="Button" parent="MarginContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
+focus_mode = 0
 
 [node name="ResetButton" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 
 [node name="BackToLevelSelectButton" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 
 [node name="PrevLevelButton" type="Button" parent="MarginContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
+focus_mode = 0
 
 [node name="NextLevelButton" type="Button" parent="MarginContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
+focus_mode = 0
 
 [node name="Score" type="Label" parent="."]
 layout_mode = 0

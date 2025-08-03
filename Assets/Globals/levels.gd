@@ -115,8 +115,26 @@ var WORLDS = [
 	TURN_STAGES,
 ]
 
+var CLEARED_LEVELS = [
+	[ false, false, false, false, false, ],
+	[ false, false, false, false, false, ],
+	[ false, false, false, false, false, ],
+	[ false, false, false, false, false, ],
+	[ false, false, false, false, false, ],
+	[ false, false, false, ],
+	[ false, false, false, ],
+	[ false, false, false, ],
+	[ false, false, false, ],
+]
+
 var current_world_num := 0
 var current_stage_num := 0
+
+func set_level_as_cleared():
+	CLEARED_LEVELS[current_world_num][current_stage_num] = true
+
+func is_level_cleared(world: int, stage: int):
+	return CLEARED_LEVELS[current_world_num][current_stage_num]
 
 func get_first_stage() -> PackedScene:
 	current_world_num = 0
@@ -142,5 +160,8 @@ func get_next_level() -> PackedScene:
 	if current_stage_num == WORLDS[current_world_num].size():
 		current_world_num += 1
 		current_stage_num = 0
+	
+	if current_world_num >= WORLDS.size():
+		return null
 	
 	return WORLDS[current_world_num][current_stage_num]
